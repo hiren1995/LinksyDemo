@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CardView" customModule="LinksyDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Ocx-hH-vCx">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="125" id="gDF-PO-ZR8"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-member" translatesAutoresizingMaskIntoConstraints="NO" id="XPd-r9-NhD">
+                    <rect key="frame" x="88" y="56" width="145" height="129"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="129" id="HMe-Ir-y3H"/>
+                        <constraint firstAttribute="width" constant="145" id="Lc9-f7-t7c"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42a-js-HTC">
+                    <rect key="frame" x="92" y="182" width="136" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="tpB-B2-KKu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum text " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM1-jB-8iU">
+                    <rect key="frame" x="30" y="211" width="260" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="U5W-45-aqR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="this is the Lorem Ipsum Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqG-RM-LOe">
+                    <rect key="frame" x="16" y="232" width="288" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9aa-7g-8le">
+                    <rect key="frame" x="113" y="271.5" width="95" height="30"/>
+                    <color key="backgroundColor" red="0.023529411760000001" green="0.37647058820000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Follow">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Ocx-hH-vCx" secondAttribute="trailing" id="1oK-bi-H85"/>
+                <constraint firstAttribute="trailing" secondItem="aM1-jB-8iU" secondAttribute="trailing" constant="30" id="BT2-m4-v9b"/>
+                <constraint firstItem="aM1-jB-8iU" firstAttribute="top" secondItem="42a-js-HTC" secondAttribute="bottom" id="Dlh-Yp-ByY"/>
+                <constraint firstItem="42a-js-HTC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="92" id="OSK-Vo-vqd"/>
+                <constraint firstAttribute="trailing" secondItem="EqG-RM-LOe" secondAttribute="trailing" constant="16" id="OU4-Eo-Vhv"/>
+                <constraint firstItem="42a-js-HTC" firstAttribute="top" secondItem="XPd-r9-NhD" secondAttribute="bottom" constant="-3" id="Rbq-Uq-SUJ"/>
+                <constraint firstItem="Ocx-hH-vCx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uh2-B9-tJe"/>
+                <constraint firstAttribute="trailing" secondItem="9aa-7g-8le" secondAttribute="trailing" constant="112" id="ccd-cU-dGu"/>
+                <constraint firstItem="XPd-r9-NhD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="g7O-Tw-O4v"/>
+                <constraint firstAttribute="trailing" secondItem="42a-js-HTC" secondAttribute="trailing" constant="92" id="gR9-LD-6wj"/>
+                <constraint firstItem="9aa-7g-8le" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="113" id="ghw-g6-HDZ"/>
+                <constraint firstItem="EqG-RM-LOe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ioX-QT-7Fs"/>
+                <constraint firstItem="9aa-7g-8le" firstAttribute="top" secondItem="EqG-RM-LOe" secondAttribute="bottom" constant="25" id="jo8-kq-mhQ"/>
+                <constraint firstItem="EqG-RM-LOe" firstAttribute="top" secondItem="aM1-jB-8iU" secondAttribute="bottom" id="n5n-GC-hB5"/>
+                <constraint firstItem="XPd-r9-NhD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="56" id="sXd-8h-oEo"/>
+                <constraint firstItem="aM1-jB-8iU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="sfh-kk-fMR"/>
+                <constraint firstItem="Ocx-hH-vCx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uv4-ML-gns"/>
+            </constraints>
+            <point key="canvasLocation" x="26" y="52"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg" width="372" height="673"/>
+        <image name="icon-member" width="159" height="137"/>
+    </resources>
+</document>
