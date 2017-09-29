@@ -36,7 +36,11 @@ public struct Movement {
 open class ZLSwipeableView: UIView {
 
     // MARK: Data Source
+    
+    //open var numberOfActiveView = UInt(4)
+    
     open var numberOfActiveView = UInt(4)
+    
     open var nextView: NextViewHandler? {
         didSet {
             loadViews()
@@ -45,7 +49,10 @@ open class ZLSwipeableView: UIView {
     open var previousView: PreviousViewHandler?
     // Rewinding
     open var history = [UIView]()
-    open var numberOfHistoryItem = UInt(10)
+    
+    //open var numberOfHistoryItem = UInt(10)
+    
+    open var numberOfHistoryItem = UInt(5)
 
     // MARK: Customizable behavior
     open var animateView = ZLSwipeableView.defaultAnimateViewHandler()
@@ -245,6 +252,7 @@ open class ZLSwipeableView: UIView {
             self.allViews().arrayByRemoveObjectsInArray(self.activeViews()).filter({ view in predicate(view) }).forEach({ view in self.remove(view) })
             }, interval: 0.3) { () -> Bool in
                 return self.activeViews().count == self.allViews().count
+                
         }
     }
 

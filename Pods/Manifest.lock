@@ -1,15 +1,71 @@
 PODS:
-  - Cartography (1.0.1)
-  - UIColor+FlatColors (0.0.2)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - Alamofire (4.5.0)
+  - BEMCheckBox (1.4.1)
+  - GCXSteppedSlider (0.1.0)
+  - GoogleMaps (2.3.1):
+    - GoogleMaps/Maps (= 2.3.1)
+  - GoogleMaps/Base (2.3.1)
+  - GoogleMaps/Maps (2.3.1):
+    - GoogleMaps/Base
+  - GooglePlaces (2.3.1):
+    - GoogleMaps/Base (= 2.3.1)
+  - IOSLinkedInAPIFix (2.0.4):
+    - AFNetworking (>= 2.0.0)
+  - JSQMessagesViewController (7.3.4):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - LinkedinSwift (1.6.6):
+    - AFNetworking (>= 2.6.3)
+    - IOSLinkedInAPIFix (>= 2.0.3)
+  - MBProgressHUD (1.0.0)
+  - Pulsator (0.3.0)
+  - SwiftRangeSlider (1.0.2)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Cartography
-  - UIColor+FlatColors
+  - Alamofire (~> 4.4)
+  - BEMCheckBox
+  - GCXSteppedSlider
+  - GoogleMaps
+  - GooglePlaces
+  - JSQMessagesViewController
+  - LinkedinSwift (~> 1.6.6)
+  - MBProgressHUD (~> 1.0.0)
+  - Pulsator
+  - SwiftRangeSlider
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
-  UIColor+FlatColors: 6c699df7a575281794c688c64cee6c44fd1f93b4
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
+  GCXSteppedSlider: c41ed88eb30e34963738a5ef77c2f8a855eb73c6
+  GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
+  GooglePlaces: 4a7b22debfa1af65017b82943431822607e45201
+  IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
+  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  LinkedinSwift: cda2916f08950f662fbec33176dc38aefc5b4c2c
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
+  SwiftRangeSlider: 111f9a70b8502c6b0607bd3fcf5662f47009a90c
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 8e7c96524d011a1ab9a3ff3f064c099b04f6b392
+PODFILE CHECKSUM: cfc27fa51b337b006a288f42a9d2df8264446d80
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

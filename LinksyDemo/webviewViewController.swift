@@ -15,12 +15,12 @@ class webviewViewController: UIViewController {
     
     
     
-    var url1 = NSURL(string:"https://www.linkedin.com")
+    //var url1 = NSURL(string:"https://www.linkedin.com")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       WebView.loadRequest(NSURLRequest(url: url1! as URL) as URLRequest)
+       //WebView.loadRequest(NSURLRequest(url: url1! as URL) as URLRequest)
 
         // Do any additional setup after loading the view.
     }

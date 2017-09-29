@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2DDAE3501F16204B00BD9013"
-               BuildableName = "LinksyDemo.app"
+               BuildableName = "Linksy.app"
                BlueprintName = "LinksyDemo"
                ReferencedContainer = "container:LinksyDemo.xcodeproj">
             </BuildableReference>
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -53,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2DDAE3501F16204B00BD9013"
-            BuildableName = "LinksyDemo.app"
+            BuildableName = "Linksy.app"
             BlueprintName = "LinksyDemo"
             ReferencedContainer = "container:LinksyDemo.xcodeproj">
          </BuildableReference>
@@ -65,6 +66,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -76,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2DDAE3501F16204B00BD9013"
-            BuildableName = "LinksyDemo.app"
+            BuildableName = "Linksy.app"
             BlueprintName = "LinksyDemo"
             ReferencedContainer = "container:LinksyDemo.xcodeproj">
          </BuildableReference>
@@ -95,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2DDAE3501F16204B00BD9013"
-            BuildableName = "LinksyDemo.app"
+            BuildableName = "Linksy.app"
             BlueprintName = "LinksyDemo"
             ReferencedContainer = "container:LinksyDemo.xcodeproj">
          </BuildableReference>
