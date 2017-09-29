@@ -15,6 +15,7 @@ import MBProgressHUD
 
 //var userpersonalinfo = [JSON]()
 
+
 let userpersonalinfo = UserDefaults.standard
 let linkedinparameters = UserDefaults.standard
 
@@ -34,7 +35,7 @@ var loadingIndicator = UIActivityIndicatorView()
 
 
 
-class dummyViewController: UIViewController {
+class dummyViewController: UIViewController{
 
     
     let baseUrl = "https://bulale.in/linksy/api/index.php/"
@@ -42,7 +43,7 @@ class dummyViewController: UIViewController {
     
     //let parametersdata:[String : String] = ["login_type":"linkedin","oauth2_access_token":"AQUOxSqFxmJJkeuGQ-ArmF4qDt6fhapGNlnBGjUyudQW5skxqTEWSgBs1yKopWb015Y737WF-E015-UdhC-ceAuZPzMJbYbNRuQN07Grxmh8--CNgesg4H5Iei985bv4hrcymiiwwZvom3Biu9iag6bbBEI3hMzWNIiuHup6D7EPJyPXelU","linkedin_id":"CphZ4m2hOL"]
     
-    var parametersdata:[String : String] = [:]
+    var parametersdata:[String : Any] = [:]
     
     //let parametersdata:[String : String] = ["login_type":"linkedin","oauth2_access_token":"AQWMRkEuDi5FlPZiYbBbiZ8iLW-5z14UUrr9DocIjUUPG48HHgCiLbnLGHBt3b4SELFKOdi6Fhh413mj5gW_xhsCYoniV_dg3d1zQDe3YJ0skAsIxS7z4cg2URPHipaTdzmzW6Va7PArETUZgKsJqBPs95GpuuhUI8g9QSZlOq742h9XOSs","linkedin_id":"f0J3h6Whyv"]
     
@@ -55,7 +56,7 @@ class dummyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       
         // Do any additional setup after loading the view.
         
         
@@ -128,7 +129,7 @@ class dummyViewController: UIViewController {
                 
                 let Authid = temp["id"].string
                 
-                self.parametersdata = ["login_type":"linkedin","oauth2_access_token": AuthAcess! , "linkedin_id": Authid!,"device_token": device_token!]
+                self.parametersdata = ["login_type":"linkedin","oauth2_access_token": AuthAcess! , "linkedin_id": Authid!,"device_token": device_token!,"user_latitude" : latMagnitude , "user_longitude" : longMagnitude]
                 
             
                 linkedinparameters.set(self.parametersdata, forKey: "linkedinparameters")

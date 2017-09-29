@@ -10,20 +10,71 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import MBProgressHUD
+import GooglePlaces
+import GoogleMaps
 
 
 var device_token:String? = nil
 
+var latMagnitude:Double? = nil
+var longMagnitude:Double? = nil
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
 
     var window: UIWindow?
 
     
+    
+    var locationManager=CLLocationManager()
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        
+        let mylocation = locations.last
+        
+        
+        //mylocation!.coordinate.latitude, mylocation!.coordinate.longitude
+        
+        latMagnitude = mylocation!.coordinate.latitude.magnitude
+        longMagnitude = mylocation!.coordinate.longitude.magnitude
+        
+       
+        locationManager.stopUpdatingLocation()
+        
+    }
+    
+    
+    
        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
+        
+        
+        GMSServices.provideAPIKey("AIzaSyCj97gPgDrshjuKaXNYrWZtLR3FYf1ata4")
+        
+        //code to egt current coordinates...
+        
+        //mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera2)
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         //---------------Push notification settings start---------------
