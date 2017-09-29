@@ -1386,7 +1386,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         companyarray.remove(at: i)
         
         //        CompaniesCollectionView.reloadData()
-        //
+        //        
         //        CompaniesCollectionView.frame = CGRect(x: CompaniesCollectionView.frame.origin.x, y: CompaniesCollectionView.frame.origin.y, width: CompaniesCollectionView.frame.size.width, height: CompaniesCollectionView.contentSize.height)
         //        CompaniesCollectionView.reloadData()
         
