@@ -13,6 +13,7 @@ import SwiftyJSON
 import Alamofire
 import LinkedinSwift
 import MBProgressHUD
+import IQKeyboardManagerSwift
 
 var tempProfiles = UserDefaults.standard
 
@@ -415,7 +416,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                         
                         //------------------------dynamic height of scroll view---------------
                         
-                        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.TopicsCollectionView.frame.height)
+                        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.TopicsCollectionView.frame.origin.y + 950 + self.TopicsCollectionView.frame.height)
                         
                         self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
                         
@@ -449,7 +450,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                         
                         //------------------------dynamic height of scroll view---------------
                         
-                        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.CompaniesCollectionView.frame.height)
+                        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height)
                         
                         self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
                         
@@ -1214,7 +1215,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
             
             //------------------------dynamic height of scroll view---------------
             
-            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
             
             self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
             
@@ -1248,7 +1249,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                 companyarray.append(temparray[element])
             }
             
-            
+             self.CompaniesCollectionView.reloadData()
             
             self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
             
@@ -1264,7 +1265,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
             
             //------------------------dynamic height of scroll view---------------
             
-            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
             
             self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
             
@@ -1316,15 +1317,15 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
     }
 
     @IBAction func deletecell(_sender:UIButton){
-        
+    
         let i : Int = (_sender.layer.value(forKey: "index")) as! Int
         topicarray.remove(at: i)
-        //        TopicsCollectionView.reloadData()
-        //
-        //
-        //        TopicsCollectionView.frame = CGRect(x: TopicsCollectionView.frame.origin.x, y: TopicsCollectionView.frame.origin.y, width: TopicsCollectionView.frame.size.width, height: TopicsCollectionView.contentSize.height)
-        //
-        //        TopicsCollectionView.reloadData()
+//        TopicsCollectionView.reloadData()
+//    
+//        
+//        TopicsCollectionView.frame = CGRect(x: TopicsCollectionView.frame.origin.x, y: TopicsCollectionView.frame.origin.y, width: TopicsCollectionView.frame.size.width, height: TopicsCollectionView.contentSize.height)
+//        
+//        TopicsCollectionView.reloadData()
         
         
         TopicsCollectionView.reloadData()
@@ -1371,24 +1372,23 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         //------------------------dynamic height of scroll view---------------
         
-        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height:  self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height + self.CompaniesCollectionView.frame.origin.y + 950)
         
         self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
         
         
-        
+    
     }
-
     
     @IBAction func deletecellCompany(_sender:UIButton){
         
         let i : Int = (_sender.layer.value(forKey: "index")) as! Int
         companyarray.remove(at: i)
         
-        //        CompaniesCollectionView.reloadData()
-        //        
-        //        CompaniesCollectionView.frame = CGRect(x: CompaniesCollectionView.frame.origin.x, y: CompaniesCollectionView.frame.origin.y, width: CompaniesCollectionView.frame.size.width, height: CompaniesCollectionView.contentSize.height)
-        //        CompaniesCollectionView.reloadData()
+//        CompaniesCollectionView.reloadData()
+//        
+//        CompaniesCollectionView.frame = CGRect(x: CompaniesCollectionView.frame.origin.x, y: CompaniesCollectionView.frame.origin.y, width: CompaniesCollectionView.frame.size.width, height: CompaniesCollectionView.contentSize.height)
+//        CompaniesCollectionView.reloadData()
         
         
         TopicsCollectionView.reloadData()
@@ -1435,7 +1435,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         //------------------------dynamic height of scroll view---------------
         
-        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height:  self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height + self.CompaniesCollectionView.frame.origin.y + 950)
         
         self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
     }
