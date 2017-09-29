@@ -1,0 +1,6 @@
+framework module Pods_LinksyDemoUITests {
+  umbrella header "Pods-LinksyDemoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
