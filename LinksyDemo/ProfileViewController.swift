@@ -13,7 +13,7 @@ import SwiftyJSON
 import Alamofire
 import LinkedinSwift
 import MBProgressHUD
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 
 var tempProfiles = UserDefaults.standard
 
