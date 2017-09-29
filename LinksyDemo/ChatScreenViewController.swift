@@ -97,7 +97,12 @@ class ChatScreenViewController: JSQMessagesViewController {
       
         let chat_id = JSON((chatId.object(forKey: "chatId"))!)
         
+        print(chat_id)
+        
         let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chat_id.stringValue]
+        
+        print(getchatdata)
+        
         
         Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
             { (apiresponseMsgs) in
@@ -107,6 +112,8 @@ class ChatScreenViewController: JSQMessagesViewController {
                    
                     
                     self.x = JSON(apiresponseMsgs.result.value!)
+                    
+                    print(self.x)
                     
                     if(self.x["chat_conversation_detail"].count > 0)
                     {
