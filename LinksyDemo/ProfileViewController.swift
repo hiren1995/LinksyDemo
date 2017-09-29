@@ -439,9 +439,9 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                         
                         self.CompaniesCollectionView.layoutIfNeeded()
                         
-                        self.CompaniesCollectionView.frame = CGRect(x: self.CompaniesCollectionView.frame.origin.x, y: self.CompaniesCollectionView.frame.origin.y, width: self.CompaniesCollectionView.frame.size.width, height: self.CompaniesCollectionView.contentSize.height)
+                        self.CompaniesCollectionView.frame = CGRect(x: self.CompaniesCollectionView.frame.origin.x, y: self.TopicsCollectionView.frame.origin.y+99+self.TopicsCollectionView.frame.size.height, width: self.CompaniesCollectionView.frame.size.width, height: self.CompaniesCollectionView.contentSize.height)
                         
-                        
+                       // self.TopicsCollectionView.frame.origin.y + self.TopicsCollectionView.frame.height + 99
                         
                         self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
                         
@@ -1190,9 +1190,33 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
             
             //------------------------dynamic height of scroll view---------------
             
-            InnerScrollView.frame = CGRect(x: 0, y: 0, width: InnerScrollView.frame.width, height: InnerScrollView.frame.height + TopicsCollectionView.frame.height + TopicsCollectionView.frame.origin.y)
+//            InnerScrollView.frame = CGRect(x: 0, y: 0, width: InnerScrollView.frame.width, height: InnerScrollView.frame.height + TopicsCollectionView.frame.height + TopicsCollectionView.frame.origin.y)
+//            
+//            self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: InnerScrollView.frame.height)
             
-            self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: InnerScrollView.frame.height)
+            
+            self.CompaniesCollectionView.reloadData()
+            
+            
+            
+            
+            self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
+            
+            self.CompaniesCollectionView.layoutIfNeeded()
+            
+            self.CompaniesCollectionView.frame = CGRect(x: self.CompaniesCollectionView.frame.origin.x, y: self.TopicsCollectionView.frame.origin.y+99+self.TopicsCollectionView.frame.size.height, width: self.CompaniesCollectionView.frame.size.width, height: self.CompaniesCollectionView.contentSize.height)
+            
+            // self.TopicsCollectionView.frame.origin.y + self.TopicsCollectionView.frame.height + 99
+            
+            self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
+            
+            self.CompaniesCollectionView.reloadData()
+            
+            //------------------------dynamic height of scroll view---------------
+            
+            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            
+            self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
             
             
            // printarray()
@@ -1224,27 +1248,55 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                 companyarray.append(temparray[element])
             }
             
-            CompaniesCollectionView.reloadData()
             
-          
             
             self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
             
             self.CompaniesCollectionView.layoutIfNeeded()
             
-                CompaniesCollectionView.frame = CGRect(x: CompaniesCollectionView.frame.origin.x, y: CompaniesCollectionView.frame.origin.y, width: CompaniesCollectionView.frame.size.width, height: CompaniesCollectionView.contentSize.height)
+            self.CompaniesCollectionView.frame = CGRect(x: self.CompaniesCollectionView.frame.origin.x, y: self.TopicsCollectionView.frame.origin.y+99+self.TopicsCollectionView.frame.size.height, width: self.CompaniesCollectionView.frame.size.width, height: self.CompaniesCollectionView.contentSize.height)
             
-            
+            // self.TopicsCollectionView.frame.origin.y + self.TopicsCollectionView.frame.height + 99
             
             self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
             
-            CompaniesCollectionView.reloadData()
+            self.CompaniesCollectionView.reloadData()
             
             //------------------------dynamic height of scroll view---------------
             
-            InnerScrollView.frame = CGRect(x: 0, y: 0, width: InnerScrollView.frame.width, height: InnerScrollView.frame.height + CompaniesCollectionView.frame.height + CompaniesCollectionView.frame.origin.y)
+            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.InnerScrollView.frame.height + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
             
-            self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: InnerScrollView.frame.height)
+            self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
+            
+
+            
+            
+            
+            
+            
+            
+            
+//            CompaniesCollectionView.reloadData()
+//            
+//          
+//            
+//            self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
+//            
+//            self.CompaniesCollectionView.layoutIfNeeded()
+//            
+//                CompaniesCollectionView.frame = CGRect(x: CompaniesCollectionView.frame.origin.x, y: CompaniesCollectionView.frame.origin.y, width: CompaniesCollectionView.frame.size.width, height: CompaniesCollectionView.contentSize.height)
+//            
+//            
+//            
+//            self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
+//            
+//            CompaniesCollectionView.reloadData()
+//            
+//            //------------------------dynamic height of scroll view---------------
+//            
+//            InnerScrollView.frame = CGRect(x: 0, y: 0, width: InnerScrollView.frame.width, height: InnerScrollView.frame.height + CompaniesCollectionView.frame.height + CompaniesCollectionView.frame.origin.y)
+//            
+//            self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: InnerScrollView.frame.height)
         }
         
         txtCompany.text = nil
