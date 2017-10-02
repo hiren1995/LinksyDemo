@@ -133,7 +133,9 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         // Do any additional setup after loading the view.
         
         
+        sliderUI.dragTrack = true
         
+      
         self.IndustriesCollectionView.delegate = self
         self.IndustriesCollectionView.dataSource = self
         
@@ -152,6 +154,8 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         self.CompaniesCollectionView.delegate = self
         self.CompaniesCollectionView.dataSource = self
+        
+        
         
         
         btn1km.titleLabel?.textColor = UIColor(red: 169/255, green: 171/255, blue: 171/255, alpha: 1.0)

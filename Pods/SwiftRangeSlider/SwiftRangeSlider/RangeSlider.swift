@@ -100,7 +100,10 @@ import QuartzCore
   @IBInspectable open var trueKnobSize: Bool = false {
     didSet {
       updateLayerFramesAndPositions()
-      lowerKnob.setNeedsDisplay()
+      
+        lowerKnob.setNeedsDisplay()
+        
+      
       upperKnob.setNeedsDisplay()
     }
   }
@@ -237,7 +240,7 @@ import QuartzCore
     lowerKnob.frame = CGRect(x: 0, y: 0, width: KnobSize, height: KnobSize)
     lowerKnob.rangeSlider = self
     lowerKnob.contentsScale = UIScreen.main.scale
-    layer.addSublayer(lowerKnob)
+    //layer.addSublayer(lowerKnob)
     
     upperKnob.frame = CGRect(x: 0, y: 0, width: KnobSize, height: KnobSize)
     upperKnob.rangeSlider = self
