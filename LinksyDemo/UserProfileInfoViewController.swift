@@ -153,7 +153,9 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
         let authid = temp["linkedin_id"].stringValue
        
         
-        let parametersdata = ["login_type":"linkedin","oauth2_access_token": authtoken , "linkedin_id": authid , "device_token": device_token!]
+        let parametersdata = ["login_type":"linkedin","oauth2_access_token": authtoken , "linkedin_id": authid , "device_token": device_token!,"user_latitude" : latMagnitude! , "user_longitude" : longMagnitude!] as [String : Any]
+        
+        //self.parametersdata = ["login_type":"linkedin","oauth2_access_token": AuthAcess! , "linkedin_id": Authid!,"device_token": device_token!,"user_latitude" : latMagnitude , "user_longitude" : longMagnitude]
         
         loadingIndicator.startAnimating()
         

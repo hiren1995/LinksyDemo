@@ -121,7 +121,7 @@ class ChatScreenViewController: JSQMessagesViewController {
                         {
                             if(self.x["chat_conversation_detail"][i]["chat_message_from"].string == tempselfinfo["linkedin_login"][0]["user_id"].string!)
                             {
-                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.x["chat_conversation_detail"][i]["chat_message_text"].string))
+                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
                                 
                                 //messages.append(JSQMessage(senderId: "30" , displayName: "sender", text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
                                 
@@ -310,7 +310,11 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         print(chatids)
         
-        let sendmsgdata:[String : String] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"1","chat_message_text": text]
+        let sendingMsg = encodeEmojiMsg(text)
+        print(sendingMsg)
+       
+        
+        let sendmsgdata:[String : String] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"1","chat_message_text": sendingMsg]
         
         print(sendmsgdata)
         
@@ -365,7 +369,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         
         
-        self.messages.append(JSQMessage(senderId: tempsendid.string , displayName: "sender", text: tempnotify["body"]["text_msg"].string))
+        self.messages.append(JSQMessage(senderId: tempsendid.string , displayName: "sender", text: decodeEmojiMsg(tempnotify["body"]["text_msg"].string!)))
         
         self.collectionView.reloadData()
         
@@ -446,7 +450,15 @@ class ChatScreenViewController: JSQMessagesViewController {
       
     }
 
-   
+    func encodeEmojiMsg(_ s: String) -> String {
+        let data = s.data(using: .nonLossyASCII, allowLossyConversion: true)!
+        return String(data: data, encoding: .utf8)!
+    }
+    
+    func decodeEmojiMsg(_ s: String) -> String? {
+        let data = s.data(using: .utf8)!
+        return String(data: data, encoding: .nonLossyASCII)
+    }
    
     
    /*
