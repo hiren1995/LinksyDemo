@@ -30,10 +30,13 @@
 - (void)jsq_configureTextView
 {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    //[self setTranslatesAutoresizingMaskIntoConstraints:YES];
 
     CGFloat cornerRadius = 6.0f;
 
     self.backgroundColor = [UIColor whiteColor];
+    //self.backgroundColor = [UIColor grayColor];
     self.layer.borderWidth = 0.5f;
     self.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.layer.cornerRadius = cornerRadius;
@@ -43,7 +46,10 @@
     self.textContainerInset = UIEdgeInsetsMake(4.0f, 2.0f, 4.0f, 2.0f);
     self.contentInset = UIEdgeInsetsMake(1.0f, 0.0f, 1.0f, 0.0f);
 
-    self.scrollEnabled = YES;
+    //self.scrollEnabled = YES;
+    
+    self.scrollEnabled = NO;
+    
     self.scrollsToTop = NO;
     self.userInteractionEnabled = YES;
 
@@ -56,6 +62,21 @@
     self.keyboardAppearance = UIKeyboardAppearanceDefault;
     self.keyboardType = UIKeyboardTypeDefault;
     self.returnKeyType = UIReturnKeyDefault;
+    
+    //--------------------- code added by me start --------------
+    
+    
+    CGRect newframe = self.frame;
+    
+    //newframe.size.height = self.contentSize.height;
+    
+    newframe.size.height = 200 ;
+    
+    self.frame = newframe;
+    
+    
+    //--------------------- code added by me end --------------
+    
 
     self.text = nil;
     

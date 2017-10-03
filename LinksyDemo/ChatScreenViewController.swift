@@ -57,6 +57,9 @@ class ChatScreenViewController: JSQMessagesViewController {
         //self.senderDisplayName = "Hiren Kadam"
         
         
+        
+        
+        
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
         loadingIndicator.transform = transform

@@ -54,6 +54,8 @@
 		2D79323A1F21E56A00E1E61B /* ChatScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7932391F21E56A00E1E61B /* ChatScreenViewController.swift */; };
 		2D9E6E671F25C299001DE91B /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6E661F25C299001DE91B /* ProfileInfoViewController.swift */; };
 		2D9E6E6A1F25D350001DE91B /* PositioninfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6E691F25D350001DE91B /* PositioninfoCollectionViewCell.swift */; };
+		2DB325C51F839D6900288E9A /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB325C41F839D6900288E9A /* SegueFromLeft.swift */; };
+		2DB325C81F839F1C00288E9A /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB325C71F839F1C00288E9A /* SegueFromRight.swift */; };
 		2DB848E51F20CDA50062C524 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB848E41F20CDA50062C524 /* MatchesViewController.swift */; };
 		2DB848E71F20D51A0062C524 /* MatchesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB848E61F20D51A0062C524 /* MatchesCollectionViewCell.swift */; };
 		2DCA47FF1F4D648800FA88E9 /* ChatOutViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA47FE1F4D648800FA88E9 /* ChatOutViewViewController.swift */; };
@@ -161,6 +163,8 @@
 		2D7932391F21E56A00E1E61B /* ChatScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatScreenViewController.swift; sourceTree = "<group>"; };
 		2D9E6E661F25C299001DE91B /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
 		2D9E6E691F25D350001DE91B /* PositioninfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositioninfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		2DB325C41F839D6900288E9A /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
+		2DB325C71F839F1C00288E9A /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		2DB848E41F20CDA50062C524 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		2DB848E61F20D51A0062C524 /* MatchesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DCA47FE1F4D648800FA88E9 /* ChatOutViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatOutViewViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 				2DDAE3541F16204B00BD9013 /* AppDelegate.swift */,
 				2DDAE3561F16204B00BD9013 /* ViewController.swift */,
 				2DDAE3581F16204B00BD9013 /* Main.storyboard */,
+				2DB325C41F839D6900288E9A /* SegueFromLeft.swift */,
+				2DB325C71F839F1C00288E9A /* SegueFromRight.swift */,
 				2DDAE35B1F16204B00BD9013 /* Assets.xcassets */,
 				2DDAE35D1F16204B00BD9013 /* LaunchScreen.storyboard */,
 				2DDAE3601F16204B00BD9013 /* Info.plist */,
@@ -849,7 +855,9 @@
 				2DCA47FF1F4D648800FA88E9 /* ChatOutViewViewController.swift in Sources */,
 				6C1DD0E21F2F9FDA005BD6D8 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				2D4331041F1F274B008C7E65 /* NameCellCollectionViewCell.swift in Sources */,
+				2DB325C51F839D6900288E9A /* SegueFromLeft.swift in Sources */,
 				2D03BF501F18DBAC00D5E5AD /* UIColor+FlatColors.m in Sources */,
+				2DB325C81F839F1C00288E9A /* SegueFromRight.swift in Sources */,
 				2D3A4EC51F29EC2800CA9C10 /* UserProfileInfoViewController.swift in Sources */,
 				6C1DD0E01F2F9FDA005BD6D8 /* IQUIWindow+Hierarchy.m in Sources */,
 				2D03BF421F18DBAC00D5E5AD /* Expression.swift in Sources */,

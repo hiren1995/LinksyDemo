@@ -26,6 +26,8 @@
 #import "UIImage+JSQMessages.h"
 #import "UIView+JSQMessages.h"
 
+#import "JSQMessagesComposerTextView.h"
+
 static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesInputToolbarKeyValueObservingContext;
 
 
@@ -51,7 +53,10 @@ static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesIn
     self.jsq_isObserving = NO;
     self.sendButtonOnRight = YES;
 
-    self.preferredDefaultHeight = 44.0f;
+    //self.preferredDefaultHeight = 44.0f;
+    
+    self.preferredDefaultHeight = 200.0f;
+  
     self.maximumHeight = NSNotFound;
 
     JSQMessagesToolbarContentView *toolbarContentView = [self loadToolbarContentView];
