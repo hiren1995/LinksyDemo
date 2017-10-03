@@ -3577,12 +3577,6 @@ Los Angeles, California</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-Jy-Kx5">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
-                                <connections>
-                                    <segue destination="eJr-Ms-5yA" kind="embed" id="gU3-9X-Lwg"/>
-                                </connections>
-                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O83-gH-efY">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="68"/>
                                 <subviews>
@@ -3664,18 +3658,38 @@ Los Angeles, California</string>
                                     <constraint firstItem="LDD-oi-DBU" firstAttribute="top" secondItem="O83-gH-efY" secondAttribute="top" constant="30" id="n6O-4y-BjL"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjH-ga-4Cc">
+                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-Jy-Kx5">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="599" id="QKF-c0-v1I"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="eJr-Ms-5yA" kind="embed" id="gU3-9X-Lwg"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ogc-Jy-Kx5" firstAttribute="top" secondItem="jjH-ga-4Cc" secondAttribute="top" id="COg-5R-DRo"/>
+                                    <constraint firstItem="ogc-Jy-Kx5" firstAttribute="leading" secondItem="jjH-ga-4Cc" secondAttribute="leading" id="Lel-kk-c6d"/>
+                                    <constraint firstAttribute="trailing" secondItem="ogc-Jy-Kx5" secondAttribute="trailing" id="Yft-bi-MG5"/>
+                                    <constraint firstAttribute="bottom" secondItem="ogc-Jy-Kx5" secondAttribute="bottom" id="qXC-Dk-LaX"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ogc-Jy-Kx5" firstAttribute="leading" secondItem="UlX-Ly-mqN" secondAttribute="leading" id="9BI-zD-9Mi"/>
-                            <constraint firstItem="ogc-Jy-Kx5" firstAttribute="top" secondItem="O83-gH-efY" secondAttribute="bottom" id="9Hd-DC-iqR"/>
+                            <constraint firstItem="ogc-Jy-Kx5" firstAttribute="width" secondItem="UlX-Ly-mqN" secondAttribute="width" id="7OE-pz-QJj"/>
                             <constraint firstItem="O83-gH-efY" firstAttribute="top" secondItem="UlX-Ly-mqN" secondAttribute="top" id="EJ6-uP-4ZL"/>
-                            <constraint firstAttribute="trailing" secondItem="ogc-Jy-Kx5" secondAttribute="trailing" id="b9n-tx-HMX"/>
+                            <constraint firstItem="jjH-ga-4Cc" firstAttribute="leading" secondItem="UlX-Ly-mqN" secondAttribute="leading" id="L1A-M4-0z4"/>
+                            <constraint firstItem="wxb-IP-Del" firstAttribute="top" secondItem="jjH-ga-4Cc" secondAttribute="bottom" id="aUV-y5-9h0"/>
                             <constraint firstItem="O83-gH-efY" firstAttribute="leading" secondItem="UlX-Ly-mqN" secondAttribute="leadingMargin" constant="-20" id="eoF-eh-AST"/>
                             <constraint firstItem="O83-gH-efY" firstAttribute="top" secondItem="jEH-lf-XUJ" secondAttribute="bottom" constant="-20" id="lKa-sk-Bpy"/>
-                            <constraint firstItem="ogc-Jy-Kx5" firstAttribute="top" secondItem="O83-gH-efY" secondAttribute="bottom" id="vAu-78-vuE"/>
+                            <constraint firstAttribute="trailing" secondItem="jjH-ga-4Cc" secondAttribute="trailing" id="ua0-Ly-FFH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="O83-gH-efY" secondAttribute="trailing" constant="-20" id="w9C-ie-KTX"/>
-                            <constraint firstItem="wxb-IP-Del" firstAttribute="top" secondItem="ogc-Jy-Kx5" secondAttribute="bottom" id="z3l-Cl-ur7"/>
+                            <constraint firstItem="jjH-ga-4Cc" firstAttribute="top" secondItem="O83-gH-efY" secondAttribute="bottom" id="zy2-bR-a0G"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chat" id="sFI-6X-QSb">
@@ -3689,7 +3703,7 @@ Los Angeles, California</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1X-yR-tmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10758" y="-1326"/>
+            <point key="canvasLocation" x="10791" y="-1324"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ru6-aU-kbH">
