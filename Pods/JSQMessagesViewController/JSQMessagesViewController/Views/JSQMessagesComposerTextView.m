@@ -46,9 +46,9 @@
     self.textContainerInset = UIEdgeInsetsMake(4.0f, 2.0f, 4.0f, 2.0f);
     self.contentInset = UIEdgeInsetsMake(1.0f, 0.0f, 1.0f, 0.0f);
 
-    //self.scrollEnabled = YES;
+    self.scrollEnabled = YES;
     
-    self.scrollEnabled = NO;
+    //self.scrollEnabled = NO;
     
     self.scrollsToTop = NO;
     self.userInteractionEnabled = YES;
@@ -70,7 +70,7 @@
     
     //newframe.size.height = self.contentSize.height;
     
-    newframe.size.height = 200 ;
+    //newframe.size.height = 200 ;
     
     self.frame = newframe;
     
