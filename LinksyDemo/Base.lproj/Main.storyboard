@@ -619,9 +619,9 @@ Los Angeles, California</string>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random-user1" translatesAutoresizingMaskIntoConstraints="NO" id="can-yL-dNB">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="can-yL-dNB">
                                                 <rect key="frame" x="95" y="50" width="130" height="130"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.69803921570000005" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.66274509800000003" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="130" id="Mo6-2X-TEG"/>
                                                     <constraint firstAttribute="width" constant="130" id="evG-vR-6uA"/>
@@ -1383,9 +1383,9 @@ Los Angeles, California</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjC-f8-sV6">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random-user1" translatesAutoresizingMaskIntoConstraints="NO" id="pe5-iW-kXH">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pe5-iW-kXH">
                                                 <rect key="frame" x="110" y="30" width="100" height="100"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.69803921570000005" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.66274509800000003" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="CcM-BV-PpI"/>
                                                     <constraint firstAttribute="width" constant="100" id="cbv-Qt-Fy0"/>
@@ -2036,9 +2036,9 @@ Los Angeles, California</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
                                                 <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random-user1" translatesAutoresizingMaskIntoConstraints="NO" id="gZj-Gt-xix">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gZj-Gt-xix">
                                                 <rect key="frame" x="95" y="36" width="130" height="130"/>
-                                                <color key="backgroundColor" red="0.20392156859999999" green="0.69803921570000005" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.66274509800000003" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="130" id="I2h-5e-5ip"/>
                                                     <constraint firstAttribute="width" constant="130" id="nen-7U-1Gy"/>
@@ -3591,8 +3591,9 @@ Los Angeles, California</string>
                                             <action selector="btnBack:" destination="95u-En-RVa" eventType="touchUpInside" id="m3y-uU-e4c"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="random-user1" translatesAutoresizingMaskIntoConstraints="NO" id="upG-9z-BC2">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="upG-9z-BC2">
                                         <rect key="frame" x="40" y="30" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.66274509800000003" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="RXt-N6-FTd"/>
                                             <constraint firstAttribute="width" constant="30" id="f49-oi-bkB"/>
@@ -3761,20 +3762,19 @@ Los Angeles, California</string>
         <image name="linksy" width="203" height="109"/>
         <image name="location-icon" width="26" height="33"/>
         <image name="logo" width="154" height="83"/>
-        <image name="random-user1" width="64" height="64"/>
         <image name="right" width="48" height="33"/>
         <image name="signin" width="298" height="45"/>
         <image name="swipe" width="41" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2v9-eM-X5s"/>
+        <segue reference="ypy-dE-jbO"/>
         <segue reference="idv-VR-xb5"/>
         <segue reference="Eie-do-Wb0"/>
         <segue reference="gU3-9X-Lwg"/>
         <segue reference="74N-xU-Kqv"/>
         <segue reference="BMC-41-IUT"/>
-        <segue reference="4rH-r1-Ngm"/>
-        <segue reference="rX5-3z-kCj"/>
+        <segue reference="juR-7s-VYl"/>
+        <segue reference="60W-h7-V9R"/>
         <segue reference="ziV-c5-qYL"/>
     </inferredMetricsTieBreakers>
 </document>
