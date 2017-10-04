@@ -179,6 +179,12 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
             else
             {
                 print("Error")
+                
+                let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
             }
             
         }

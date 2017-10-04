@@ -46,10 +46,7 @@ class ChatScreenViewController: JSQMessagesViewController {
     }
     
     
-    override func viewDidLayoutSubviews() {
-         self.automaticallyScrollsToMostRecentMessage = true
-    }
-    
+   
      override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -160,6 +157,22 @@ class ChatScreenViewController: JSQMessagesViewController {
                     }
                     
                 }
+                
+                else
+                {
+                    print("Error")
+                    
+                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                //-------------------- this is to move to present messages ----------------
+                self.automaticallyScrollsToMostRecentMessage = true
+                
+                
         }
 
         
@@ -333,6 +346,17 @@ class ChatScreenViewController: JSQMessagesViewController {
             
                 
             }
+            else
+            {
+                print("Error")
+                
+                let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            }
             
           }
         }
@@ -377,7 +401,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         self.collectionView.reloadData()
         
         
-          self.automaticallyScrollsToMostRecentMessage = true
+        self.automaticallyScrollsToMostRecentMessage = true
        
         
         
