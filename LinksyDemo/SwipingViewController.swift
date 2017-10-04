@@ -812,7 +812,7 @@ class SwipingViewController: UIViewController {
                     {
                         
                         //print("gettig chat list successfully")
-                        //print(apiresponse.result.value!)
+                        print(apiresponse.result.value!)
                         
                         ConnList.set(apiresponse.result.value, forKey: "ConnList")
                         

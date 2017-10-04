@@ -78,8 +78,9 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
        
         //use N?SNumber to convert that number to string value and setting the text...
         
-        let x = tempx["User's_match_List"].count as NSNumber
+        //let x = tempx["User's_match_List"].count as NSNumber
        
+        let x = tempx["new_matches"]
         
         labelMatches.text = x.stringValue
         
