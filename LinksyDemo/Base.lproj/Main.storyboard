@@ -1020,7 +1020,7 @@ Los Angeles, California</string>
                         <outlet property="labelNoCards" destination="SBm-fx-Opg" id="bTD-bA-Fs3"/>
                         <segue destination="jvD-8n-atA" kind="showDetail" identifier="MsgSegue" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="M3O-2P-nZ0"/>
                         <segue destination="zCK-Bn-ty3" kind="showDetail" identifier="ConnectionListSegue" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="CDE-eJ-yul"/>
-                        <segue destination="AdE-xj-BVr" kind="showDetail" identifier="SwipetoProfile" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="9VY-S6-uUl"/>
+                        <segue destination="AdE-xj-BVr" kind="show" identifier="SwipetoProfile" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="9VY-S6-uUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYN-9I-ZsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1303,7 +1303,7 @@ Los Angeles, California</string>
                         <outlet property="labelMatches" destination="mxK-sT-2Ot" id="n96-3d-glo"/>
                         <outlet property="labelNewMsgIcon" destination="Cj3-Wv-Tlf" id="Hhj-iC-f1W"/>
                         <outlet property="labelmessage" destination="7OO-Bp-nLv" id="YkY-ei-pNw"/>
-                        <segue destination="arP-VQ-gEh" kind="showDetail" identifier="MatchesToSwipe" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="dB6-Th-Mga"/>
+                        <segue destination="arP-VQ-gEh" kind="showDetail" identifier="MatchesToSwipe" id="dB6-Th-Mga"/>
                         <segue destination="Yas-wD-QvX" kind="showDetail" identifier="MatchesToInfo" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="BMC-41-IUT"/>
                         <segue destination="jvD-8n-atA" kind="showDetail" identifier="MatchestoMsg" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="yDa-jM-7S2"/>
                     </connections>
@@ -1800,9 +1800,9 @@ Los Angeles, California</string>
                     <connections>
                         <outlet property="MessageCollectionView" destination="4o3-gQ-fWA" id="pDm-f3-2vj"/>
                         <outlet property="btnBackToSwipe" destination="45B-qO-Rws" id="oGg-3z-6RC"/>
-                        <segue destination="arP-VQ-gEh" kind="showDetail" identifier="MessageToSwipe" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="rX5-3z-kCj"/>
+                        <segue destination="arP-VQ-gEh" kind="showDetail" identifier="MessageToSwipe" id="rX5-3z-kCj"/>
                         <segue destination="95u-En-RVa" kind="showDetail" identifier="MsgTOChat" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="2v9-eM-X5s"/>
-                        <segue destination="zCK-Bn-ty3" kind="showDetail" identifier="msglistToConnectionList" id="4rH-r1-Ngm"/>
+                        <segue destination="zCK-Bn-ty3" kind="showDetail" identifier="msglistToConnectionList" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="4rH-r1-Ngm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lex-oG-me9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1971,10 +1971,10 @@ Los Angeles, California</string>
             </objects>
             <point key="canvasLocation" x="2681" y="1356"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--ProfileViewController-->
         <scene sceneID="HS0-LM-fMe">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="AdE-xj-BVr" customClass="ProfileViewController" customModule="Linksy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" title="ProfileViewController" id="AdE-xj-BVr" customClass="ProfileViewController" customModule="Linksy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="35Y-vw-S4o"/>
                         <viewControllerLayoutGuide type="bottom" id="9bS-XT-Jop"/>
@@ -3418,7 +3418,7 @@ Los Angeles, California</string>
                         <outlet property="sliderUI" destination="dzU-yz-Yno" id="0Vx-fM-8PG"/>
                         <outlet property="txtCompany" destination="BUA-52-qq9" id="3Uw-Rt-foy"/>
                         <outlet property="txtTopic" destination="ydT-rT-sIX" id="mVz-7a-y7Q"/>
-                        <segue destination="arP-VQ-gEh" kind="showDetail" identifier="SwipeView" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="60W-h7-V9R"/>
+                        <segue destination="arP-VQ-gEh" kind="show" identifier="SwipeView" id="60W-h7-V9R"/>
                         <segue destination="gxM-V6-MXe" kind="showDetail" identifier="Signout" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="Eie-do-Wb0"/>
                     </connections>
                 </viewController>
@@ -3512,7 +3512,7 @@ Los Angeles, California</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ez6-Aa-3Zs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9236.25" y="-571.47887323943667"/>
+            <point key="canvasLocation" x="9236" y="76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gFH-yb-cxD">
@@ -3546,7 +3546,7 @@ Los Angeles, California</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18X-Np-LCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9011" y="-1946"/>
+            <point key="canvasLocation" x="8975" y="-2357"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tcA-MT-Kbi">
@@ -3767,14 +3767,14 @@ Los Angeles, California</string>
         <image name="swipe" width="41" height="47"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ypy-dE-jbO"/>
-        <segue reference="idv-VR-xb5"/>
+        <segue reference="2v9-eM-X5s"/>
+        <segue reference="gWM-r6-zVS"/>
         <segue reference="Eie-do-Wb0"/>
         <segue reference="gU3-9X-Lwg"/>
-        <segue reference="yDa-jM-7S2"/>
+        <segue reference="74N-xU-Kqv"/>
         <segue reference="BMC-41-IUT"/>
-        <segue reference="juR-7s-VYl"/>
-        <segue reference="dB6-Th-Mga"/>
+        <segue reference="4rH-r1-Ngm"/>
+        <segue reference="60W-h7-V9R"/>
         <segue reference="ziV-c5-qYL"/>
     </inferredMetricsTieBreakers>
 </document>

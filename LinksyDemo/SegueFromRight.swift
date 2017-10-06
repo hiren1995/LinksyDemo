@@ -21,6 +21,8 @@ class SegueFromRight: UIStoryboardSegue
         
         dst.view.transform = CGAffineTransform(translationX: src.view.frame.size.width, y: 0)
         
+        
+        /*
         UIView.animate(withDuration: 0.25,
                        delay: 0.0,
                        options: UIViewAnimationOptions.curveEaseInOut,
@@ -31,5 +33,19 @@ class SegueFromRight: UIStoryboardSegue
                         src.present(dst, animated: false, completion: nil)
         }
         )
+        
+        */
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            
+            dst.view.transform = CGAffineTransform(translationX: 0, y: 0)
+            
+        }) { (true) in
+            
+            src.present(dst, animated: false, completion: nil)
+            
+        }
+        
+        
     }
 }

@@ -855,6 +855,9 @@ class SwipingViewController: UIViewController {
     @IBAction func backtoProfile(_ sender: Any) {
         
         self.performSegue(withIdentifier: "SwipetoProfile", sender: nil)
+        
+        //let objViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        //self.navigationController?.pushViewController(objViewController, animated: true)
     
     }
     
