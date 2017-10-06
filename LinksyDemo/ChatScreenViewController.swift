@@ -16,7 +16,7 @@ import Alamofire
 
 import MBProgressHUD
 
-
+import CoreData
 
 class ChatScreenViewController: JSQMessagesViewController {
     
@@ -128,6 +128,44 @@ class ChatScreenViewController: JSQMessagesViewController {
                                 self.collectionView.reloadData()
                                 
                                 
+                                
+                                // Storing Core Data
+                                
+                                
+                                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                                
+                                let context = appdelegate.persistentContainer.viewContext
+                                
+                                
+                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+                                
+                                newUser.setValue(self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+                                
+                                do
+                                {
+                                    try context.save()
+                                    
+                                    print("User Saved in internal database")
+                                    
+                                    
+                                }
+                                catch
+                                {
+                                    //inserting process error...
+                                    
+                                }
+                                
+                                
                             }
                             else
                             {
@@ -138,7 +176,41 @@ class ChatScreenViewController: JSQMessagesViewController {
                                 //messages.append(JSQMessage(senderId: "25" , displayName: "Receiver" , text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
                                 self.collectionView.reloadData()
                                 
-                               
+                                // Storing Core Data
+                                
+                                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                                
+                                let context = appdelegate.persistentContainer.viewContext
+                             
+                                
+                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_id"].stringValue , forKey: "chat_id")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_by")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_to")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                
+                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+                                
+                                newUser.setValue(self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+                                
+                                do
+                                {
+                                    try context.save()
+                                    
+                                    print("User Saved in internal database")
+                                    
+                                    
+                                }
+                                catch
+                                {
+                                    //inserting process error...
+                                    
+                                }
+                                
                             }
                             
                             //print(messages[i])

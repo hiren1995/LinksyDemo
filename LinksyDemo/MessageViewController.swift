@@ -117,7 +117,9 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             
             else
             {
-                msgcell.labelLastMsg.text = tempdata["User's Chat List"][indexPath.row]["last_msg"].string!
+                //decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)
+                
+                msgcell.labelLastMsg.text = decodeEmojiMsg(tempdata["User's Chat List"][indexPath.row]["last_msg"].string!)
             }
             
             
@@ -492,6 +494,11 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
     }
     
+    
+    func decodeEmojiMsg(_ s: String) -> String? {
+        let data = s.data(using: .utf8)!
+        return String(data: data, encoding: .nonLossyASCII)
+    }
     
     
     
