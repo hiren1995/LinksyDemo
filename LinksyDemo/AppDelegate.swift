@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         
         
-        GMSServices.provideAPIKey("AIzaSyCj97gPgDrshjuKaXNYrWZtLR3FYf1ata4")
+        GMSServices.provideAPIKey("AIzaSyBk58NzROjSlhlnb5mhZqK2eUwRXITJulw")
         
         //code to egt current coordinates...
         
@@ -80,6 +80,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
                 
             }
         }
+        else if #available(iOS 11.0, *) {
+            let center  = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+                
+            }
+        }
         else {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
             //UIApplication.shared.registerForRemoteNotifications()
@@ -87,18 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         UIApplication.shared.registerForRemoteNotifications()
         
-        @available(iOS 10.0, *)
-        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-            print("User Info = ",notification.request.content.userInfo)
-            completionHandler([.alert, .badge, .sound])
-        }
         
-        //Called to let your app know which action was selected by the user for a given notification.
-        @available(iOS 10.0, *)
-        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-            print("User Info = ",response.notification.request.content.userInfo)
-            completionHandler()
-        }
+        
+       
         
         /*
         
@@ -354,6 +352,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
        
         return true
     }
+    
+    
+    /*
+    @available(iOS 10.0, *)
+    @available(iOS 11.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("User Info = ",notification.request.content.userInfo)
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    //Called to let your app know which action was selected by the user for a given notification.
+    @available(iOS 10.0, *)
+    @available(iOS 11.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("User Info = ",response.notification.request.content.userInfo)
+        completionHandler()
+    }
+    */
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("DID RECEIVE NOTIFICATION")
+        completionHandler()
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("willPresent")
+        
+        completionHandler([.alert, .badge, .sound])
+        
+    }
+    
 
  
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -682,7 +715,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
     }
 
     
-    
+   
     
     
     

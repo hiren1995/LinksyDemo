@@ -1020,7 +1020,7 @@ Los Angeles, California</string>
                         <outlet property="labelNoCards" destination="SBm-fx-Opg" id="bTD-bA-Fs3"/>
                         <segue destination="jvD-8n-atA" kind="showDetail" identifier="MsgSegue" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="M3O-2P-nZ0"/>
                         <segue destination="zCK-Bn-ty3" kind="showDetail" identifier="ConnectionListSegue" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="CDE-eJ-yul"/>
-                        <segue destination="AdE-xj-BVr" kind="show" identifier="SwipetoProfile" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="9VY-S6-uUl"/>
+                        <segue destination="AdE-xj-BVr" kind="show" identifier="SwipetoProfile" id="9VY-S6-uUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYN-9I-ZsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3768,7 +3768,7 @@ Los Angeles, California</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2v9-eM-X5s"/>
-        <segue reference="gWM-r6-zVS"/>
+        <segue reference="9VY-S6-uUl"/>
         <segue reference="Eie-do-Wb0"/>
         <segue reference="gU3-9X-Lwg"/>
         <segue reference="74N-xU-Kqv"/>
