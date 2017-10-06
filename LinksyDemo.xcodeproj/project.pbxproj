@@ -54,6 +54,7 @@
 		2D79323A1F21E56A00E1E61B /* ChatScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7932391F21E56A00E1E61B /* ChatScreenViewController.swift */; };
 		2D9E6E671F25C299001DE91B /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6E661F25C299001DE91B /* ProfileInfoViewController.swift */; };
 		2D9E6E6A1F25D350001DE91B /* PositioninfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9E6E691F25D350001DE91B /* PositioninfoCollectionViewCell.swift */; };
+		2DB1F84A1F8660D2002572E2 /* LinksyDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DB1F8481F8660D2002572E2 /* LinksyDemo.xcdatamodeld */; };
 		2DB325C51F839D6900288E9A /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB325C41F839D6900288E9A /* SegueFromLeft.swift */; };
 		2DB325C81F839F1C00288E9A /* SegueFromRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB325C71F839F1C00288E9A /* SegueFromRight.swift */; };
 		2DB848E51F20CDA50062C524 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB848E41F20CDA50062C524 /* MatchesViewController.swift */; };
@@ -163,6 +164,7 @@
 		2D7932391F21E56A00E1E61B /* ChatScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatScreenViewController.swift; sourceTree = "<group>"; };
 		2D9E6E661F25C299001DE91B /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
 		2D9E6E691F25D350001DE91B /* PositioninfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositioninfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		2DB1F8491F8660D2002572E2 /* LinksyDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinksyDemo.xcdatamodel; sourceTree = "<group>"; };
 		2DB325C41F839D6900288E9A /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
 		2DB325C71F839F1C00288E9A /* SegueFromRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromRight.swift; sourceTree = "<group>"; };
 		2DB848E41F20CDA50062C524 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				2DF008571F5D35830098440C /* LinksyDemo.entitlements */,
+				2DB1F8481F8660D2002572E2 /* LinksyDemo.xcdatamodeld */,
 				2D03BEEF1F18A64600D5E5AD /* libraries */,
 				2DDAE3541F16204B00BD9013 /* AppDelegate.swift */,
 				2DDAE3561F16204B00BD9013 /* ViewController.swift */,
@@ -858,6 +861,7 @@
 				2DB325C51F839D6900288E9A /* SegueFromLeft.swift in Sources */,
 				2D03BF501F18DBAC00D5E5AD /* UIColor+FlatColors.m in Sources */,
 				2DB325C81F839F1C00288E9A /* SegueFromRight.swift in Sources */,
+				2DB1F84A1F8660D2002572E2 /* LinksyDemo.xcdatamodeld in Sources */,
 				2D3A4EC51F29EC2800CA9C10 /* UserProfileInfoViewController.swift in Sources */,
 				6C1DD0E01F2F9FDA005BD6D8 /* IQUIWindow+Hierarchy.m in Sources */,
 				2D03BF421F18DBAC00D5E5AD /* Expression.swift in Sources */,
@@ -1064,7 +1068,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Inayat  Patel (PP9B4GPB5W)";
 				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				INFOPLIST_FILE = LinksyDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.Linksy;
 				PRODUCT_NAME = Linksy;
@@ -1084,7 +1087,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Inayat  Patel (PP9B4GPB5W)";
 				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				INFOPLIST_FILE = LinksyDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.Linksy;
 				PRODUCT_NAME = Linksy;
@@ -1192,6 +1194,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2DB1F8481F8660D2002572E2 /* LinksyDemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2DB1F8491F8660D2002572E2 /* LinksyDemo.xcdatamodel */,
+			);
+			currentVersion = 2DB1F8491F8660D2002572E2 /* LinksyDemo.xcdatamodel */;
+			path = LinksyDemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2DDAE3491F16204B00BD9013 /* Project object */;
 }
