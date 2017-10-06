@@ -18,6 +18,8 @@ import MBProgressHUD
 
 import CoreData
 
+
+
 class ChatScreenViewController: JSQMessagesViewController {
     
     
@@ -54,7 +56,14 @@ class ChatScreenViewController: JSQMessagesViewController {
         //self.senderDisplayName = "Hiren Kadam"
         
         
+        // Storing Core Data datas
         
+        
+       // let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        //let context = appdelegate.persistentContainer.viewContext
+        
+        //------------------------
         
         
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -119,12 +128,9 @@ class ChatScreenViewController: JSQMessagesViewController {
                     {
                         for i in 0...self.x["chat_conversation_detail"].count-1
                         {
-                            if(self.x["chat_conversation_detail"][i]["chat_message_from"].string == tempselfinfo["linkedin_login"][0]["user_id"].string!)
-                            {
-                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
-                                
-                                //messages.append(JSQMessage(senderId: "30" , displayName: "sender", text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-                                
+                            self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+                            
+                            
                                 self.collectionView.reloadData()
                                 
                                 
@@ -132,11 +138,7 @@ class ChatScreenViewController: JSQMessagesViewController {
                                 // Storing Core Data
                                 
                                 
-                                let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                                
-                                let context = appdelegate.persistentContainer.viewContext
-                                
-                                
+                                /*
                                 let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
                                 
                                 newUser.setValue(self.x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
@@ -165,56 +167,10 @@ class ChatScreenViewController: JSQMessagesViewController {
                                     
                                 }
                                 
+                                */
+                               
                                 
-                            }
-                            else
-                            {
-                                //messages.append(JSQMessage(senderId:temp["chat_conversation_detail"][i]["chat_message_to"].string , displayName: "Receiver" , text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-                                
-                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
-                                
-                                //messages.append(JSQMessage(senderId: "25" , displayName: "Receiver" , text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-                                self.collectionView.reloadData()
-                                
-                                // Storing Core Data
-                                
-                                let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                                
-                                let context = appdelegate.persistentContainer.viewContext
-                             
-                                
-                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_id"].stringValue , forKey: "chat_id")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_by")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_to")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
-                                
-                                newUser.setValue(self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
-                                
-                                do
-                                {
-                                    try context.save()
-                                    
-                                    print("User Saved in internal database")
-                                    
-                                    
-                                }
-                                catch
-                                {
-                                    //inserting process error...
-                                    
-                                }
-                                
-                            }
-                            
-                            //print(messages[i])
-                            
+                           
                         }
                         
                         //loadingIndicator.stopAnimating()
@@ -247,6 +203,81 @@ class ChatScreenViewController: JSQMessagesViewController {
                 
         }
 
+        
+        // Selecting data from data base...
+        /*
+        
+        let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
+        
+        requests.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try context.fetch(requests)
+            
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    
+                    
+                    if let chat_id = result.value(forKey: "chat_id") as? String
+                    {
+                        print("chat_id = \(chat_id) ")
+                        
+                    }
+                    if let message_id =  result.value(forKey: "message_id") as? String
+                    {
+                        
+                        print("message_id = \(message_id)")
+                    }
+                    
+                    if let sent_by =  result.value(forKey: "sent_by") as? String
+                    {
+                        
+                        print("sent_by = \(sent_by)")
+                    }
+                    
+                    if let message_text =  result.value(forKey: "message_text") as? String
+                    {
+                        
+                        print("message_text = \(message_text)")
+                    }
+                    
+                    
+                    //self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: self.decodeEmojiMsg(result.value(forKey: "message_text") as! String)))
+                    
+                    /*
+                     
+                     if let username = result.value(forKey: "username") as? String
+                     {
+                     print("UserName = \(username) ")
+                     
+                     }
+                     if let password =  result.value(forKey: "password") as? String
+                     {
+                     
+                     print("Password = \(password)")
+                     }
+                     
+                     */
+                }
+                
+                
+            }
+            
+            self.collectionView.reloadData()
+            
+        }
+        catch
+        {
+            
+            
+        }
+        
+        
+        */
+        
         
     }
     

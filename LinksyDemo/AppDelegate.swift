@@ -13,6 +13,7 @@ import MBProgressHUD
 import GooglePlaces
 import GoogleMaps
 import CoreData
+import UserNotifications
 
 
 var device_token:String? = nil
@@ -22,7 +23,9 @@ var longMagnitude:Double? = nil
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
+
+
+class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,UNUserNotificationCenterDelegate{
 
     var window: UIWindow?
 
@@ -68,17 +71,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         //---------------Push notification settings start---------------
+        
+        if #available(iOS 10.0, *) {
+            let center  = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+                
+            }
+        }
+        else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+            //UIApplication.shared.registerForRemoteNotifications()
+        }
+        
+        UIApplication.shared.registerForRemoteNotifications()
+        
+        @available(iOS 10.0, *)
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            print("User Info = ",notification.request.content.userInfo)
+            completionHandler([.alert, .badge, .sound])
+        }
+        
+        //Called to let your app know which action was selected by the user for a given notification.
+        @available(iOS 10.0, *)
+        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+            print("User Info = ",response.notification.request.content.userInfo)
+            completionHandler()
+        }
+        
+        /*
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
         
@@ -89,7 +111,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         application.registerUserNotificationSettings(pushNotificationSettings)
         
         application.registerForRemoteNotifications()
+ 
+         */
         
+        
+        /*
+        let center  = UNUserNotificationCenter.current()
+        center.delegate = self
+        
+        center.requestAuthorization(options: [.sound,.alert,.badge]) { (granted, error) in
+            // Enable or disable features based on authorization
+            
+        }
+        application.registerForRemoteNotifications()
+         */
+       
+       
         
         //---------------Push notification settings stop----------------
         
@@ -466,7 +503,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         else
         {
             
-//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MessageNotification"), object: userInfo, userInfo: userInfo)
+           // NotificationCenter.default.post(name: NSNotification.Name(rawValue: "MessageNotification"), object: userInfo, userInfo: userInfo)
             
            // NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "MessageNotification"))
             
@@ -579,6 +616,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
     
 }
     
+    /*
     
      lazy var persistentContainer: NSPersistentContainer = {
     
@@ -609,6 +647,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         }
      }
      
+     */
  
     
     
