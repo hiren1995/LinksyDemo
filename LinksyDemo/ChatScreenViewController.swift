@@ -20,6 +20,8 @@ import CoreData
 
 
 
+@available(iOS 10.0, *)
+
 class ChatScreenViewController: JSQMessagesViewController {
     
     
@@ -49,7 +51,8 @@ class ChatScreenViewController: JSQMessagesViewController {
     
     
    
-     override func viewDidLoad() {
+   
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         //self.senderId = "1"
@@ -59,9 +62,9 @@ class ChatScreenViewController: JSQMessagesViewController {
         // Storing Core Data datas
         
         
-       // let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
         
-        //let context = appdelegate.persistentContainer.viewContext
+        let context = appdelegate.persistentContainer.viewContext
         
         //------------------------
         
@@ -205,7 +208,7 @@ class ChatScreenViewController: JSQMessagesViewController {
 
         
         // Selecting data from data base...
-        /*
+        
         
         let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
         
@@ -276,7 +279,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         }
         
         
-        */
+        
         
         
     }

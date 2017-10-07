@@ -128,7 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         //---------------Push notification settings stop----------------
         
-                
+        
+        
+        
         let temp = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
         
         if(temp == nil)
@@ -352,25 +354,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
        
         return true
     }
+  
     
     
     /*
-    @available(iOS 10.0, *)
-    @available(iOS 11.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("User Info = ",notification.request.content.userInfo)
-        completionHandler([.alert, .badge, .sound])
-    }
-    
-    //Called to let your app know which action was selected by the user for a given notification.
-    @available(iOS 10.0, *)
-    @available(iOS 11.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("User Info = ",response.notification.request.content.userInfo)
-        completionHandler()
-    }
-    */
-    
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
@@ -386,7 +373,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         completionHandler([.alert, .badge, .sound])
         
     }
-    
+    */
 
  
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -649,9 +636,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
     
 }
     
-    /*
+    //------------------------------ method for local database using cordata
     
-     lazy var persistentContainer: NSPersistentContainer = {
+    
+    
+    @available(iOS 10.0, *)
+    lazy var persistentContainer: NSPersistentContainer = {
     
      let container = NSPersistentContainer(name: "LinksyDemo")
      container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -666,7 +656,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
      
      // MARK: - Core Data Saving support
      
-     func saveContext () {
+    @available(iOS 10.0, *)
+    func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
                 do {
@@ -680,7 +671,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         }
      }
      
-     */
+     
  
     
     
