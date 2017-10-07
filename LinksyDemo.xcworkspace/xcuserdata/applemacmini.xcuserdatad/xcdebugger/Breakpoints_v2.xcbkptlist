@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.113709"
+            timestampString = "529073054.756209"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "703"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.113785"
+            timestampString = "529073054.756295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "324"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.113837"
+            timestampString = "529073054.756348"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.113885"
+            timestampString = "529073054.756397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.633129"
+            timestampString = "529073054.756452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.633245"
+            timestampString = "529073054.790153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,12 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.633319"
+            timestampString = "529073054.790734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -682,7 +682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114289"
+            timestampString = "529073054.791535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -730,7 +730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114352"
+            timestampString = "529073054.791603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "305"
@@ -778,7 +778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114433"
+            timestampString = "529073054.791654"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "171"
@@ -794,7 +794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114551"
+            timestampString = "529073054.791703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -842,7 +842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114623"
+            timestampString = "529073054.79175"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -858,7 +858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114682"
+            timestampString = "529073054.791797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
@@ -874,7 +874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114734"
+            timestampString = "529073054.791844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
@@ -890,7 +890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.114785"
+            timestampString = "529073054.791891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
@@ -1194,43 +1194,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.115064"
+            timestampString = "529073054.792155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "collectionView(_:messageBubbleImageDataForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinksyDemo/ChatScreenViewController.swift"
+            timestampString = "529073054.793103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "360"
             endingLineNumber = "360"
-            landmarkName = "collectionView(_:messageBubbleImageDataForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.116926"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "collectionView(_:messageBubbleImageDataForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.11877"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
             landmarkName = "collectionView(_:messageDataForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1242,11 +1226,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.120414"
+            timestampString = "529073054.793929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "collectionView(_:messageDataForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinksyDemo/ChatScreenViewController.swift"
+            timestampString = "529073054.794776"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1258,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.121967"
+            timestampString = "529073054.79563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "collectionView(_:messageDataForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1290,7 +1290,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.12365"
+            timestampString = "529073054.796489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
@@ -1354,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.645825"
+            timestampString = "529073054.796587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,7 +1386,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.123767"
+            timestampString = "529073054.797099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "408"
@@ -1402,7 +1402,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.123816"
+            timestampString = "529073054.797153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "559"
@@ -1418,7 +1418,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.123863"
+            timestampString = "529073054.797203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "573"
@@ -1450,23 +1450,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.123923"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438"
-            landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.125672"
+            timestampString = "529073054.797266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "442"
@@ -1478,15 +1462,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.12804"
+            timestampString = "529073054.798215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "427"
-            endingLineNumber = "427"
+            startingLineNumber = "446"
+            endingLineNumber = "446"
             landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1498,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.129955"
+            timestampString = "529073054.799071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
             landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1514,11 +1498,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.132855"
+            timestampString = "529073054.799904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "499"
-            endingLineNumber = "499"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinksyDemo/ChatScreenViewController.swift"
+            timestampString = "529073054.80074"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1658,11 +1658,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.135825"
+            timestampString = "529073054.801675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1674,11 +1674,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.138694"
+            timestampString = "529073054.802523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1690,11 +1690,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.141485"
+            timestampString = "529073054.803361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "581"
-            endingLineNumber = "581"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1706,11 +1706,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.144437"
+            timestampString = "529073054.804191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "534"
-            endingLineNumber = "534"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1722,11 +1722,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.146762"
+            timestampString = "529073054.805013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "532"
-            endingLineNumber = "532"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1738,13 +1738,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.149145"
+            timestampString = "529073054.805871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
+            startingLineNumber = "295"
+            endingLineNumber = "295"
+            landmarkName = "ChatScreenViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1754,13 +1754,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.151108"
+            timestampString = "529073054.806707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
-            landmarkName = "loadMessages(_:)"
-            landmarkType = "7">
+            startingLineNumber = "495"
+            endingLineNumber = "495"
+            landmarkName = "ChatScreenViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1770,11 +1770,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.15309"
+            timestampString = "529073054.807547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1786,7 +1786,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.155653"
+            timestampString = "529073054.808373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "527"
@@ -1802,7 +1802,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.155761"
+            timestampString = "529073054.808431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "529"
@@ -1818,11 +1818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.155826"
+            timestampString = "529073054.808482"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -1866,11 +1866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.158345"
+            timestampString = "529073054.80939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1882,11 +1882,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.159997"
+            timestampString = "529073054.810243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1898,23 +1898,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.161826"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.16384"
+            timestampString = "529073054.811063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "422"
@@ -1930,11 +1914,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.166451"
+            timestampString = "529073054.811888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinksyDemo/ChatScreenViewController.swift"
+            timestampString = "529073054.812718"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1978,11 +1978,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.667941"
+            timestampString = "529073054.813577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1994,11 +1994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.668005"
+            timestampString = "529073054.814098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2010,11 +2010,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.668075"
+            timestampString = "529073054.814577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2026,11 +2026,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.668144"
+            timestampString = "529073054.815051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2042,11 +2042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.668225"
+            timestampString = "529073054.815533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2058,11 +2058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.668319"
+            timestampString = "529073054.816013"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2074,11 +2074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.668385"
+            timestampString = "529073054.816487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2090,11 +2090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/MessageViewController.swift"
-            timestampString = "528985027.668443"
+            timestampString = "529073054.816959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2106,11 +2106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.168677"
+            timestampString = "529073054.817435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "didPressSend(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2122,11 +2122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.170769"
+            timestampString = "529073054.818269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "537"
-            endingLineNumber = "537"
+            startingLineNumber = "541"
+            endingLineNumber = "541"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2138,11 +2138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.173247"
+            timestampString = "529073054.819106"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "546"
-            endingLineNumber = "546"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2154,11 +2154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.17508"
+            timestampString = "529073054.819925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "555"
-            endingLineNumber = "555"
+            startingLineNumber = "559"
+            endingLineNumber = "559"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2170,11 +2170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.177033"
+            timestampString = "529073054.820757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "560"
-            endingLineNumber = "560"
+            startingLineNumber = "564"
+            endingLineNumber = "564"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2330,11 +2330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.179626"
+            timestampString = "529073054.821687"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2346,11 +2346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.181713"
+            timestampString = "529073054.82261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2362,11 +2362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.183611"
+            timestampString = "529073054.823425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2378,11 +2378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.185714"
+            timestampString = "529073054.824246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "531"
-            endingLineNumber = "531"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
             landmarkName = "loadMessages(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2394,7 +2394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.188546"
+            timestampString = "529073054.825059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
@@ -2410,7 +2410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.188691"
+            timestampString = "529073054.825119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
@@ -2490,11 +2490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.18891"
+            timestampString = "529073054.825222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2506,11 +2506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.191112"
+            timestampString = "529073054.826039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2522,11 +2522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.193066"
+            timestampString = "529073054.826851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2538,11 +2538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.195441"
+            timestampString = "529073054.827663"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2554,7 +2554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.198383"
+            timestampString = "529073054.828491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -2570,7 +2570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.198484"
+            timestampString = "529073054.828551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -2586,7 +2586,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.198586"
+            timestampString = "529073054.828601"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -2602,7 +2602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.198681"
+            timestampString = "529073054.828648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "552"
@@ -2618,7 +2618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.198767"
+            timestampString = "529073054.828694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "429"
@@ -2634,23 +2634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.198855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "506"
-            endingLineNumber = "506"
-            landmarkName = "loadMessages(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064560.201565"
+            timestampString = "529073054.82874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "510"
@@ -2665,8 +2649,24 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "LinksyDemo/ChatScreenViewController.swift"
+            timestampString = "529073054.829563"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
+            landmarkName = "loadMessages(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204444"
+            timestampString = "529073054.830375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -2682,7 +2682,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204518"
+            timestampString = "529073054.830429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -2730,7 +2730,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204569"
+            timestampString = "529073054.830478"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -2746,7 +2746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204617"
+            timestampString = "529073054.830524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -2762,7 +2762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204677"
+            timestampString = "529073054.830571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "401"
@@ -2778,7 +2778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204744"
+            timestampString = "529073054.830616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "404"
@@ -2794,7 +2794,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204821"
+            timestampString = "529073054.830661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "406"
@@ -2810,7 +2810,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204899"
+            timestampString = "529073054.830706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -2826,7 +2826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.204979"
+            timestampString = "529073054.830751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -2874,7 +2874,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205057"
+            timestampString = "529073054.830797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -2890,7 +2890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205144"
+            timestampString = "529073054.830842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
@@ -2906,7 +2906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205225"
+            timestampString = "529073054.830887"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "363"
@@ -2922,7 +2922,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205312"
+            timestampString = "529073054.830932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "365"
@@ -2938,7 +2938,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205398"
+            timestampString = "529073054.830976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "367"
@@ -2954,7 +2954,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205485"
+            timestampString = "529073054.83102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "370"
@@ -2970,7 +2970,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205573"
+            timestampString = "529073054.831065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "372"
@@ -2986,7 +2986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064560.205663"
+            timestampString = "529073054.83111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "374"
@@ -3002,7 +3002,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/AppDelegate.swift"
-            timestampString = "529064591.095639"
+            timestampString = "529073054.831155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -3050,12 +3050,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LinksyDemo/ChatScreenViewController.swift"
-            timestampString = "529064647.254381"
+            timestampString = "529073054.831203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "511"
-            endingLineNumber = "511"
+            startingLineNumber = "515"
+            endingLineNumber = "515"
             landmarkName = "loadMessages(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LinksyDemo/MessageViewController.swift"
+            timestampString = "529073054.832016"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

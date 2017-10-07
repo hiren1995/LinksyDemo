@@ -58,7 +58,8 @@ class ChatScreenViewController: JSQMessagesViewController {
         //self.senderId = "1"
         //self.senderDisplayName = "Hiren Kadam"
         
-        
+        /*
+         
         // Storing Core Data datas
         
         
@@ -68,6 +69,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         //------------------------
         
+        */
         
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
@@ -206,6 +208,7 @@ class ChatScreenViewController: JSQMessagesViewController {
                 
         }
 
+        /*
         
         // Selecting data from data base...
         
@@ -278,6 +281,7 @@ class ChatScreenViewController: JSQMessagesViewController {
             
         }
         
+        */
         
         
         

@@ -10,14 +10,17 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import MBProgressHUD
+import CoreData
 
 let sendmsgid = UserDefaults.standard
+
+@available(iOS 10.0, *)
+
 
 class MessageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 
     
     let baseUrl = "https://bulale.in/linksy/api/index.php/"
-    
     
     
     @IBOutlet weak var btnBackToSwipe: UIButton!
@@ -37,6 +40,9 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
 
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadMatches(_:)), name: NSNotification.Name(rawValue: "MatchNotification"), object: nil)
+        
+        
+      
         
         
         self.MessageCollectionView.delegate = self
@@ -91,6 +97,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         let msgcell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
 
         
+        let tempselfinfo = JSON(userpersonalinfo.object(forKey: "userpersonalinfo"))
+        
         
        if let userinfo = MsgList.object(forKey: "MsgList") as Any?
         {
@@ -137,6 +145,111 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                     
                 }
             }
+            
+            
+            
+            // Storing Core Data datas
+            
+            
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let context = appdelegate.persistentContainer.viewContext
+            
+            //------------------------
+            
+            
+            
+            
+            let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!]
+            
+            Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
+                { (apiresponseMsgs) in
+                    
+                    if((apiresponseMsgs.response) != nil)
+                    {
+                        let x = JSON(apiresponseMsgs.result.value!)
+                        
+                        if(x["chat_conversation_detail"].count > 0)
+                        {
+                            for i in 0...x["chat_conversation_detail"].count-1
+                            {
+                                
+                                
+                                
+                                // Storing Core Data
+                                
+                                
+                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+                                
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+                                
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+                                
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+                                
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+                                
+                                newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+                                
+                                do
+                                {
+                                    try context.save()
+                                    
+                                    print("User Saved in internal database")
+                                    
+                                    
+                                }
+                                catch
+                                {
+                                    //inserting process error...
+                                    
+                                }
+                            }
+                            
+                        }
+                        
+                         
+                        
+                        
+                    }
+            }
+            
+            // Storing Core Data
+            
+            
+            /*
+             let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+             
+             newUser.setValue(self.x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+             
+             newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+             
+             newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+             
+             newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+             
+             newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+             
+             newUser.setValue(self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+             
+             do
+             {
+             try context.save()
+             
+             print("User Saved in internal database")
+             
+             
+             }
+             catch
+             {
+             //inserting process error...
+             
+             }
+             
+             */
+            
             
         }
 
