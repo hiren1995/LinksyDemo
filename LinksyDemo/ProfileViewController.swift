@@ -512,6 +512,93 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                         
                         
                     }
+                        
+                    else if(tempPreferences["intent fields"].count == 6 && tempPreferences["function fields"].count == 9 && tempPreferences["position fields"].count == 9 && tempPreferences["industry fields"].count == 16)
+                    {
+                        self.checkFunctions.on = true
+                        self.checkIntent.on = true
+                        self.checkPositions.on = true
+                        self.checkIndustries.on = true
+                         
+                         if(tempPreferences["function fields"].count > 0)
+                         {
+                            for j in 0...tempPreferences["function fields"].count-1
+                            {
+                                    //print(tempPreferences["function fields"][j]["function_master_name"])
+                                    for i in 0...self.functionsArray.count-1
+                                    {
+                                            //print(self.functionsArray[i]["value"]!)
+                         
+                                            if(tempPreferences["function fields"][j]["function_master_name"].string == self.functionsArray[i]["value"])
+                                            {
+                                                self.functionsArray[i]["isSelected"] = "y"
+                                                self.FunctionsCollectionView.reloadData()
+                                            }
+                         
+                                    }
+                            }
+                         }
+                         
+                         if(tempPreferences["intent fields"].count > 0)
+                         {
+                            for j in 0...tempPreferences["intent fields"].count-1
+                            {
+                                //print(tempPreferences["intent fields"][j]["intent_master_name"])
+                                for i in 0...self.intentArray.count-1
+                                {
+                                    //print(self.intentArray[i]["value"]!)
+                         
+                                    if(tempPreferences["intent fields"][j]["intent_master_name"].string == self.intentArray[i]["value"])
+                                    {
+                                        self.intentArray[i]["isSelected"] = "y"
+                                        self.IntentsCollectionView.reloadData()
+                                    }
+                         
+                                }
+                            }
+                         }
+                         
+                         
+                         if(tempPreferences["industry fields"].count > 0)
+                         {
+                            for j in 0...tempPreferences["industry fields"].count-1
+                            {
+                                //print(tempPreferences["intent fields"][j]["intent_master_name"])
+                                for i in 0...self.industryArray.count-1
+                                {
+                                    //print(self.intentArray[i]["value"]!)
+                         
+                                    if(tempPreferences["industry fields"][j]["industry_master_name"].string == self.industryArray[i]["value"])
+                                    {
+                                        self.industryArray[i]["isSelected"] = "y"
+                                        self.IndustriesCollectionView.reloadData()
+                                    }
+                         
+                                }
+                            }
+                         }
+                         
+                         if(tempPreferences["position fields"].count > 0)
+                         {
+                            for j in 0...tempPreferences["position fields"].count-1
+                            {
+                                //print(tempPreferences["intent fields"][j]["intent_master_name"])
+                                for i in 0...self.positionsArray.count-1
+                                {
+                                    //print(self.intentArray[i]["value"]!)
+                         
+                                    if(tempPreferences["position fields"][j]["position_master_name"].string == self.positionsArray[i]["value"])
+                                    {
+                                        self.positionsArray[i]["isSelected"] = "y"
+                                        self.PositionsCollectionView.reloadData()
+                                    }
+                         
+                                }
+                            }
+                         }
+                        
+                    }
+                        
                     
                     else
                     {
@@ -552,6 +639,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                                 }
                             }
                         }
+                        
                         
                         if(tempPreferences["industry fields"].count > 0)
                         {

@@ -642,7 +642,7 @@ Los Angeles, California</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="AdE-xj-BVr" kind="showDetail" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="idv-VR-xb5"/>
+                                                    <segue destination="AdE-xj-BVr" kind="showDetail" id="idv-VR-xb5"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -725,7 +725,7 @@ Los Angeles, California</string>
                                             <constraint firstAttribute="width" constant="40" id="PaM-05-NVG"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="AdE-xj-BVr" kind="show" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="gWM-r6-zVS"/>
+                                            <segue destination="AdE-xj-BVr" kind="show" id="gWM-r6-zVS"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-back-white" translatesAutoresizingMaskIntoConstraints="NO" id="nlv-zJ-r2K">
@@ -1018,14 +1018,14 @@ Los Angeles, California</string>
                         <outlet property="dummyImgView" destination="wKd-fe-FZR" id="nvu-OO-eZI"/>
                         <outlet property="imgsymbol" destination="oNw-MS-8jH" id="0tA-6j-UNQ"/>
                         <outlet property="labelNoCards" destination="SBm-fx-Opg" id="bTD-bA-Fs3"/>
-                        <segue destination="jvD-8n-atA" kind="showDetail" identifier="MsgSegue" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="M3O-2P-nZ0"/>
-                        <segue destination="zCK-Bn-ty3" kind="showDetail" identifier="ConnectionListSegue" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="CDE-eJ-yul"/>
+                        <segue destination="jvD-8n-atA" kind="show" identifier="MsgSegue" action="showDetailViewController:sender:" id="M3O-2P-nZ0"/>
+                        <segue destination="zCK-Bn-ty3" kind="show" identifier="ConnectionListSegue" action="showDetailViewController:sender:" id="CDE-eJ-yul"/>
                         <segue destination="AdE-xj-BVr" kind="show" identifier="SwipetoProfile" id="9VY-S6-uUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYN-9I-ZsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7162" y="-788"/>
+            <point key="canvasLocation" x="7181" y="-787"/>
         </scene>
         <!--Matches View Controller-->
         <scene sceneID="jbw-Xi-L2Y">
@@ -1303,9 +1303,9 @@ Los Angeles, California</string>
                         <outlet property="labelMatches" destination="mxK-sT-2Ot" id="n96-3d-glo"/>
                         <outlet property="labelNewMsgIcon" destination="Cj3-Wv-Tlf" id="Hhj-iC-f1W"/>
                         <outlet property="labelmessage" destination="7OO-Bp-nLv" id="YkY-ei-pNw"/>
-                        <segue destination="arP-VQ-gEh" kind="showDetail" identifier="MatchesToSwipe" id="dB6-Th-Mga"/>
-                        <segue destination="Yas-wD-QvX" kind="showDetail" identifier="MatchesToInfo" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="BMC-41-IUT"/>
-                        <segue destination="jvD-8n-atA" kind="showDetail" identifier="MatchestoMsg" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="yDa-jM-7S2"/>
+                        <segue destination="arP-VQ-gEh" kind="show" identifier="MatchesToSwipe" action="showDetailViewController:sender:" id="dB6-Th-Mga"/>
+                        <segue destination="Yas-wD-QvX" kind="show" identifier="MatchesToInfo" action="showDetailViewController:sender:" id="BMC-41-IUT"/>
+                        <segue destination="jvD-8n-atA" kind="showDetail" identifier="MatchestoMsg" id="yDa-jM-7S2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZB-hi-Dhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1607,8 +1607,8 @@ Los Angeles, California</string>
                         <outlet property="labelSummary" destination="5gp-Ip-j5F" id="FLa-P1-o9L"/>
                         <outlet property="labelinfo" destination="xiy-5x-71G" id="bvg-RZ-dxJ"/>
                         <outlet property="profileInfoCollectionView" destination="sfG-cv-0Am" id="Tu1-Ec-ZiF"/>
-                        <segue destination="95u-En-RVa" kind="showDetail" id="ypy-dE-jbO"/>
-                        <segue destination="zCK-Bn-ty3" kind="showDetail" identifier="ProfileVcToMatchVc" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="Muo-lh-m21"/>
+                        <segue destination="95u-En-RVa" kind="show" action="showDetailViewController:sender:" id="ypy-dE-jbO"/>
+                        <segue destination="zCK-Bn-ty3" kind="show" identifier="ProfileVcToMatchVc" action="showDetailViewController:sender:" id="Muo-lh-m21"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Cc-Si-Qtj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1800,8 +1800,8 @@ Los Angeles, California</string>
                     <connections>
                         <outlet property="MessageCollectionView" destination="4o3-gQ-fWA" id="pDm-f3-2vj"/>
                         <outlet property="btnBackToSwipe" destination="45B-qO-Rws" id="oGg-3z-6RC"/>
-                        <segue destination="arP-VQ-gEh" kind="showDetail" identifier="MessageToSwipe" id="rX5-3z-kCj"/>
-                        <segue destination="95u-En-RVa" kind="showDetail" identifier="MsgTOChat" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="2v9-eM-X5s"/>
+                        <segue destination="arP-VQ-gEh" kind="show" identifier="MessageToSwipe" action="showDetailViewController:sender:" id="rX5-3z-kCj"/>
+                        <segue destination="95u-En-RVa" kind="show" identifier="MsgTOChat" action="showDetailViewController:sender:" id="2v9-eM-X5s"/>
                         <segue destination="zCK-Bn-ty3" kind="showDetail" identifier="msglistToConnectionList" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="4rH-r1-Ngm"/>
                     </connections>
                 </viewController>
@@ -1909,7 +1909,7 @@ Los Angeles, California</string>
                     </view>
                     <navigationItem key="navigationItem" id="GqH-w0-sEN"/>
                     <connections>
-                        <segue destination="USB-vq-0Xj" kind="show" identifier="ProfileSegue" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="kY2-sp-WYf"/>
+                        <segue destination="USB-vq-0Xj" kind="show" identifier="ProfileSegue" id="kY2-sp-WYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjQ-i6-NyB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2085,7 +2085,7 @@ Los Angeles, California</string>
                                                     <color key="titleColor" red="0.0" green="0.61568627450000002" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="duH-jR-RRY" kind="show" customClass="SegueFromRight" customModule="Linksy" customModuleProvider="target" id="ziV-c5-qYL"/>
+                                                    <segue destination="duH-jR-RRY" kind="show" id="ziV-c5-qYL"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0g-DO-gDe">
@@ -3419,7 +3419,7 @@ Los Angeles, California</string>
                         <outlet property="txtCompany" destination="BUA-52-qq9" id="3Uw-Rt-foy"/>
                         <outlet property="txtTopic" destination="ydT-rT-sIX" id="mVz-7a-y7Q"/>
                         <segue destination="arP-VQ-gEh" kind="show" identifier="SwipeView" id="60W-h7-V9R"/>
-                        <segue destination="gxM-V6-MXe" kind="showDetail" identifier="Signout" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="Eie-do-Wb0"/>
+                        <segue destination="gxM-V6-MXe" kind="show" identifier="Signout" action="showDetailViewController:sender:" id="Eie-do-Wb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVS-RE-kG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3699,7 +3699,7 @@ Los Angeles, California</string>
                     <connections>
                         <outlet property="imgProfile" destination="upG-9z-BC2" id="eMZ-aQ-d8B"/>
                         <outlet property="labelName" destination="LDD-oi-DBU" id="R2z-Xg-1Fm"/>
-                        <segue destination="jvD-8n-atA" kind="showDetail" identifier="ChatToMessage" customClass="SegueFromLeft" customModule="Linksy" customModuleProvider="target" id="74N-xU-Kqv"/>
+                        <segue destination="jvD-8n-atA" kind="show" identifier="ChatToMessage" action="showDetailViewController:sender:" id="74N-xU-Kqv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1X-yR-tmp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3771,9 +3771,9 @@ Los Angeles, California</string>
         <segue reference="9VY-S6-uUl"/>
         <segue reference="Eie-do-Wb0"/>
         <segue reference="gU3-9X-Lwg"/>
-        <segue reference="74N-xU-Kqv"/>
+        <segue reference="M3O-2P-nZ0"/>
         <segue reference="BMC-41-IUT"/>
-        <segue reference="4rH-r1-Ngm"/>
+        <segue reference="CDE-eJ-yul"/>
         <segue reference="60W-h7-V9R"/>
         <segue reference="ziV-c5-qYL"/>
     </inferredMetricsTieBreakers>

@@ -24,12 +24,13 @@ import CoreData
 
 class ChatScreenViewController: JSQMessagesViewController {
     
-    
+  
     //NotificationCenter.default.addObserver(self , selector: #selector(loadMessages), name: "MessageNotification", object: nil)
     
     
     var x:JSON = JSON.null
     
+    let chat_id = JSON((chatId.object(forKey: "chatId"))!)
     
     let baseUrl = "https://bulale.in/linksy/api/index.php/"
     
@@ -58,8 +59,8 @@ class ChatScreenViewController: JSQMessagesViewController {
         //self.senderId = "1"
         //self.senderDisplayName = "Hiren Kadam"
         
-        /*
-         
+        
+        
         // Storing Core Data datas
         
         
@@ -69,7 +70,12 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         //------------------------
         
-        */
+        
+        
+        
+        
+        
+      
         
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
@@ -80,6 +86,8 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         //loadingIndicator.startAnimating()
         
+        
+        /*
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinnerActivity.label.text = "Loading"
         spinnerActivity.detailsLabel.text = "Please Wait!!"
@@ -90,7 +98,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         spinnerActivity.detailsLabel.textColor = UIColor.white
         spinnerActivity.activityIndicatorColor = UIColor.white
         spinnerActivity.layer.zPosition = 1
-        
+         */
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadMessages(_:)), name: NSNotification.Name(rawValue: "MessageNotification"), object: nil)
@@ -109,7 +117,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         //let temp = JSON((chatMsgArray.object(forKey: "chatMsgArray"))!)
         let tempselfinfo = JSON(selfinfo!)
       
-        let chat_id = JSON((chatId.object(forKey: "chatId"))!)
+        //let chat_id = JSON((chatId.object(forKey: "chatId"))!)
         
         print(chat_id)
         
@@ -117,6 +125,9 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         print(getchatdata)
         
+        
+        /*
+            
         
         Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
             { (apiresponseMsgs) in
@@ -208,7 +219,10 @@ class ChatScreenViewController: JSQMessagesViewController {
                 
         }
 
-        /*
+        */
+        
+        
+        
         
         // Selecting data from data base...
         
@@ -227,11 +241,47 @@ class ChatScreenViewController: JSQMessagesViewController {
                 {
                     
                     
-                    if let chat_id = result.value(forKey: "chat_id") as? String
+                    if let chat_id_str = result.value(forKey: "chat_id") as? String
                     {
-                        print("chat_id = \(chat_id) ")
+                        if(chat_id_str == chat_id.stringValue)
+                        {
+                            print("chat_id = \(chat_id_str) ")
+                            print(result.value(forKey: "message_id") as? String)
+                            
+                            /*
+                            if let message_id =  result.value(forKey: "message_id") as? String
+                            {
+                                
+                                print("message_id = \(message_id)")
+                            }
+                            
+                            if let sent_by =  result.value(forKey: "sent_by") as? String
+                            {
+                                
+                                print("sent_by = \(sent_by)")
+                            }
+                            
+                            if let message_text =  result.value(forKey: "message_text") as? String
+                            {
+                                
+                                print("message_text = \(message_text)")
+                            }
+ 
+                             */
+                            
+                            self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: result.value(forKey: "message_text") as! String))
+                            
+                            
+                            self.collectionView.reloadData()
+                            
+                            
+                        }
+                        //print("chat_id = \(chat_id_str) ")
                         
                     }
+                    
+                    
+                    /*
                     if let message_id =  result.value(forKey: "message_id") as? String
                     {
                         
@@ -249,30 +299,14 @@ class ChatScreenViewController: JSQMessagesViewController {
                         
                         print("message_text = \(message_text)")
                     }
-                    
-                    
-                    //self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: self.decodeEmojiMsg(result.value(forKey: "message_text") as! String)))
-                    
-                    /*
-                     
-                     if let username = result.value(forKey: "username") as? String
-                     {
-                     print("UserName = \(username) ")
-                     
-                     }
-                     if let password =  result.value(forKey: "password") as? String
-                     {
-                     
-                     print("Password = \(password)")
-                     }
-                     
-                     */
+                    */
+                   
                 }
                 
                 
             }
             
-            self.collectionView.reloadData()
+           
             
         }
         catch
@@ -281,8 +315,8 @@ class ChatScreenViewController: JSQMessagesViewController {
             
         }
         
-        */
         
+      
         
         
         
@@ -350,7 +384,7 @@ class ChatScreenViewController: JSQMessagesViewController {
             print(messages[i])
         
         }
-        
+         `
         */
         
         return messages[indexPath.item]
@@ -377,6 +411,95 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         
         
+        
+        // Storing Core Data datas
+        
+        
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appdelegate.persistentContainer.viewContext
+        
+        //------------------------
+        
+        
+        
+        
+        
+        
+        
+        let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
+        
+        requests.returnsObjectsAsFaults = false
+        
+        do
+        {
+            let results = try context.fetch(requests)
+            
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    
+                    
+                    if let chat_id_str = result.value(forKey: "chat_id") as? String
+                    {
+                        if(chat_id_str == chat_id.stringValue)
+                        {
+                            print("chat_id = \(chat_id_str) ")
+                            
+                            
+                            if(result.value(forKey: "sent_by") as? String == self.senderId)
+                            {
+                                //img = UIImage(named: "random-user1")!
+                                
+                                if let imgURL = NSURL(string: tempselfinfo["linkedin_login"][0]["user_profilepic"].string!)
+                                {
+                                    if let imgdata = NSData(contentsOf: imgURL as URL) {
+                                        
+                                        img = UIImage(data: imgdata as Data)!
+                                        
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                //img = UIImage(named: "bg")!
+                                if let imgURL = NSURL(string: result.value(forKey: "sender_img") as! String)
+                                {
+                                    if let imgdata = NSData(contentsOf: imgURL as URL) {
+                                        
+                                        img = UIImage(data: imgdata as Data)!
+                                        
+                                    }
+                                }
+                                
+                            }
+                            
+                            
+                        }
+                        //print("chat_id = \(chat_id_str) ")
+                        
+                    }
+                    
+                   
+                    
+                }
+                
+                
+            }
+            
+            
+            
+        }
+        catch
+        {
+            
+            
+        }
+ 
+        
+        
+        /*
         if(self.senderId == index.senderId)
         {
             //img = UIImage(named: "random-user1")!
@@ -403,6 +526,8 @@ class ChatScreenViewController: JSQMessagesViewController {
             }
             
         }
+         */
+ 
         
         //return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "random-user1"), diameter: 30)
         

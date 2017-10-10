@@ -5,10 +5,11 @@
         <attribute name="message_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sender_img" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sent_by" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sent_to" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Chats" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="Chats" positionX="-54" positionY="-9" width="128" height="150"/>
     </elements>
 </model>
