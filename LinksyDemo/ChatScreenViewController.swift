@@ -87,7 +87,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         //loadingIndicator.startAnimating()
         
         
-        /*
+        
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinnerActivity.label.text = "Loading"
         spinnerActivity.detailsLabel.text = "Please Wait!!"
@@ -98,7 +98,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         spinnerActivity.detailsLabel.textColor = UIColor.white
         spinnerActivity.activityIndicatorColor = UIColor.white
         spinnerActivity.layer.zPosition = 1
-         */
+ 
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadMessages(_:)), name: NSNotification.Name(rawValue: "MessageNotification"), object: nil)
@@ -411,7 +411,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         let index = messages[indexPath.item]
         
         
-        
+        /*
         
         // Storing Core Data datas
         
@@ -498,9 +498,9 @@ class ChatScreenViewController: JSQMessagesViewController {
             
         }
  
+        */
         
         
-        /*
         if(self.senderId == index.senderId)
         {
             //img = UIImage(named: "random-user1")!
@@ -527,7 +527,7 @@ class ChatScreenViewController: JSQMessagesViewController {
             }
             
         }
-         */
+ 
  
         
         //return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "random-user1"), diameter: 30)
