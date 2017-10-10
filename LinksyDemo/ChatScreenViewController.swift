@@ -126,7 +126,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         print(getchatdata)
         
         
-        /*
+        
             
         
         Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
@@ -219,10 +219,10 @@ class ChatScreenViewController: JSQMessagesViewController {
                 
         }
 
-        */
+ 
         
         
-        
+        /*
         
         // Selecting data from data base...
         
@@ -316,6 +316,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         }
         
         
+        */
       
         
         

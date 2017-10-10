@@ -147,6 +147,9 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             }
             
             
+            /*
+            
+            
             
             // Storing Core Data datas
             
@@ -369,6 +372,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                 
             }
             
+            
+            */
  
  
             
