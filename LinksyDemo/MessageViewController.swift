@@ -92,6 +92,12 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     
+    
+    
+    
+    /*
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let msgcell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
@@ -147,300 +153,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             }
             
             
-            /*
             
-            
-            
-            // Storing Core Data datas
-            
-            
-            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-            
-            let context = appdelegate.persistentContainer.viewContext
-            
-            //------------------------
-            
-            
-            
-            
-            // Selecting data from data base.....
-            
-            
-            let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
-            
-            let maxrequests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
-            
-            requests.returnsObjectsAsFaults = false
-            
-            let sortDescriptor = NSSortDescriptor(key: "message_id", ascending: false)
-            
-            maxrequests.sortDescriptors = [sortDescriptor]
-            
-            do
-            {
-                let results = try context.fetch(requests)
-                
-                let x = try context.fetch(maxrequests)
-                
-                let max = x.first
-                
-                
-                
-                print(max!)
-                
-                print(max!["data"])
-                
-                print(results)
-                
-                
-                
-                
-                
-                /*
- 
-                 let request = CSTProjectDetails.fetchRequest()
-                 request.predicate = NSPredicate(format: "projectID == %@", tempVar)
-                 cstProjectDetails = try context.fetch(request)
-                 
-                 
-                 */
-                
-                /*
-                if (results.count > 0 && max != nil)
-                {
-                    for result in results as! [NSManagedObject]
-                    {
-                        
-                        
-                        if let chat_id_str = result.value(forKey: "chat_id") as? String
-                        {
-                            
-                            if(chat_id_str == tempdata["User's Chat List"][indexPath.row]["chat_id"].string! && chat_id_str == max!["data"]["chat_id"])
-                            {
-                                let maxMsgid = max["data"]["message_id"].stringValue
-                                
-                                let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!,"chat_message_id":maxMsgid]
-                                
-                                Alamofire.request(baseUrl + "user/chat_conversation_msgs_new", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
-                                    { (apiresponseMsgs) in
-                                        
-                                        if((apiresponseMsgs.response) != nil)
-                                        {
-                                            print(JSON(apiresponseMsgs.result.value!))
-                                            
-                                            let x = JSON(apiresponseMsgs.result.value!)
-                                            
-                                            if(x["chat_conversation_detail"].count > 0)
-                                            {
-                                                for i in 0...x["chat_conversation_detail"].count-1
-                                                {
-                                                    
-                                                    
-                                                    
-                                                    // Storing Core Data
-                                                    
-                                                    
-                                                    let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
-                                                    
-                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
-                                                    
-                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
-                                                    
-                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
-                                                    
-                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
-                                                    
-                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
-                                                    
-                                                    newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
-                                                    
-                                                    newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
-                                                    
-                                                    
-                                                    
-                                                    do
-                                                    {
-                                                        try context.save()
-                                                        
-                                                        print("User Saved in internal database")
-                                                        
-                                                        
-                                                    }
-                                                    catch
-                                                    {
-                                                        //inserting process error...
-                                                        
-                                                    }
-                                                }
-                                                
-                                            }
-                                            
-                                            
-                                            
-                                            
-                                        }
-                                        
-                                }
-
-                                
-                                
-                            }
-                           
-                        }
-                        
-                        
-                        
-                        
-                    }
-                    
-                    
-                }
-                
-                else
-                {
-                    let maxMsgid = 0
-                    
-                    let getchatdata:[String : Any] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!,"chat_message_id":maxMsgid]
-                    
-                    Alamofire.request(baseUrl + "user/chat_conversation_msgs_new", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
-                        { (apiresponseMsgs) in
-                            
-                            if((apiresponseMsgs.response) != nil)
-                            {
-                                let x = JSON(apiresponseMsgs.result.value!)
-                                
-                                if(x["chat_conversation_detail"].count > 0)
-                                {
-                                    for i in 0...x["chat_conversation_detail"].count-1
-                                    {
-                                        
-                                        
-                                        
-                                        // Storing Core Data
-                                        
-                                        
-                                        let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
-                                        
-                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
-                                        
-                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
-                                        
-                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
-                                        
-                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
-                                        
-                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
-                                        
-                                        newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
-                                        
-                                        newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
-                                        
-                                        
-                                        
-                                        do
-                                        {
-                                            try context.save()
-                                            
-                                            print("User Saved in internal database")
-                                            
-                                            
-                                        }
-                                        catch
-                                        {
-                                            //inserting process error...
-                                            
-                                        }
-                                    }
-                                    
-                                }
-                                
-                                
-                                
-                                
-                            }
-                            
-                    }
-
-                    
-                }
-                */
-                
-            }
-            catch
-            {
-                
-                
-            }
-            
-            
-            */
- 
- 
-            
-            
-            /*
-            let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!]
-            
-            Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
-                { (apiresponseMsgs) in
-                    
-                    if((apiresponseMsgs.response) != nil)
-                    {
-                        let x = JSON(apiresponseMsgs.result.value!)
-                        
-                        if(x["chat_conversation_detail"].count > 0)
-                        {
-                            for i in 0...x["chat_conversation_detail"].count-1
-                            {
-                                
-                                
-                                
-                                // Storing Core Data
-                                
-                                
-                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
-                                
-                                newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
-                                
-                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
-                                
-                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
-                                
-                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
-                                
-                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
-                                
-                                newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
-                                
-                                newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
-                                
-                                
-                                
-                                do
-                                {
-                                    try context.save()
-                                    
-                                    print("User Saved in internal database")
-                                    
-                                    
-                                }
-                                catch
-                                {
-                                    //inserting process error...
-                                    
-                                }
-                            }
-                            
-                        }
-                        
-                         
-                        
-                        
-                    }
-            
-            }
- 
-             */
  
         }
 
@@ -459,6 +172,370 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
         
     }
+ 
+ 
+ */
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let msgcell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
+        
+        
+        let tempselfinfo = JSON(userpersonalinfo.object(forKey: "userpersonalinfo"))
+        
+        
+        if let userinfo = MsgList.object(forKey: "MsgList") as Any?
+        {
+            let tempdata = JSON(userinfo)
+            
+            
+            //print(tempdata)
+            
+            //print(tempdata["User's Chat List"][0]["msg_name"])
+            //print(tempdata["User's Chat List"][1]["msg_name"])
+            
+            
+            msgcell.labelMatchName.text = tempdata["User's Chat List"][indexPath.row]["msg_name"].string!
+            
+            msgcell.labelMsgTime.text = tempdata["User's Chat List"][indexPath.row]["chat_created_time"].string!
+            
+            if(tempdata["User's Chat List"][indexPath.row]["last_msg"].string == "empty")
+            {
+                
+                
+                msgcell.labelLastMsg.text = "No Messages To Show yet"
+            }
+                
+                
+            else
+            {
+                //decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)
+                
+                msgcell.labelLastMsg.text = decodeEmojiMsg(tempdata["User's Chat List"][indexPath.row]["last_msg"].string!)
+            }
+            
+            
+            
+            if let imgURL = NSURL(string: tempdata["User's Chat List"][indexPath.row]["msg_profilepic"].string!)
+            {
+                if let imgdata = NSData(contentsOf: imgURL as URL)
+                {
+                    
+                    let img = UIImage(data: imgdata as Data)
+                    
+                    msgcell.imgMatchProfilePic.image = img
+                    msgcell.imgMatchProfilePic.layer.cornerRadius = 30
+                    
+                    
+                }
+            }
+            
+            
+            
+             
+             
+             
+             // Storing Core Data datas
+             
+             
+             let appdelegate = UIApplication.shared.delegate as! AppDelegate
+             
+             let context = appdelegate.persistentContainer.viewContext
+             
+             //------------------------
+             
+             
+             
+            
+             
+             // Selecting data from data base.....
+             
+             
+             let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
+             
+             let maxrequests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
+             
+             requests.returnsObjectsAsFaults = false
+             
+             let sortDescriptor = NSSortDescriptor(key: "message_id", ascending: false)
+             
+             maxrequests.sortDescriptors = [sortDescriptor]
+             
+             do
+             {
+                let results = try context.fetch(requests)
+             
+                let x = try context.fetch(maxrequests)
+             
+                let max = x.first
+                
+             
+             
+                print(max!)
+             
+                //print(max!["data"])
+             
+                print(results)
+             
+             
+                /*
+                 
+                 if (results.count > 0 && max != nil)
+                 {
+                     for result in results as! [NSManagedObject]
+                     {
+             
+             
+                         if let chat_id_str = result.value(forKey: "chat_id") as? String
+                         {
+             
+                             if(chat_id_str == tempdata["User's Chat List"][indexPath.row]["chat_id"].string! && chat_id_str == max!["data"]["chat_id"])
+                             {
+                                 let maxMsgid = max["data"]["message_id"].stringValue
+             
+                                 let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!,"chat_message_id":maxMsgid]
+             
+                                 Alamofire.request(baseUrl + "user/chat_conversation_msgs_new", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
+                                 { (apiresponseMsgs) in
+             
+                                     if((apiresponseMsgs.response) != nil)
+                                     {
+                                         print(JSON(apiresponseMsgs.result.value!))
+             
+                                         let x = JSON(apiresponseMsgs.result.value!)
+             
+                                         if(x["chat_conversation_detail"].count > 0)
+                                         {
+                                             for i in 0...x["chat_conversation_detail"].count-1
+                                             {
+             
+             
+             
+                                                 // Storing Core Data
+             
+             
+                                                 let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+                 
+                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+                 
+                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+                 
+                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+                 
+                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                 
+                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+                 
+                                                 newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
+                 
+                                                 newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+                 
+             
+                 
+                                                 do
+                                                 {
+                                                 try context.save()
+                 
+                                                 print("User Saved in internal database")
+                 
+                 
+                                                 }
+                                                 catch
+                                                 {
+                                                 //inserting process error...
+                 
+                                                 }
+                                             }
+             
+                                         }
+             
+             
+             
+             
+                                 }
+             
+                             }
+             
+             
+             
+                         }
+             
+                     }
+             
+             
+             
+             
+                 }
+             
+             
+             }
+             
+             else
+             {
+                 let maxMsgid = 0
+             
+                 let getchatdata:[String : Any] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!,"chat_message_id":maxMsgid]
+             
+                 Alamofire.request(baseUrl + "user/chat_conversation_msgs_new", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
+                 { (apiresponseMsgs) in
+             
+                     if((apiresponseMsgs.response) != nil)
+                     {
+                         let x = JSON(apiresponseMsgs.result.value!)
+             
+                         if(x["chat_conversation_detail"].count > 0)
+                         {
+                             for i in 0...x["chat_conversation_detail"].count-1
+                             {
+             
+             
+             
+                                     // Storing Core Data
+                                     
+                                     
+                                     let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+                                     
+                                     newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+                                     
+                                     newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+                                     
+                                     newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+                                     
+                                     newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                     
+                                     newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+                                     
+                                     newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
+                                     
+                                     newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+                                     
+                                     
+             
+                                     do
+                                     {
+                                     try context.save()
+                                     
+                                     print("User Saved in internal database")
+                                     
+                                     
+                                     }
+                                     catch
+                                     {
+                                     //inserting process error...
+                                     
+                                     }
+                             }
+             
+                         }
+             
+             
+             
+             
+                     }
+             
+                 }
+             
+             
+             }
+             */
+             
+             }
+             catch
+             {
+             
+             
+             }
+             
+             
+ 
+            
+            
+            
+            /*
+            
+             let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!]
+             
+             Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
+             { (apiresponseMsgs) in
+             
+                if((apiresponseMsgs.response) != nil)
+                {
+                    let x = JSON(apiresponseMsgs.result.value!)
+             
+                        if(x["chat_conversation_detail"].count > 0)
+                        {
+                            for i in 0...x["chat_conversation_detail"].count-1
+                            {
+             
+             
+             
+                                // Storing Core Data
+             
+             
+                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+             
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+             
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+             
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+             
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+             
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+             
+                                newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
+             
+                                newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+             
+             
+             
+                                do
+                                {
+                                    try context.save()
+             
+                                    print("Message Saved in internal database")
+             
+             
+                                }
+                                catch
+                                {
+             //inserting process error...
+             
+                                }
+                            }
+             
+                    }
+             
+             
+             
+             
+                }
+             
+             }
+            */
+        }
+        
+        
+        
+        
+        //let msgcell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
+        
+        //msgcell.imgMatchProfilePic.layer.cornerRadius = 30
+        //msgcell.imgMatchProfilePic.image = UIImage(named: images[indexPath.row])
+        //msgcell.labelMatchName.text = names[indexPath.row]
+        //msgcell.labelMsgTime.text = time[indexPath.row]
+        
+        
+        return msgcell
+        
+        
+    }
+    
+    
+    
 
     
     //this function is used for resizing the collectionview cell with dynamically according to the screen width...

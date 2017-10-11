@@ -51,6 +51,130 @@ class ChatScreenViewController: JSQMessagesViewController {
     }
     
     
+    
+    // View did load without local database connection....
+    
+    /*
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+     
+        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+        loadingIndicator.transform = transform
+        loadingIndicator.center = self.view.center
+        loadingIndicator.activityIndicatorViewStyle = .gray
+        self.view.addSubview(loadingIndicator)
+        
+        //loadingIndicator.startAnimating()
+        
+        
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinnerActivity.label.text = "Loading"
+        spinnerActivity.detailsLabel.text = "Please Wait!!"
+        spinnerActivity.isUserInteractionEnabled = false
+        spinnerActivity.bezelView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.25)
+        spinnerActivity.bezelView.color = UIColor.black
+        spinnerActivity.label.textColor = UIColor.white
+        spinnerActivity.detailsLabel.textColor = UIColor.white
+        spinnerActivity.activityIndicatorColor = UIColor.white
+        spinnerActivity.layer.zPosition = 1
+        
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadMessages(_:)), name: NSNotification.Name(rawValue: "MessageNotification"), object: nil)
+        
+        
+        if(selfinfo != nil)
+        {
+            let tempselfinfo = JSON(selfinfo!)
+            
+            self.senderId = tempselfinfo["linkedin_login"][0]["user_id"].string!
+            self.senderDisplayName = tempselfinfo["linkedin_login"][0]["user_firstName"].string! + " " + tempselfinfo["linkedin_login"][0]["user_lastName"].string!
+            
+        }
+        
+        
+        //let temp = JSON((chatMsgArray.object(forKey: "chatMsgArray"))!)
+        let tempselfinfo = JSON(selfinfo!)
+        
+        //let chat_id = JSON((chatId.object(forKey: "chatId"))!)
+        
+        print(chat_id)
+        
+        let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chat_id.stringValue]
+        
+        print(getchatdata)
+        
+        
+        
+        
+        
+        Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
+            { (apiresponseMsgs) in
+                
+                if((apiresponseMsgs.response) != nil)
+                {
+                    
+                    
+                    self.x = JSON(apiresponseMsgs.result.value!)
+                    
+                    print(self.x)
+                    
+                    if(self.x["chat_conversation_detail"].count > 0)
+                    {
+                        for i in 0...self.x["chat_conversation_detail"].count-1
+                        {
+                            self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+                            
+                            
+                            self.collectionView.reloadData()
+     
+                        }
+                        
+                        //loadingIndicator.stopAnimating()
+                        
+                        spinnerActivity.hide(animated: true)
+                    }
+                    else
+                    {
+                        //loadingIndicator.stopAnimating()
+                        
+                        spinnerActivity.hide(animated: true)
+                    }
+                    
+                }
+                    
+                else
+                {
+                    print("Error")
+                    
+                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                //-------------------- this is to move to present messages ----------------
+                self.automaticallyScrollsToMostRecentMessage = true
+                
+                
+        }
+     
+        
+        
+    }
+    
+    
+  */
+    
+    
+    
+    // View did load with local database connection...
+    
    
    
     override func viewDidLoad() {
@@ -88,6 +212,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         
         
+        
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinnerActivity.label.text = "Loading"
         spinnerActivity.detailsLabel.text = "Please Wait!!"
@@ -98,6 +223,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         spinnerActivity.detailsLabel.textColor = UIColor.white
         spinnerActivity.activityIndicatorColor = UIColor.white
         spinnerActivity.layer.zPosition = 1
+ 
  
         
         
@@ -125,104 +251,6 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         print(getchatdata)
         
-        
-        
-            
-        
-        Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
-            { (apiresponseMsgs) in
-                
-                if((apiresponseMsgs.response) != nil)
-                {
-                   
-                    
-                    self.x = JSON(apiresponseMsgs.result.value!)
-                    
-                    print(self.x)
-                    
-                    if(self.x["chat_conversation_detail"].count > 0)
-                    {
-                        for i in 0...self.x["chat_conversation_detail"].count-1
-                        {
-                            self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
-                            
-                            
-                                self.collectionView.reloadData()
-                                
-                                
-                                
-                                // Storing Core Data
-                                
-                                
-                                /*
-                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
-                                
-                                newUser.setValue(self.x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
-                                
-                                newUser.setValue(self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
-                                
-                                do
-                                {
-                                    try context.save()
-                                    
-                                    print("User Saved in internal database")
-                                    
-                                    
-                                }
-                                catch
-                                {
-                                    //inserting process error...
-                                    
-                                }
-                                
-                                */
-                               
-                                
-                           
-                        }
-                        
-                        //loadingIndicator.stopAnimating()
-                        
-                        spinnerActivity.hide(animated: true)
-                    }
-                    else
-                    {
-                        //loadingIndicator.stopAnimating()
-                        
-                        spinnerActivity.hide(animated: true)
-                    }
-                    
-                }
-                
-                else
-                {
-                    print("Error")
-                    
-                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                    
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-                //-------------------- this is to move to present messages ----------------
-                self.automaticallyScrollsToMostRecentMessage = true
-                
-                
-        }
-
- 
-        
-        
-        /*
         
         // Selecting data from data base...
         
@@ -271,6 +299,7 @@ class ChatScreenViewController: JSQMessagesViewController {
                             
                             self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: result.value(forKey: "message_text") as! String))
                             
+                            spinnerActivity.hide(animated: true)
                             
                             self.collectionView.reloadData()
                             
@@ -316,7 +345,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         }
         
         
-        */
+        
       
         
         
@@ -400,6 +429,11 @@ class ChatScreenViewController: JSQMessagesViewController {
         return messages[indexPath.item].senderId == self.senderId ? outgoingBubble : incomingBubble
     }
     
+    
+    
+    // code for avatar image when not connected to local db
+    
+    /*
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
         var img = UIImage()
@@ -411,7 +445,57 @@ class ChatScreenViewController: JSQMessagesViewController {
         let index = messages[indexPath.item]
         
         
-        /*
+        if(self.senderId == index.senderId)
+        {
+            //img = UIImage(named: "random-user1")!
+            
+            if let imgURL = NSURL(string: tempselfinfo["linkedin_login"][0]["user_profilepic"].string!)
+            {
+                if let imgdata = NSData(contentsOf: imgURL as URL) {
+                    
+                    img = UIImage(data: imgdata as Data)!
+                    
+                }
+            }
+        }
+        else
+        {
+            //img = UIImage(named: "bg")!
+            if let imgURL = NSURL(string: x["sender_img"].string!)
+            {
+                if let imgdata = NSData(contentsOf: imgURL as URL) {
+                    
+                    img = UIImage(data: imgdata as Data)!
+                    
+                }
+            }
+            
+        }
+        
+        
+        
+        //return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "random-user1"), diameter: 30)
+        
+        return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
+    }
+    
+    */
+    
+    
+    
+    //code for avatar image when connected to local db
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        
+        var img = UIImage()
+        
+        //let temp = JSON((chatMsgArray.object(forKey: "chatMsgArray"))!)
+        
+        let tempselfinfo = JSON(selfinfo!)
+        
+        let index = messages[indexPath.item]
+        
         
         // Storing Core Data datas
         
@@ -421,11 +505,6 @@ class ChatScreenViewController: JSQMessagesViewController {
         let context = appdelegate.persistentContainer.viewContext
         
         //------------------------
-        
-        
-        
-        
-        
         
         
         let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
@@ -498,38 +577,10 @@ class ChatScreenViewController: JSQMessagesViewController {
             
         }
  
-        */
-        
-        
-        if(self.senderId == index.senderId)
-        {
-            //img = UIImage(named: "random-user1")!
-            
-            if let imgURL = NSURL(string: tempselfinfo["linkedin_login"][0]["user_profilepic"].string!)
-            {
-                if let imgdata = NSData(contentsOf: imgURL as URL) {
-                    
-                    img = UIImage(data: imgdata as Data)!
-                    
-                }
-            }
-        }
-        else
-        {
-            //img = UIImage(named: "bg")!
-            if let imgURL = NSURL(string: x["sender_img"].string!)
-            {
-                if let imgdata = NSData(contentsOf: imgURL as URL) {
-                    
-                    img = UIImage(data: imgdata as Data)!
-                    
-                }
-            }
-            
-        }
- 
  
         
+        
+       
         //return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "random-user1"), diameter: 30)
         
         return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
