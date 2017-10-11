@@ -255,34 +255,165 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              
              let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
              
-             let maxrequests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
-             
+             //let maxrequests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
+            
+            
+            
              requests.returnsObjectsAsFaults = false
              
-             let sortDescriptor = NSSortDescriptor(key: "message_id", ascending: false)
+             //let sortDescriptor = NSSortDescriptor(key: "message_id", ascending: false)
              
-             maxrequests.sortDescriptors = [sortDescriptor]
+             //maxrequests.sortDescriptors = [sortDescriptor]
              
              do
              {
+                
                 let results = try context.fetch(requests)
              
-                let x = try context.fetch(maxrequests)
-             
-                let max = x.first
+                if(results.count > 0)
+                {
+                
+                //print(results)
+                
+                //let sortedarray = try context.fetch(maxrequests)
+                
+                //let sortedarray = try context.fetch(maxrequests) as! [Chats]
                 
              
-             
-                print(max!)
-             
-                //print(max!["data"])
-             
-                print(results)
-             
-             
+                //let maxidarray = sortedarray.first
+                
+                
+                //print(maxidarray!)
+                
+                //print(maxidarray?.message_id)
+                
+                //let max_id = maxidarray?.message_id
+                
+                //print(max_id!)
+              
+                    
+                    
+                    for result in results as! [NSManagedObject]
+                    {
+                        
+                        
+                        if let chat_id_str = result.value(forKey: "chat_id") as? String
+                        {
+                            if(chat_id_str == tempdata["User's Chat List"][indexPath.row]["chat_id"].string!)
+                            {
+                                let maxrequests = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
+                                
+                                maxrequests.predicate = NSPredicate(format: "chat_id == %@", tempdata["User's Chat List"][indexPath.row]["chat_id"].string!)
+                                
+                                let sortDescriptor = NSSortDescriptor(key: "message_id", ascending: false)
+                                
+                                maxrequests.sortDescriptors = [sortDescriptor]
+                                
+                                
+                            
+                                let sortedarray = try context.fetch(maxrequests) as! [Chats]
+                            
+                                
+                            
+                                let maxidarray = sortedarray.first
+                            
+                                let max_id = maxidarray?.message_id
+                            
+                                print(max_id!)
+                            
+                                /*
+ 
+                                 let request = CSTProjectDetails.fetchRequest()
+                                 request.predicate = NSPredicate(format: "projectID == %@", tempVar)
+                                 cstProjectDetails = try context.fetch(request)
+                                 
+                                 */
+                            
+                                
+                                
+                                
+                                
+                                let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!,"chat_message_id":max_id!]
+                                
+                                
+                                Alamofire.request(baseUrl + "user/chat_conversation_msgs_new", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
+                                    { (apiresponseMsgs) in
+                                        
+                                        if((apiresponseMsgs.response) != nil)
+                                        {
+                                            print(JSON(apiresponseMsgs.result.value!))
+                                            
+                                            let x = JSON(apiresponseMsgs.result.value!)
+                                            
+                                            if(x["chat_conversation_detail"].count > 0)
+                                            {
+                                                for i in 0...x["chat_conversation_detail"].count-1
+                                                {
+                                                    
+                                                    
+                                                    
+                                                    // Storing Core Data
+                                                    
+                                                    
+                                                    let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+                                                    
+                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+                                                    
+                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+                                                    
+                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+                                                    
+                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                                    
+                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+                                                    
+                                                    newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
+                                                    
+                                                    newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+                                                    
+                                                    
+                                                    
+                                                    do
+                                                    {
+                                                        try context.save()
+                                                        
+                                                        print("User Saved in internal database")
+                                                        
+                                                        
+                                                    }
+                                                    catch
+                                                    {
+                                                        //inserting process error...
+                                                        
+                                                    }
+                                                }
+                                                
+                                            }
+                                            
+                                            
+                                            
+                                            
+                                        }
+                                        
+                                }
+                                
+                                
+                                
+                            
+                            
+                        }
+                        
+                        }
+                        
+                        
+                    }
+
+                    
+                    
+              
                 /*
                  
-                 if (results.count > 0 && max != nil)
+                 if (max_id != nil)
                  {
                      for result in results as! [NSManagedObject]
                      {
@@ -291,11 +422,16 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                          if let chat_id_str = result.value(forKey: "chat_id") as? String
                          {
              
-                             if(chat_id_str == tempdata["User's Chat List"][indexPath.row]["chat_id"].string! && chat_id_str == max!["data"]["chat_id"])
+                             if(chat_id_str == tempdata["User's Chat List"][indexPath.row]["chat_id"].string! && chat_id_str == max_id)
                              {
-                                 let maxMsgid = max["data"]["message_id"].stringValue
+                                
              
-                                 let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!,"chat_message_id":maxMsgid]
+                                
+                                
+                                
+                                
+                                 let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!,"chat_message_id":max_id!]
+                                
              
                                  Alamofire.request(baseUrl + "user/chat_conversation_msgs_new", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
                                  { (apiresponseMsgs) in
@@ -438,9 +574,74 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                  }
              
              
-             }
-             */
-             
+               }
+                 */
+              }
+                
+                else
+                {
+                    let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!]
+                    
+                    Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
+                        { (apiresponseMsgs) in
+                            
+                            if((apiresponseMsgs.response) != nil)
+                            {
+                                let x = JSON(apiresponseMsgs.result.value!)
+                                
+                                if(x["chat_conversation_detail"].count > 0)
+                                {
+                                    for i in 0...x["chat_conversation_detail"].count-1
+                                    {
+                                        
+                                        
+                                        
+                                        // Storing Core Data
+                                        
+                                        
+                                        let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
+                                        
+                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
+                                        
+                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_from"].stringValue, forKey: "sent_by")
+                                        
+                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
+                                        
+                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                        
+                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
+                                        
+                                        newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
+                                        
+                                        newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
+                                        
+                                        
+                                        
+                                        do
+                                        {
+                                            try context.save()
+                                            
+                                            print("Message Saved in internal database")
+                                            
+                                            
+                                        }
+                                        catch
+                                        {
+                                            //inserting process error...
+                                            
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                
+                                
+                                
+                            }
+                            
+                    }
+                    
+                }
              }
              catch
              {
