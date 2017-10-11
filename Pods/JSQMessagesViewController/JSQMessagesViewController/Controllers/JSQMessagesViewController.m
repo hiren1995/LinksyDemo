@@ -817,6 +817,12 @@ JSQMessagesKeyboardControllerDelegate>
     if (textView != self.inputToolbar.contentView.textView) {
         return;
     }
+    
+    NSString *string = textView.text;
+    NSInteger length = [[string componentsSeparatedByCharactersInSet:
+                         [NSCharacterSet newlineCharacterSet]] count];
+    // nahi mene kitni new line h wo check kia or abhi max 15 line tak height badhegi wese kar diya....okk thanks sir.. chalo build de do jalse karo local db. .me lag jao...ha uska logic bhi bahut bada hai...ho jaega
+    
     if (length>15  )
     {
         
@@ -830,7 +836,8 @@ JSQMessagesKeyboardControllerDelegate>
         self.toolbarHeightConstraint.constant = length*12+40;
     }
 
-
+     
+     
     [self.inputToolbar toggleSendButtonEnabled];
 }
 
