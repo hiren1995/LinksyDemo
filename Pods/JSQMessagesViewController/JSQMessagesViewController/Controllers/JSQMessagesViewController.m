@@ -817,6 +817,19 @@ JSQMessagesKeyboardControllerDelegate>
     if (textView != self.inputToolbar.contentView.textView) {
         return;
     }
+    if (length>15  )
+    {
+        
+    }
+    else if (length==1)
+    {
+        self.toolbarHeightConstraint.constant = 40;
+    }
+    else
+    {
+        self.toolbarHeightConstraint.constant = length*12+40;
+    }
+
 
     [self.inputToolbar toggleSendButtonEnabled];
 }
