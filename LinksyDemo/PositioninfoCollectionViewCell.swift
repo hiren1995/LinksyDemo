@@ -10,7 +10,15 @@ import UIKit
 
 class PositioninfoCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var textViewCompanyName: UITextView!
+   // @IBOutlet weak var textViewCompanyName: UITextView!
+    //@IBOutlet weak var labelJobDuration: UILabel!
+   // @IBOutlet weak var textViewCompanyinfo: UITextView!
+    
+    @IBOutlet weak var textViewCompanyName: UILabel!
+    
     @IBOutlet weak var labelJobDuration: UILabel!
-    @IBOutlet weak var textViewCompanyinfo: UITextView!
+    
+    @IBOutlet weak var textViewCompanyinfo: UILabel!
+    
+    
 }

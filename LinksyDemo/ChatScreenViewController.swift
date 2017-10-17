@@ -18,11 +18,12 @@ import MBProgressHUD
 
 import CoreData
 
+import MobileCoreServices
 
 
 @available(iOS 10.0, *)
 
-class ChatScreenViewController: JSQMessagesViewController {
+class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
   
     //NotificationCenter.default.addObserver(self , selector: #selector(loadMessages), name: "MessageNotification", object: nil)
@@ -44,6 +45,8 @@ class ChatScreenViewController: JSQMessagesViewController {
     let outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor(red: 24/255, green: 187/255, blue: 236/255, alpha: 1.0))
     
 
+    let picker = UIImagePickerController()
+    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -54,12 +57,15 @@ class ChatScreenViewController: JSQMessagesViewController {
     
     // View did load without local database connection....
     
-    /*
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
      
+        picker.delegate = self
+        
+        
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
         loadingIndicator.transform = transform
@@ -82,6 +88,8 @@ class ChatScreenViewController: JSQMessagesViewController {
         spinnerActivity.activityIndicatorColor = UIColor.white
         spinnerActivity.layer.zPosition = 1
         
+        
+    
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadMessages(_:)), name: NSNotification.Name(rawValue: "MessageNotification"), object: nil)
@@ -127,9 +135,31 @@ class ChatScreenViewController: JSQMessagesViewController {
                     {
                         for i in 0...self.x["chat_conversation_detail"].count-1
                         {
-                            self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+                           if(self.x["chat_conversation_detail"][i]["chat_message_type"].string == "1")
+                           {
+                                 self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+                                self.collectionView.reloadData()
+                            }
                             
+                            else
+                           {
+                                if let imgURL = NSURL(string: self.x["chat_conversation_detail"][i]["chat_message_image"].string!)
+                                {
+                                    print(imgURL)
+                                    if let imgdata = NSData(contentsOf: imgURL as URL) {
+                                        
+                                        let pic = UIImage(data: imgdata as Data)!
+                                        
+                                        let img = JSQPhotoMediaItem(image: pic)
+                                        
+                                        self.messages.append(JSQMessage(senderId: self.senderId, displayName: "sender", media : img))
+                                    }
+                                }
                             
+                                self.collectionView.reloadData()
+                            
+                            }
+                           
                             self.collectionView.reloadData()
      
                         }
@@ -169,14 +199,14 @@ class ChatScreenViewController: JSQMessagesViewController {
     }
     
     
-  */
+ 
     
     
     
     // View did load with local database connection...
     
    
-   
+   /*
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -351,7 +381,7 @@ class ChatScreenViewController: JSQMessagesViewController {
         
         
     }
-    
+    */
     
     override func viewWillAppear(_ animated: Bool) {
     
@@ -433,7 +463,7 @@ class ChatScreenViewController: JSQMessagesViewController {
     
     // code for avatar image when not connected to local db
     
-    /*
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
         var img = UIImage()
@@ -479,12 +509,14 @@ class ChatScreenViewController: JSQMessagesViewController {
         return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
     }
     
-    */
+ 
     
     
     
     //code for avatar image when connected to local db
     
+    
+    /*
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
@@ -587,6 +619,10 @@ class ChatScreenViewController: JSQMessagesViewController {
     }
     
     
+    */
+    
+    
+    
     // methods for sending message...
     
     
@@ -650,13 +686,130 @@ class ChatScreenViewController: JSQMessagesViewController {
         
     }
     
-    
+    //-------------- code for selecting image on click of accessory button---------------
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
         
+        let alert = UIAlertController(title: "Media Message", message: "Please Select a Media", preferredStyle: .actionSheet)
         
+        let cancel =   UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let photos = UIAlertAction(title: "Photos", style: .default, handler: {(alert:UIAlertAction) in
+            
+            self.chooseMedia(type: kUTTypeImage)
+            
+            
+        })
+        
+        alert.addAction(photos)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
         
     }
+    
+    //---------------------- picker media function------------------------------------
+    
+    private func chooseMedia(type: CFString)
+    {
+        picker.mediaTypes = [type as String]
+        
+        picker.allowsEditing = true
+        
+        present(picker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var sendImg:UIImage? = nil
+        
+        if let pic = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            sendImg = pic
+            
+            let img = JSQPhotoMediaItem(image: pic)
+            
+            self.messages.append(JSQMessage(senderId: self.senderId, displayName: senderDisplayName, media : img))
+            
+        }
+        else if let vid = info[UIImagePickerControllerMediaURL] as? URL
+        {
+            
+            
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        collectionView.reloadData()
+        
+        //---------------------------------------------- used to send the messageto database---------------------
+        
+        let tempselfinfo = JSON(selfinfo!)
+        print(tempselfinfo)
+        
+        let tempsendid = JSON((sendmsgid.object(forKey: "sendmsgid"))!)
+        print(tempsendid)
+        
+        let chatids = JSON((chatId.object(forKey: "chatId"))!)
+        
+        print(chatids)
+        
+        let image_data = UIImagePNGRepresentation(sendImg!)
+        
+        let sendmsgdata:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2","chat_message_image": image_data!]
+        
+        print(sendmsgdata)
+       
+        if(tempsendid != JSON.null)
+        {
+            
+            /*
+            Alamofire.upload(multipartFormData: { (form) in
+                form.append(image_data!, withName: "file", fileName: "file.jpg", mimeType: "image/jpg")
+            }, to: "https://yourawesomebackend.com", encodingCompletion: { result in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseString { response in
+                        print(response.value)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            })
+            */
+            
+            
+            Alamofire.request(self.baseUrl+"user/send_chat_message", method: HTTPMethod.post, parameters: sendmsgdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+                
+                if((apiresponse.response) != nil)
+                {
+                    print("meaasage sent successfully..")
+                    
+                    
+                    
+                }
+                else
+                {
+                    print("Error")
+                    
+                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+                
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

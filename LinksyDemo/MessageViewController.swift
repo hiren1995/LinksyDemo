@@ -35,6 +35,9 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     @IBOutlet weak var MessageCollectionView: UICollectionView!
     
     
+    @IBOutlet weak var labelNoChat: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,7 +45,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadMatches(_:)), name: NSNotification.Name(rawValue: "MatchNotification"), object: nil)
         
         
-      
+        labelNoChat.isHidden = true
         
         
         self.MessageCollectionView.delegate = self
@@ -79,23 +82,24 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                
         let tempx = JSON(MsgList.object(forKey: "MsgList")!)
         
+        if(tempx["User's Chat List"].count == 0)
+        {
+            
+            labelNoChat.isHidden = false
+        }
+        
+        
         return tempx["User's Chat List"].count
         
-        
-        
-       // return images.count
-        
-       
-        
-        //return 0
+      
         
     }
     
     
     
     
+    //-----------------------cell values without connnecting the local database----------
     
-    /*
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -174,9 +178,9 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
  
  
- */
+ //-----------------------cell values connnecting the local database----------
     
-    
+    /*
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -186,11 +190,12 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         let tempselfinfo = JSON(userpersonalinfo.object(forKey: "userpersonalinfo"))
         
         
+        
         if let userinfo = MsgList.object(forKey: "MsgList") as Any?
         {
             let tempdata = JSON(userinfo)
             
-            
+           
             //print(tempdata)
             
             //print(tempdata["User's Chat List"][0]["msg_name"])
@@ -735,7 +740,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
     }
     
-    
+    */
     
 
     
@@ -817,7 +822,10 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             
             spinnerActivity.hide(animated: true)
             
-            self.performSegue(withIdentifier: "MsgTOChat", sender: nil)
+            //self.performSegue(withIdentifier: "MsgTOChat", sender: nil)
+            
+            let obj : ChatOutViewViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatOutViewViewController") as! ChatOutViewViewController
+            self.navigationController?.pushViewController(obj, animated: true)
             
             
             
@@ -870,8 +878,12 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                     spinnerActivity.hide(animated: true)
                     
                     
-                    self.performSegue(withIdentifier: "MessageToSwipe", sender: nil)
+                    //self.performSegue(withIdentifier: "MessageToSwipe", sender: nil)
                     
+                    //let obj : SwipingViewController = self.storyboard?.instantiateViewController(withIdentifier: "SwipingViewController") as! SwipingViewController
+                    //self.navigationController?.pushViewController(obj, animated: true)
+                    
+                    self.navigationController?.popViewController(animated: true)
                     
                 }
                 else
@@ -891,7 +903,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     }
     
-        
+    /*
     @IBAction func BtnMatch(_ sender: UIButton) {
         
         //loadingIndicator.startAnimating()
@@ -960,6 +972,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
 
         
     }
+ 
+ */
     
     func loadMatches(_ notification : NSNotification)
     {

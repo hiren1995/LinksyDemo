@@ -22,6 +22,7 @@ var latMagnitude:Double? = nil
 var longMagnitude:Double? = nil
 
 
+@available(iOS 10.0, *)
 @UIApplicationMain
 
 
@@ -139,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
             
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let nextViewController: dummyViewController = mainStoryboard.instantiateViewController(withIdentifier: "dummyViewController") as! dummyViewController
+            let nextViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "LinksyLogin") as! UINavigationController
             
             self.window?.rootViewController = nextViewController
             
@@ -221,8 +222,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
                                     
                                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                                     
-                                    let nextViewController: SwipingViewController = mainStoryboard.instantiateViewController(withIdentifier: "SwipingViewController") as! SwipingViewController
-                                
+                                    
+                                    //let nextViewController: SwipingViewController = mainStoryboard.instantiateViewController(withIdentifier: "SwipingViewController") as! SwipingViewController
+                                    
+                                    
+                                    let nextViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "Swipecard") as! UINavigationController
+                                    
+                                    
                                     self.window?.rootViewController = nextViewController
                                     
                                     self.window?.makeKeyAndVisible()
@@ -270,7 +276,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
                         
                         self.window = UIWindow(frame: UIScreen.main.bounds)
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let nextViewController: dummyViewController = mainStoryboard.instantiateViewController(withIdentifier: "dummyViewController") as! dummyViewController
+                        let nextViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "LinksyLogin") as! UINavigationController
                         
                         self.window?.rootViewController = nextViewController
                         
@@ -414,7 +420,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
             {
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let nextViewController: dummyViewController = mainStoryboard.instantiateViewController(withIdentifier: "dummyViewController") as! dummyViewController
+                let nextViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "LinksyLogin") as! UINavigationController
             
                 self.window?.rootViewController = nextViewController
             
@@ -537,7 +543,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
             {
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let nextViewController: dummyViewController = mainStoryboard.instantiateViewController(withIdentifier: "dummyViewController") as! dummyViewController
+                let nextViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "LinksyLogin") as! UINavigationController
                 
                 self.window?.rootViewController = nextViewController
                 

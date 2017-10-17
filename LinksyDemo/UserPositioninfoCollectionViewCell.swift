@@ -13,8 +13,8 @@ class UserPositioninfoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var textViewUserCompanyName: UITextView!
     @IBOutlet weak var labelUserJobDuration: UILabel!
-    @IBOutlet weak var textViewUserCompanyinfo: UITextView!
     
+    @IBOutlet weak var textViewUserCompanyinfo: UILabel!
     
     /*
     @IBOutlet weak var textViewCompanyName: UITextView!

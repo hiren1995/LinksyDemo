@@ -162,9 +162,9 @@ class ChatOutViewViewController: UIViewController {
                     
                     // ----------- segue for loading next view controller
                     
-                    self.performSegue(withIdentifier: "ChatToMessage", sender: nil)
+                    //self.performSegue(withIdentifier: "ChatToMessage", sender: nil)
                     
-                    
+                    self.navigationController?.popViewController(animated: true)
                     
                     //print(apiresponse.result.value!)
                     

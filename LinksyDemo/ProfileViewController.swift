@@ -20,6 +20,7 @@ var tempProfiles = UserDefaults.standard
 var preferencesdefault = UserDefaults.standard
 
 
+@available(iOS 10.0, *)
 class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
    
     
@@ -1704,7 +1705,15 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                     
                     //customActivityIndicatory(self.view, startAnimate: false)
                     
-                    self.performSegue(withIdentifier: "SwipeView", sender: nil)
+                    //self.performSegue(withIdentifier: "SwipeView", sender: nil)
+                    
+                    //SwipingViewController
+                    
+                    let obj : SwipingViewController = self.storyboard?.instantiateViewController(withIdentifier: "SwipingViewController") as! SwipingViewController
+                    self.navigationController?.pushViewController(obj, animated: true)
+                    
+                    
+                   //self.navigationController?.popToRootViewController(animated: true)
 
                     
                 }
@@ -1847,7 +1856,14 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         
     }
-
+    
+    
+    @IBAction func ProfileDetails(_ sender: UIButton) {
+        
+        let obj : UserProfileInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "UserProfileInfoViewController") as! UserProfileInfoViewController
+        self.navigationController?.pushViewController(obj, animated: true)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

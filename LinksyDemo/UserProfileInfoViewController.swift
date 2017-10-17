@@ -18,7 +18,8 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
     
     @IBOutlet weak var userProfileinfoCollectionView: UICollectionView!
     
-    @IBOutlet weak var labelSummary: UITextView!
+   
+    @IBOutlet weak var labelSummary: UILabel!
     
     
     @IBOutlet weak var labelUseName: UILabel!
@@ -42,6 +43,16 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
     
     var usercompanydescription = ["Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco "]
     
+    @IBOutlet weak var InnerScrollViewUserProfile: UIView!
+    
+    @IBOutlet weak var UserProfileScrollView: UIScrollView!
+    
+    
+    @IBOutlet weak var btnBack: UIButton!
+    
+    
+    @IBOutlet weak var btnDone: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +75,13 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
         self.view.addSubview(loadingIndicator)
         
         
+        
+        btnBack.addTarget(self, action: #selector(gotoProfile), for: .touchUpInside)
+        btnDone.addTarget(self, action: #selector(gotoProfile), for: .touchUpInside)
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -82,6 +100,20 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
             labelPosInfo.text = tempdata["linkedin_login"][0]["headline"].string
             
             labelSummary.text = tempdata["linkedin_login"][0]["summary"].string
+            
+            //code for dtynamci height of summary tsxt view...
+            
+            labelSummary.numberOfLines = 0
+            
+            labelSummary.sizeToFit()
+            
+            labelSummary.textAlignment = NSTextAlignment.justified
+            
+            labelSummary.translatesAutoresizingMaskIntoConstraints = true
+            
+          
+            userProfileinfoCollectionView.reloadData()
+            
             
             labelUseName.text = tempdata["linkedin_login"][0]["user_firstName"].string! + " " + tempdata["linkedin_login"][0]["user_lastName"].string!
            
@@ -102,10 +134,8 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
             
         }
         
-        
     }
-    
-  
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         //return userposition.count
@@ -127,16 +157,43 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
             
             print(tempdata)
             
-            userinfocell.textViewUserCompanyName.text = tempdata["position_data"][indexPath.row]["title"].string
+            userinfocell.textViewUserCompanyName.text = tempdata["position_data"][indexPath.row]["company_name"].string
             userinfocell.labelUserJobDuration.text = tempdata["position_data"][indexPath.row]["join_year"].string
-            userinfocell.textViewUserCompanyinfo.text = tempdata["position_data"][indexPath.row]["industry"].string
-            
+            userinfocell.textViewUserCompanyinfo.text = tempdata["position_data"][indexPath.row]["title"].string
+           
         }
         
         //userinfocell.textViewUserCompanyName.text = userposition[indexPath.row]
         //userinfocell.labelUserJobDuration.text = userduration[indexPath.row]
         //userinfocell.textViewUserCompanyinfo.text = usercompanydescription[indexPath.row]
         
+        
+        
+        //----------------------- code for dynamic size of collection view -----------------------------
+        
+        userProfileinfoCollectionView.translatesAutoresizingMaskIntoConstraints = true
+        
+        userProfileinfoCollectionView.layoutIfNeeded()
+        
+        self.userProfileinfoCollectionView.frame = CGRect(x: self.userProfileinfoCollectionView.frame.origin.x, y: self.labelSummary.frame.origin.y + self.labelSummary.frame.size.height + 30, width: self.userProfileinfoCollectionView.frame.size.width, height: self.userProfileinfoCollectionView.contentSize.height)
+        
+        self.userProfileinfoCollectionView.translatesAutoresizingMaskIntoConstraints = true
+        
+        //self.userProfileinfoCollectionView.reloadData()
+        
+        
+        
+        
+        
+        //------------------------dynamic height of scroll view---------------
+        
+        self.InnerScrollViewUserProfile.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewUserProfile.frame.width, height: labelSummary.frame.origin.y + labelSummary.frame.height + userProfileinfoCollectionView.frame.height + 125 )
+        
+        //self.InnerScrollViewUserProfile.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewUserProfile.frame.width, height:  2000)
+        
+        
+        self.UserProfileScrollView.contentSize = CGSize(width: self.UserProfileScrollView.contentSize.width, height: self.InnerScrollViewUserProfile.frame.height)
+      
         return userinfocell
     }
      
@@ -242,6 +299,14 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
         
         
     }
+    
+    
+    func gotoProfile()
+    {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+   
     
     
     

@@ -35,6 +35,7 @@ var loadingIndicator = UIActivityIndicatorView()
 
 
 
+@available(iOS 10.0, *)
 class dummyViewController: UIViewController{
 
     
@@ -152,8 +153,10 @@ class dummyViewController: UIViewController{
                         
                         spinnerActivity.hide(animated: true)
                         
-                        self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
+                        //self.performSegue(withIdentifier: "ProfileSegue", sender: nil)
                         
+                        let obj : ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+                        self.navigationController?.pushViewController(obj, animated: true)
                     
                         
                         /*

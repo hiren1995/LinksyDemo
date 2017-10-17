@@ -18,6 +18,7 @@ var ConnList = UserDefaults.standard
 
 
 
+@available(iOS 10.0, *)
 class SwipingViewController: UIViewController {
     
     
@@ -419,12 +420,12 @@ class SwipingViewController: UIViewController {
         
         ImgRipple.layer.zPosition = 1
 
+ 
         
         //-------------------------------------------Ripple Effect Code------------------------------------
+       
         
-        
-        
-        UIView.animate(withDuration: 5.0, animations: {
+        UIView.animate(withDuration: 5.0 ,animations: {
         
         //UIView.animate(withDuration: 5.0, delay: 5.0 , options: UIViewAnimationOptions.allowAnimatedContent , animations: {
             
@@ -437,8 +438,9 @@ class SwipingViewController: UIViewController {
             
             
             
-            self.dummyImgView.transform = CGAffineTransform(rotationAngle: (30 * 3.14)/180)
             
+            self.dummyImgView.transform = CGAffineTransform(rotationAngle: (30 * 3.14)/180)
+           
             self.imgsymbol.isHidden = true
             
             self.ViewBtn.isHidden = true
@@ -741,13 +743,16 @@ class SwipingViewController: UIViewController {
                     
                     // ----------- segue for loading next view controller
                     
-                    self.performSegue(withIdentifier: "MsgSegue", sender: nil)
+                    //self.performSegue(withIdentifier: "MsgSegue", sender: nil)
                     
-                    
-                    
+                    //let a12 = ProfileViewController()
+                   
+                    //self.navigationController?.pushViewController(a12, animated: true)
                     //print(apiresponse.result.value!)
                     
-                    
+                    let obj : MessageViewController = self.storyboard?.instantiateViewController(withIdentifier: "MessageViewController") as! MessageViewController
+                    self.navigationController?.pushViewController(obj, animated: true)
+                   
                     
                 }
                 else
@@ -823,7 +828,11 @@ class SwipingViewController: UIViewController {
                         
                         spinnerActivity.hide(animated: true)
                         
-                        self.performSegue(withIdentifier: "ConnectionListSegue", sender: nil)
+                        //self.performSegue(withIdentifier: "ConnectionListSegue", sender: nil)
+                        
+                        let obj : MatchesViewController = self.storyboard?.instantiateViewController(withIdentifier: "MatchesViewController") as! MatchesViewController
+                        self.navigationController?.pushViewController(obj, animated: true)
+
                         
                         
                     }
@@ -854,10 +863,16 @@ class SwipingViewController: UIViewController {
     
     @IBAction func backtoProfile(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "SwipetoProfile", sender: nil)
+        //self.performSegue(withIdentifier: "SwipetoProfile", sender: nil)
         
         //let objViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         //self.navigationController?.pushViewController(objViewController, animated: true)
+        
+        let obj : ProfileViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        self.navigationController?.pushViewController(obj, animated: true)
+        
+        //self.navigationController?.popViewController(animated: true)
+       
     
     }
     

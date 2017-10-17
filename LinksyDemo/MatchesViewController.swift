@@ -16,6 +16,7 @@ var MatchCellSelected = UserDefaults.standard
 var MatchIdSelected = UserDefaults.standard
 
 
+@available(iOS 10.0, *)
 class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
   
     
@@ -36,9 +37,17 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     @IBOutlet weak var labelNewMsgIcon: UILabel!
     
+    
+    @IBOutlet weak var labelNoMatches: UILabel!
+    
+    
+    @IBOutlet weak var countInfoView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        labelNoMatches.isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadMatches(_:)), name: NSNotification.Name(rawValue: "MatchNotification"), object: nil)
         
@@ -66,6 +75,8 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         
         labelmessage.text = tempdatas["chat_msgs"].stringValue
+        
+        labelNewMsgIcon.isHidden = true
        
     }
     
@@ -83,6 +94,13 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         let x = tempx["new_matches"]
         
         labelMatches.text = x.stringValue
+        
+        if(tempx["User's_match_List"].count == 0)
+        {
+            labelNoMatches.isHidden = false
+            countInfoView.isHidden = true
+        }
+        
         
         return tempx["User's_match_List"].count
         
@@ -215,7 +233,10 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
                 
                 spinnerActivity.hide(animated: true)
                 
-                self.performSegue(withIdentifier: "MatchesToInfo", sender: nil)
+                //self.performSegue(withIdentifier: "MatchesToInfo", sender: nil)
+                
+                let obj : ProfileInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileInfoViewController") as! ProfileInfoViewController
+                self.navigationController?.pushViewController(obj, animated: true)
             }
             else
             {
@@ -291,7 +312,9 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
                     spinnerActivity.hide(animated: true)
                    
                     
-                    self.performSegue(withIdentifier: "MatchesToSwipe", sender: nil)
+                    //self.performSegue(withIdentifier: "MatchesToSwipe", sender: nil)
+                    
+                    self.navigationController?.popViewController(animated: true)
                     
                     
                 }
@@ -358,7 +381,10 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
                     
                     spinnerActivity.hide(animated: true)
                     
-                    self.performSegue(withIdentifier: "MatchestoMsg", sender: nil)
+                    //self.performSegue(withIdentifier: "MatchestoMsg", sender: nil)
+                    
+                    let obj : MessageViewController = self.storyboard?.instantiateViewController(withIdentifier: "MessageViewController") as! MessageViewController
+                    self.navigationController?.pushViewController(obj, animated: true)
                     
                     //print(apiresponse.result.value!)
                     

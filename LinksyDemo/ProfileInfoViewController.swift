@@ -21,10 +21,16 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
     @IBOutlet weak var labelinfo: UITextView!
     
     @IBOutlet weak var profileInfoCollectionView: UICollectionView!
-    
-    @IBOutlet weak var labelSummary: UITextView!
+   
     @IBOutlet weak var labelName: UILabel!
     
+    
+    @IBOutlet weak var labelSummary: UILabel!
+    
+    @IBOutlet weak var InnerScrollViewProfileInfo: UIView!
+    
+    
+    @IBOutlet weak var ScrollViewProfileInfo: UIScrollView!
     
     
     var position = ["Chairman and CEO Netflix"]
@@ -45,6 +51,19 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
         profileInfoCollectionView.dataSource = self
         profileInfoCollectionView.delegate = self
         
+        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+        loadingIndicator.transform = transform
+        loadingIndicator.center = self.view.center
+        loadingIndicator.activityIndicatorViewStyle = .gray
+        self.view.addSubview(loadingIndicator)
+
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         
         if let otherusrinfo = MatchCellSelected.object(forKey: "MatchCellSelected") as Any?
         {
@@ -52,37 +71,20 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
             
             print(tempdata)
             
-           labelinfo.text = tempdata["Match_user_details"][0]["headline"].string!
+            labelinfo.text = tempdata["Match_user_details"][0]["headline"].string!
             
             labelName.text = tempdata["Match_user_details"][0]["user_firstName"].string! + " " + tempdata["Match_user_details"][0]["user_lastName"].string!
-
+            
             
             labelSummary.text = tempdata["Match_user_details"][0]["summary"].string!
             
-           
-            /*
- 
-             let size: CGSize = topicarray[indexPath.row].size(attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)])
-             
-             cellSize = CGSize(width: size.width + 35.0, height: 23)
-             
-             
-             //Calculate the expected size based on the font and linebreak mode of your label
-             // FLT_MAX here simply means no constraint in height
-             CGSize maximumLabelSize = CGSizeMake(296, FLT_MAX);
-             
-             CGSize expectedLabelSize = [yourString sizeWithFont:yourLabel.font constrainedToSize:maximumLabelSize lineBreakMode:yourLabel.lineBreakMode];
-             
-             //adjust the label the the new height.
-             CGRect newFrame = yourLabel.frame;
-             newFrame.size.height = expectedLabelSize.height;
-             yourLabel.frame = newFrame;
-             
-             
-             
-             CGSize expectedLabelSize = [tempdata["Match_user_details"][0]["summary"].string! sizeWithFont:labelSummary.font constrainedToSize:maximumLabelSize lineBreakMode:labelSummary.lineBreakMode]
- 
-             */
+            labelSummary.numberOfLines = 0
+            
+            labelSummary.sizeToFit()
+            
+            labelSummary.textAlignment = NSTextAlignment.justified
+            
+            labelSummary.translatesAutoresizingMaskIntoConstraints = true
             
            
             
@@ -97,23 +99,20 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
                 }
             }
             
+            profileInfoCollectionView.reloadData()
+            
         }
-        
-        
-        
-        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
-        loadingIndicator.transform = transform
-        loadingIndicator.center = self.view.center
-        loadingIndicator.activityIndicatorViewStyle = .gray
-        self.view.addSubview(loadingIndicator)
-
-        
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return position.count
+        
+        let counttemp = JSON( MatchCellSelected.object(forKey: "MatchCellSelected")!)
+        
+        return counttemp["Match_user_details"].count
+        
+        //return position.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -135,12 +134,38 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
                        
             infocell.textViewCompanyName.text = tempdata["Match_user_details"][indexPath.row]["title"].string!
             infocell.labelJobDuration.text = tempdata["Match_user_details"][indexPath.row]["join_year"].string!
-            infocell.textViewCompanyinfo.text = tempdata["Match_user_details"][indexPath.row]["industry"].string!
+            infocell.textViewCompanyinfo.text = tempdata["Match_user_details"][indexPath.row]["company_name"].string!
 
             
         }
         
-                return infocell
+        //----------------------- code for dynamic size of collection view -----------------------------
+        
+        profileInfoCollectionView.translatesAutoresizingMaskIntoConstraints = true
+        
+        profileInfoCollectionView.layoutIfNeeded()
+        
+        self.profileInfoCollectionView.frame = CGRect(x: self.profileInfoCollectionView.frame.origin.x, y: self.labelSummary.frame.origin.y + self.labelSummary.frame.size.height + 50, width: self.profileInfoCollectionView.frame.size.width, height: self.profileInfoCollectionView.contentSize.height)
+        
+        self.profileInfoCollectionView.translatesAutoresizingMaskIntoConstraints = true
+        
+        //self.userProfileinfoCollectionView.reloadData()
+        
+        
+        
+        
+        
+        //------------------------dynamic height of scroll view---------------
+        
+        self.InnerScrollViewProfileInfo.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewProfileInfo.frame.width, height: labelSummary.frame.origin.y + labelSummary.frame.height + profileInfoCollectionView.frame.height + 265 )
+        
+        //self.InnerScrollViewUserProfile.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewUserProfile.frame.width, height:  2000)
+        
+        
+        self.ScrollViewProfileInfo.contentSize = CGSize(width: self.ScrollViewProfileInfo.contentSize.width, height: self.InnerScrollViewProfileInfo.frame.height)
+        
+        
+        return infocell
     }
     
     @IBAction func DeleteMatch(_ sender: UIButton) {
@@ -201,8 +226,9 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
                             
                             spinnerActivity.hide(animated: true)
                             
-                            self.performSegue(withIdentifier: "ProfileVcToMatchVc", sender: nil)
+                            //self.performSegue(withIdentifier: "ProfileVcToMatchVc", sender: nil)
                             
+                             self.navigationController?.popViewController(animated: true)
                             
                         }
                         else
@@ -287,7 +313,9 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
                     
                     spinnerActivity.hide(animated: true)
                     
-                    self.performSegue(withIdentifier: "ProfileVcToMatchVc", sender: nil)
+                    //self.performSegue(withIdentifier: "ProfileVcToMatchVc", sender: nil)
+                    
+                     self.navigationController?.popViewController(animated: true)
                     
                     
                 }
