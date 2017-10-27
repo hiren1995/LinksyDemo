@@ -762,6 +762,39 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
        
         if(tempsendid != JSON.null)
         {
+           
+            
+            let imgData = UIImageJPEGRepresentation(sendImg!, 0.2)!
+            
+            let parameters:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2"]
+            
+            Alamofire.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imgData, withName: "fileset",fileName: "file.jpg", mimeType: "image/jpg")
+                for (key, value) in parameters {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                }
+            },
+             
+            to:baseUrl+"user/send_chat_message")
+            { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    
+                    upload.uploadProgress(closure: { (progress) in
+                        print("Upload Progress: \(progress.fractionCompleted)")
+                    })
+                    
+                    upload.responseJSON { response in
+                        
+                        print(response.result.value)
+                        
+                    }
+                    
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+            }
+           
             
             /*
             Alamofire.upload(multipartFormData: { (form) in
@@ -778,7 +811,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
             })
             */
             
+           
             
+            /*
             Alamofire.request(self.baseUrl+"user/send_chat_message", method: HTTPMethod.post, parameters: sendmsgdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
                 
                 if((apiresponse.response) != nil)
@@ -802,7 +837,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                 
             }
             
-            
+            */
         }
     }
     

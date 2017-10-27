@@ -619,11 +619,13 @@
 					};
 					2DDAE3641F16204C00BD9013 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3NWJFVU6RP;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2DDAE3501F16204B00BD9013;
 					};
 					2DDAE36F1F16204C00BD9013 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3NWJFVU6RP;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2DDAE3501F16204B00BD9013;
 					};
@@ -987,6 +989,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Inayat  Patel (PP9B4GPB5W)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1005,7 +1008,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "30440578-9ae0-48a2-b231-19849977dc68";
+				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Certificate New";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1038,6 +1042,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Inayat  Patel (PP9B4GPB5W)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1049,7 +1054,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "30440578-9ae0-48a2-b231-19849977dc68";
+				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Certificate New";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -1070,9 +1076,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.Linksy;
 				PRODUCT_NAME = Linksy;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Profile";
+				PROVISIONING_PROFILE = "30440578-9ae0-48a2-b231-19849977dc68";
+				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Certificate New";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1090,9 +1097,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.barodacoders.Linksy;
 				PRODUCT_NAME = Linksy;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Profile";
+				PROVISIONING_PROFILE = "30440578-9ae0-48a2-b231-19849977dc68";
+				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Certificate New";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
