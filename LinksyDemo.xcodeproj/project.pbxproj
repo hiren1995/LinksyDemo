@@ -162,6 +162,7 @@
 		2D7932341F21CEA700E1E61B /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		2D7932371F21D33900E1E61B /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2D7932391F21E56A00E1E61B /* ChatScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatScreenViewController.swift; sourceTree = "<group>"; };
+		2D991BA21FA4B11000F0E6FA /* ImageCropper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageCropper-Bridging-Header.h"; sourceTree = "<group>"; };
 		2D9E6E661F25C299001DE91B /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
 		2D9E6E691F25D350001DE91B /* PositioninfoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositioninfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DB1F8491F8660D2002572E2 /* LinksyDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinksyDemo.xcdatamodel; sourceTree = "<group>"; };
@@ -387,6 +388,7 @@
 			children = (
 				2DF008571F5D35830098440C /* LinksyDemo.entitlements */,
 				2DB1F8481F8660D2002572E2 /* LinksyDemo.xcdatamodeld */,
+				2D991BA21FA4B11000F0E6FA /* ImageCropper-Bridging-Header.h */,
 				2D03BEEF1F18A64600D5E5AD /* libraries */,
 				2DDAE3541F16204B00BD9013 /* AppDelegate.swift */,
 				2DDAE3561F16204B00BD9013 /* ViewController.swift */,
@@ -1078,6 +1080,7 @@
 				PRODUCT_NAME = Linksy;
 				PROVISIONING_PROFILE = "30440578-9ae0-48a2-b231-19849977dc68";
 				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Certificate New";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "/Users/applemacmini/Desktop/iOS projects/LinksyDemo/LinksyDemo/ImageCropper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1099,6 +1102,7 @@
 				PRODUCT_NAME = Linksy;
 				PROVISIONING_PROFILE = "30440578-9ae0-48a2-b231-19849977dc68";
 				PROVISIONING_PROFILE_SPECIFIER = "Linksy Development Certificate New";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "/Users/applemacmini/Desktop/iOS projects/LinksyDemo/LinksyDemo/ImageCropper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
