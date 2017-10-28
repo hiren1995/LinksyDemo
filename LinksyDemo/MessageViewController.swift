@@ -115,7 +115,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             let tempdata = JSON(userinfo)
             
             
-            //print(tempdata)
+            print(tempdata)
             
             //print(tempdata["User's Chat List"][0]["msg_name"])
             //print(tempdata["User's Chat List"][1]["msg_name"])
@@ -131,7 +131,10 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                 
                 msgcell.labelLastMsg.text = "No Messages To Show yet"
             }
-            
+            else if(tempdata["User's Chat List"][indexPath.row]["last_msg"].string == "no message")
+            {
+                 msgcell.labelLastMsg.text = "Image"
+            }
             
             else
             {

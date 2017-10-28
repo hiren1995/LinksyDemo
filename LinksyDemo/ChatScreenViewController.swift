@@ -740,7 +740,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         }
         
         self.dismiss(animated: true, completion: nil)
+        
         collectionView.reloadData()
+        
         
         //---------------------------------------------- used to send the messageto database---------------------
         
@@ -754,28 +756,104 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         print(chatids)
         
-        let image_data = UIImagePNGRepresentation(sendImg!)
+        //let image_data = UIImagePNGRepresentation(sendImg!)
         
-        let sendmsgdata:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2","chat_message_image": image_data!]
+        //let sendmsgdata:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2","chat_message_image": image_data!]
         
-        print(sendmsgdata)
+        //print(sendmsgdata)
        
         if(tempsendid != JSON.null)
         {
-           
+            //let imgData = UIImagePNGRepresentation(sendImg!)
             
-            let imgData = UIImageJPEGRepresentation(sendImg!, 0.2)!
+            let imgData = UIImageJPEGRepresentation(sendImg!, 80.0)
+           
+            print(imgData!.base64EncodedString())
+            
+            let parameters:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2"]
+            
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                
+                for (key, value) in parameters {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                }
+                
+                if let data = imgData{
+                    
+                    multipartFormData.append(data, withName: "chat_message_image", fileName: "image.jpg", mimeType: "image/jpg")
+                    
+                }
+                
+            },to: "https://bulale.in/linksy/api/index.php/user/send_chat_message", encodingCompletion: { (result) in
+                
+                switch result{
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        print("Succesfully uploaded")
+                        
+                        print(response.result.value)
+                        
+                    }
+                case .failure(let error):
+                    print("Error in upload: \(error.localizedDescription)")
+                   
+                }
+                
+            })
+            
+            
+            /*
+            if let data = UIImageJPEGRepresentation(sendImg!,1) {
+                let parameters: Parameters = [
+                    //"access_token" : "YourToken"
+                    
+                    "user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2"
+                    
+                ]
+                // You can change your image name here, i use NSURL image and convert into string
+                let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+                let fileName = imageURL.absoluteString
+                
+                // Start Alamofire
+                Alamofire.upload(multipartFormData: { multipartFormData in
+                    for (key,value) in parameters {
+                        multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
+                    }
+                    multipartFormData.append(data, withName: "avatar", fileName: fileName!,mimeType: "image/jpeg")
+                },
+                                 usingTreshold: UInt64.init(),
+                                 to:"https://bulale.in/linksy/api/index.php/user/send_chat_message",
+                                 method: .put,
+                                 encodingCompletion: { encodingResult in
+                                    switch encodingResult {
+                                    case .success(let upload, _, _):
+                                        upload.responJSON { response in
+                                            debugPrint(response)
+                                        }
+                                    case .failure(let encodingError):
+                                        print(encodingError)
+                                    }
+                })
+            }
+             */
+ 
+           
+            /*
+            let imgData = UIImageJPEGRepresentation(sendImg!, 1)!
+            
+            print(imgData.base64EncodedString())
             
             let parameters:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2"]
             
             Alamofire.upload(multipartFormData: { multipartFormData in
                 multipartFormData.append(imgData, withName: "fileset",fileName: "file.jpg", mimeType: "image/jpg")
                 for (key, value) in parameters {
-                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                    multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
                 }
+                multipartFormData.append(imgData, withName: "fileset", fileName: "file.jpg",mimeType: "image/jpeg")
             },
              
-            to:baseUrl+"user/send_chat_message")
+            to:"https://bulale.in/linksy/api/index.php/user/send_chat_message")
             { (result) in
                 switch result {
                 case .success(let upload, _, _):
@@ -794,7 +872,10 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                     print(encodingError)
                 }
             }
-           
+ 
+             */
+ 
+ 
             
             /*
             Alamofire.upload(multipartFormData: { (form) in
@@ -839,6 +920,8 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
             
             */
         }
+        
+        //self.dismiss(animated: true, completion: nil)
     }
     
     
