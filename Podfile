@@ -17,7 +17,7 @@ target 'LinksyDemo' do
     pod 'GoogleMaps'
     pod 'GooglePlaces'
     pod 'MBProgressHUD', '~> 1.0.0'
-
+    pod 'TOCropViewController'
 
   # Pods for LinksyDemo
 

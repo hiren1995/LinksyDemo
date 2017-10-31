@@ -36,6 +36,7 @@ PODS:
   - Pulsator (0.3.0)
   - SwiftRangeSlider (1.0.2)
   - SwiftyJSON (3.1.4)
+  - TOCropViewController (2.0.12)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - Pulsator
   - SwiftRangeSlider
   - SwiftyJSON
+  - TOCropViewController
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -65,7 +67,8 @@ SPEC CHECKSUMS:
   Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
   SwiftRangeSlider: 111f9a70b8502c6b0607bd3fcf5662f47009a90c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
 
-PODFILE CHECKSUM: cfc27fa51b337b006a288f42a9d2df8264446d80
+PODFILE CHECKSUM: 68d512dc02f7fa8de65074cc20b8f2894a7def9a
 
 COCOAPODS: 1.2.1

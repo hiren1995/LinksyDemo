@@ -20,10 +20,12 @@ import CoreData
 
 import MobileCoreServices
 
+import TOCropViewController
+
 
 @available(iOS 10.0, *)
 
-class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TOCropViewControllerDelegate{
     
   
     //NotificationCenter.default.addObserver(self , selector: #selector(loadMessages), name: "MessageNotification", object: nil)
@@ -52,8 +54,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         NotificationCenter.default.removeObserver(NSNotification.Name(rawValue: "MessageNotification"))
     }
-    
-    
+
     
     // View did load without local database connection....
     
@@ -64,6 +65,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
      
         picker.delegate = self
+    
         
         
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -383,12 +385,10 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     }
     */
     
-    override func viewWillAppear(_ animated: Bool) {
     
-       
-      
-    }
-   
+  
+    
+    
     // JSQMessages collection view functions...
     
     
@@ -511,7 +511,23 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
     }
     
- 
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        
+        let message =  self.messages[indexPath.row]
+        if message.isMediaMessage == true{
+            let mediaItem =  message.media
+            if mediaItem is JSQPhotoMediaItem{
+                let photoItem = mediaItem as! JSQPhotoMediaItem
+                let image:UIImage = photoItem.image //UIImage obtained.
+                
+                print("image obtained...")
+                
+            }
+            
+        }
+        
+        
+    }
     
     
     
@@ -716,23 +732,40 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     {
         picker.mediaTypes = [type as String]
         
-        picker.allowsEditing = true
+        //picker.allowsEditing = true
         
         present(picker, animated: true, completion: nil)
         
     }
     
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        var sendImg:UIImage? = nil
+        //var sendImg:UIImage? = nil
         
         if let pic = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
-            sendImg = pic
+            self.dismiss(animated: true, completion: nil)
             
-            let img = JSQPhotoMediaItem(image: pic)
+            //sendImg = pic
             
-            self.messages.append(JSQMessage(senderId: self.senderId, displayName: senderDisplayName, media : img))
+            let cropVC = TOCropViewController(image: pic)
+            
+            cropVC.delegate = self
+            
+            cropVC.aspectRatioPickerButtonHidden = true
+            cropVC.aspectRatioPreset = .presetSquare
+            cropVC.aspectRatioLockEnabled = true
+            cropVC.resetAspectRatioEnabled = false
+            self.present(cropVC, animated: true, completion: nil)
+            
+            
+            //print(sendImg)
+            
+            //let img = JSQPhotoMediaItem(image: pic)
+            
+            //self.messages.append(JSQMessage(senderId: self.senderId, displayName: senderDisplayName, media : img))
             
         }
         else if let vid = info[UIImagePickerControllerMediaURL] as? URL
@@ -741,9 +774,13 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
             
         }
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         
-        collectionView.reloadData()
+        
+        //collectionView.reloadData()
+        
+        
+        /*
         
         
         //---------------------------------------------- used to send the messageto database---------------------
@@ -803,134 +840,91 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                 
             })
             
-            
-            /*
-            if let data = UIImageJPEGRepresentation(sendImg!,1) {
-                let parameters: Parameters = [
-                    //"access_token" : "YourToken"
-                    
-                    "user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2"
-                    
-                ]
-                // You can change your image name here, i use NSURL image and convert into string
-                let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
-                let fileName = imageURL.absoluteString
-                
-                // Start Alamofire
-                Alamofire.upload(multipartFormData: { multipartFormData in
-                    for (key,value) in parameters {
-                        multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
-                    }
-                    multipartFormData.append(data, withName: "avatar", fileName: fileName!,mimeType: "image/jpeg")
-                },
-                                 usingTreshold: UInt64.init(),
-                                 to:"https://bulale.in/linksy/api/index.php/user/send_chat_message",
-                                 method: .put,
-                                 encodingCompletion: { encodingResult in
-                                    switch encodingResult {
-                                    case .success(let upload, _, _):
-                                        upload.responJSON { response in
-                                            debugPrint(response)
-                                        }
-                                    case .failure(let encodingError):
-                                        print(encodingError)
-                                    }
-                })
-            }
-             */
+          
+        }
  
-           
-            /*
-            let imgData = UIImageJPEGRepresentation(sendImg!, 1)!
+ 
+ */
+ 
+        //self.dismiss(animated: true, completion: nil)
+    }
+    
+    func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
+        
+        
+        let img = JSQPhotoMediaItem(image: image)
+        
+        self.messages.append(JSQMessage(senderId: self.senderId, displayName: senderDisplayName, media : img))
+        
+        collectionView.reloadData()
+        
+        dismiss(animated: true, completion: nil)
+        
+        //---------------------------------------------- used to send the messageto database---------------------
+        
+        let tempselfinfo = JSON(selfinfo!)
+        print(tempselfinfo)
+        
+        let tempsendid = JSON((sendmsgid.object(forKey: "sendmsgid"))!)
+        print(tempsendid)
+        
+        let chatids = JSON((chatId.object(forKey: "chatId"))!)
+        
+        print(chatids)
+        
+        //let image_data = UIImagePNGRepresentation(sendImg!)
+        
+        //let sendmsgdata:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2","chat_message_image": image_data!]
+        
+        //print(sendmsgdata)
+        
+        if(tempsendid != JSON.null)
+        {
+            //let imgData = UIImagePNGRepresentation(sendImg!)
             
-            print(imgData.base64EncodedString())
+            let imgData = UIImageJPEGRepresentation(image, 80.0)
+            
+            print(imgData!.base64EncodedString())
             
             let parameters:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2"]
             
-            Alamofire.upload(multipartFormData: { multipartFormData in
-                multipartFormData.append(imgData, withName: "fileset",fileName: "file.jpg", mimeType: "image/jpg")
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                
                 for (key, value) in parameters {
-                    multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
                 }
-                multipartFormData.append(imgData, withName: "fileset", fileName: "file.jpg",mimeType: "image/jpeg")
-            },
-             
-            to:"https://bulale.in/linksy/api/index.php/user/send_chat_message")
-            { (result) in
-                switch result {
+                
+                if let data = imgData{
+                    
+                    multipartFormData.append(data, withName: "chat_message_image", fileName: "image.jpg", mimeType: "image/jpg")
+                    
+                }
+                
+            },to: "https://bulale.in/linksy/api/index.php/user/send_chat_message", encodingCompletion: { (result) in
+                
+                switch result{
                 case .success(let upload, _, _):
-                    
-                    upload.uploadProgress(closure: { (progress) in
-                        print("Upload Progress: \(progress.fractionCompleted)")
-                    })
-                    
                     upload.responseJSON { response in
+                        print("Succesfully uploaded")
                         
                         print(response.result.value)
                         
                     }
+                case .failure(let error):
+                    print("Error in upload: \(error.localizedDescription)")
                     
-                case .failure(let encodingError):
-                    print(encodingError)
                 }
-            }
- 
-             */
- 
- 
-            
-            /*
-            Alamofire.upload(multipartFormData: { (form) in
-                form.append(image_data!, withName: "file", fileName: "file.jpg", mimeType: "image/jpg")
-            }, to: "https://yourawesomebackend.com", encodingCompletion: { result in
-                switch result {
-                case .success(let upload, _, _):
-                    upload.responseString { response in
-                        print(response.value)
-                    }
-                case .failure(let encodingError):
-                    print(encodingError)
-                }
+                
             })
-            */
             
-           
             
-            /*
-            Alamofire.request(self.baseUrl+"user/send_chat_message", method: HTTPMethod.post, parameters: sendmsgdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
-                
-                if((apiresponse.response) != nil)
-                {
-                    print("meaasage sent successfully..")
-                    
-                    
-                    
-                }
-                else
-                {
-                    print("Error")
-                    
-                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                    
-                    self.present(alert, animated: true, completion: nil)
-                    
-                }
-                
-            }
-            
-            */
         }
+      
+       // dismiss(animated: true, completion: nil)
         
-        //self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
-    
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
