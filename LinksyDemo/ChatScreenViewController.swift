@@ -22,7 +22,6 @@ import MobileCoreServices
 
 import TOCropViewController
 
-
 @available(iOS 10.0, *)
 
 class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TOCropViewControllerDelegate{
@@ -521,6 +520,20 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                 let image:UIImage = photoItem.image //UIImage obtained.
                 
                 print("image obtained...")
+                
+                let x = image.size.height
+                let y = image.size.width
+                
+                
+                print(x)
+                print(y)
+                
+                let imgData = UIImageJPEGRepresentation(image, 80.0)! as NSData
+                
+                UserDefaults.standard.set(imgData, forKey: "imageZoom")
+                
+                let obj : MsgImageDisplayViewController = self.storyboard?.instantiateViewController(withIdentifier: "MsgImageDisplayViewController") as! MsgImageDisplayViewController
+                self.navigationController?.pushViewController(obj, animated: true)
                 
             }
             

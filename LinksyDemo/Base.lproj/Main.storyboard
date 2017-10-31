@@ -3574,6 +3574,56 @@ Los Angeles, California</string>
             </objects>
             <point key="canvasLocation" x="3699" y="-876"/>
         </scene>
+        <!--Msg Image Display View Controller-->
+        <scene sceneID="dBM-Zp-dDv">
+            <objects>
+                <viewController storyboardIdentifier="MsgImageDisplayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lvx-xL-TBq" customClass="MsgImageDisplayViewController" customModule="Linksy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8D1-2w-dnv"/>
+                        <viewControllerLayoutGuide type="bottom" id="u3S-tE-2DI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yPM-PR-Nkt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZ3-37-W60">
+                                <rect key="frame" x="0.0" y="516" width="320" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="W6Y-CK-2rA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnBack:" destination="lvx-xL-TBq" eventType="touchUpInside" id="DUx-fi-4NA"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0GI-jn-2sv">
+                                <rect key="frame" x="0.0" y="124" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="0Bw-jU-gUs"/>
+                                    <constraint firstAttribute="width" constant="320" id="kNf-cU-oxz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u3S-tE-2DI" firstAttribute="top" secondItem="dZ3-37-W60" secondAttribute="bottom" id="6kI-n7-G58"/>
+                            <constraint firstItem="dZ3-37-W60" firstAttribute="leading" secondItem="yPM-PR-Nkt" secondAttribute="leading" id="S5t-rE-QqL"/>
+                            <constraint firstAttribute="trailing" secondItem="dZ3-37-W60" secondAttribute="trailing" id="T4e-N5-sEd"/>
+                            <constraint firstItem="0GI-jn-2sv" firstAttribute="centerX" secondItem="yPM-PR-Nkt" secondAttribute="centerX" id="WuY-Dg-Bjd"/>
+                            <constraint firstItem="0GI-jn-2sv" firstAttribute="centerY" secondItem="yPM-PR-Nkt" secondAttribute="centerY" id="eih-ZE-xMP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Image" destination="0GI-jn-2sv" id="Wn0-2b-VUH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZ0-jc-imW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11482.5" y="-2054.5774647887324"/>
+        </scene>
         <!--Chat-->
         <scene sceneID="ea4-8q-udH">
             <objects>
