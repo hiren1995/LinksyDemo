@@ -493,7 +493,7 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
                     {
                         
                         //print("gettig chat list successfully")
-                        //print(apiresponse.result.value!)
+                        print(apiresponse.result.value!)
                         
                         ConnList.set(apiresponse.result.value, forKey: "ConnList")
                         
@@ -531,7 +531,16 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
             
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        if presentedViewController == nil {
+            self.present(alert, animated: true, completion: nil)
+            
+        } else{
+            self.dismiss(animated: false, completion: {
+                self.present(alert, animated: true, completion: nil)
+            })
+        }
+        
+        //self.present(alert, animated: true, completion: nil)
         
         
     }

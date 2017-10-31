@@ -33,12 +33,19 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
     @IBOutlet weak var ScrollViewProfileInfo: UIScrollView!
     
     
+    @IBOutlet weak var btnBack: UIButton!
+    
+    
+    @IBOutlet weak var btnDone: UIButton!
+    
+    
     var position = ["Chairman and CEO Netflix"]
     
     var duration = ["Oct 1997- Present"]
     
     var companydescription = ["Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco "]
-
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +65,8 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
         loadingIndicator.activityIndicatorViewStyle = .gray
         self.view.addSubview(loadingIndicator)
 
-        
+        btnBack.addTarget(self, action: #selector(backTOMatchesVC), for: .touchUpInside)
+        btnDone.addTarget(self, action: #selector(backTOMatchesVC), for: .touchUpInside)
         
     }
     
@@ -269,75 +277,6 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
         
     }
 
-    @IBAction func backTOMatches(_ sender: Any) {
-        
-        //loadingIndicator.startAnimating()
-        
-        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        spinnerActivity.label.text = "Loading"
-        spinnerActivity.detailsLabel.text = "Please Wait!!"
-        spinnerActivity.isUserInteractionEnabled = false
-        spinnerActivity.bezelView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.25)
-        spinnerActivity.bezelView.color = UIColor.black
-        spinnerActivity.label.textColor = UIColor.white
-        spinnerActivity.detailsLabel.textColor = UIColor.white
-        spinnerActivity.activityIndicatorColor = UIColor.white
-        spinnerActivity.layer.zPosition = 1
-        
-        
-        if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
-        {
-            let tempdata = JSON(userinfo)
-            
-            //print(tempdata)
-            
-            
-            
-            let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string!]
-            
-            //print(parametersdata)
-            
-            
-            Alamofire.request(baseUrl + "user/user_matchs", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
-                
-                if((apiresponse.response) != nil )
-                {
-                    
-                    //print("gettig chat list successfully")
-                    print(apiresponse.result.value!)
-                    
-                    ConnList.set(apiresponse.result.value, forKey: "ConnList")
-                    
-                    
-                    //loadingIndicator.stopAnimating()
-                    
-                    spinnerActivity.hide(animated: true)
-                    
-                    //self.performSegue(withIdentifier: "ProfileVcToMatchVc", sender: nil)
-                    
-                     self.navigationController?.popViewController(animated: true)
-                    
-                    
-                }
-                else
-                {
-                    print("Error")
-                    
-                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                    
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-                
-            }
-            
-        }
-        
-    }
-    
-    
     func loadMatches(_ notification : NSNotification)
     {
         let x =  JSON((notification.userInfo)!)
@@ -385,6 +324,74 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
         alert.addAction(UIAlertAction(title: "Nice", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
+        
+    }
+    
+    func backTOMatchesVC()
+    {
+        //loadingIndicator.startAnimating()
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinnerActivity.label.text = "Loading"
+        spinnerActivity.detailsLabel.text = "Please Wait!!"
+        spinnerActivity.isUserInteractionEnabled = false
+        spinnerActivity.bezelView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.25)
+        spinnerActivity.bezelView.color = UIColor.black
+        spinnerActivity.label.textColor = UIColor.white
+        spinnerActivity.detailsLabel.textColor = UIColor.white
+        spinnerActivity.activityIndicatorColor = UIColor.white
+        spinnerActivity.layer.zPosition = 1
+        
+        
+        if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
+        {
+            let tempdata = JSON(userinfo)
+            
+            //print(tempdata)
+            
+            
+            
+            let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string!]
+            
+            //print(parametersdata)
+            
+            
+            Alamofire.request(baseUrl + "user/user_matchs", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+                
+                if((apiresponse.response) != nil )
+                {
+                    
+                    //print("gettig chat list successfully")
+                    print(apiresponse.result.value!)
+                    
+                    ConnList.set(apiresponse.result.value, forKey: "ConnList")
+                    
+                    
+                    //loadingIndicator.stopAnimating()
+                    
+                    spinnerActivity.hide(animated: true)
+                    
+                    //self.performSegue(withIdentifier: "ProfileVcToMatchVc", sender: nil)
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    
+                    
+                }
+                else
+                {
+                    print("Error")
+                    
+                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
+            }
+            
+        }
         
     }
     

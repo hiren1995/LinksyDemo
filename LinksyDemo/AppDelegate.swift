@@ -74,6 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         //---------------Push notification settings start---------------
         
+        
+        /*
         if #available(iOS 10.0, *) {
             let center  = UNUserNotificationCenter.current()
             center.delegate = self
@@ -95,11 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         UIApplication.shared.registerForRemoteNotifications()
         
+        */
         
         
        
         
-        /*
+        
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
         
@@ -111,9 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         application.registerForRemoteNotifications()
  
-         */
-        
-        
+ 
         /*
         let center  = UNUserNotificationCenter.current()
         center.delegate = self
@@ -362,15 +363,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
     }
   
     
-    
     /*
+    
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         print("DID RECEIVE NOTIFICATION")
         completionHandler()
+        
+        print(response)
+        
     }
+ */
     
+    
+    /*
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
@@ -711,11 +718,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
     }
 
-    
-   
-    
-    
-    
-    
+  
 }
 

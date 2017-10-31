@@ -152,7 +152,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                                         
                                         let img = JSQPhotoMediaItem(image: pic)
                                         
-                                        self.messages.append(JSQMessage(senderId: self.senderId, displayName: "sender", media : img))
+                                        self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string, displayName: "sender", media : img))
                                     }
                                 }
                             
@@ -455,6 +455,8 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         //let bubblefactory = JSQMessagesBubbleImageFactory()
         
         //return bubblefactory?.outgoingMessagesBubbleImage(with: UIColor(red: 24/255, green: 187/255, blue: 236/255, alpha: 1.0))
+        
+        
         
         return messages[indexPath.item].senderId == self.senderId ? outgoingBubble : incomingBubble
     }
@@ -941,27 +943,53 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     {
         
         
-        print("Msg notification receioved..")
+        print("Msg notification received..")
         
         //print(notification.userInfo?["send_chat_message"][0]["chat_message_text"])
         
         let tempnotify = JSON((notification.userInfo)!)
+        
+        print(tempnotify["body"])
         
         print(tempnotify["body"]["text_msg"])
        
         
         let tempsendid = JSON((sendmsgid.object(forKey: "sendmsgid"))!)
         
-        
-        
-        self.messages.append(JSQMessage(senderId: tempsendid.string , displayName: "sender", text: decodeEmojiMsg(tempnotify["body"]["text_msg"].string!)))
-        
-        self.collectionView.reloadData()
-        
-        
-        self.automaticallyScrollsToMostRecentMessage = true
-       
-        
+        if(tempnotify["body"]["chat_id"] == chat_id)
+        {
+            if(tempnotify["body"]["text_msg"].stringValue == "Send You a Photo.")
+            {
+                
+                if let imgURL = NSURL(string: tempnotify["body"]["text_img"].stringValue)
+                {
+                    print(imgURL)
+                    if let imgdata = NSData(contentsOf: imgURL as URL) {
+                        
+                        let pic = UIImage(data: imgdata as Data)!
+                        
+                        let img = JSQPhotoMediaItem(image: pic)
+                        
+                        self.messages.append(JSQMessage(senderId: tempsendid.string , displayName: "sender", media : img))
+                    }
+                }
+                
+                self.collectionView.reloadData()
+            }
+            else
+            {
+                self.messages.append(JSQMessage(senderId: tempsendid.string , displayName: "sender", text: decodeEmojiMsg(tempnotify["body"]["text_msg"].string!)))
+                
+                self.collectionView.reloadData()
+                
+                
+                self.automaticallyScrollsToMostRecentMessage = true
+                
+                
+            }
+            
+            
+        }
         
         /*
         let tempdata = JSON((userpersonalinfo.object(forKey: "userpersonalinfo"))!)

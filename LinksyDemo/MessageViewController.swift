@@ -1022,6 +1022,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
         
         
+        
+        
         alert.addAction(UIAlertAction(title: "Nice", style: UIAlertActionStyle.default, handler: {(alert: UIAlertAction!) in
             
            
@@ -1088,8 +1090,18 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             
             
         }))
-        self.present(alert, animated: true, completion: nil)
         
+        if presentedViewController == nil {
+            self.present(alert, animated: true, completion: nil)
+            
+        } else{
+            self.dismiss(animated: false, completion: {
+                self.present(alert, animated: true, completion: nil)
+            })
+            }
+        
+       
+      //self.present(alert, animated: true, completion: nil)
         
     }
     

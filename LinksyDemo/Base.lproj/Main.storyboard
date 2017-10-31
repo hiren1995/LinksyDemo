@@ -530,7 +530,7 @@ Los Angeles, California</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfd-09-8kS">
-                                                <rect key="frame" x="21" y="397" width="291" height="12"/>
+                                                <rect key="frame" x="21" y="397" width="329" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -651,7 +651,7 @@ Los Angeles, California</string>
                                             <constraint firstItem="cFL-VZ-kzh" firstAttribute="top" secondItem="4JK-g0-aUz" secondAttribute="bottom" constant="10" id="QGD-ta-Srt"/>
                                             <constraint firstItem="dLl-uD-Lv8" firstAttribute="top" secondItem="cFL-VZ-kzh" secondAttribute="bottom" constant="15" id="X0l-h3-udJ"/>
                                             <constraint firstAttribute="trailing" secondItem="cFL-VZ-kzh" secondAttribute="trailing" id="aWC-Ho-1Fb"/>
-                                            <constraint firstAttribute="trailing" secondItem="Bfd-09-8kS" secondAttribute="trailing" constant="8" id="ca9-7E-oqI"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bfd-09-8kS" secondAttribute="trailing" constant="-30" id="ca9-7E-oqI"/>
                                             <constraint firstItem="Bfd-09-8kS" firstAttribute="top" secondItem="dLl-uD-Lv8" secondAttribute="bottom" constant="8" id="coc-xc-iPU"/>
                                             <constraint firstItem="can-yL-dNB" firstAttribute="centerX" secondItem="0z9-Yl-D8J" secondAttribute="centerX" id="eSq-65-C2a"/>
                                             <constraint firstAttribute="trailing" secondItem="37G-ob-4SI" secondAttribute="trailing" id="ef0-QH-GOS"/>
@@ -1351,9 +1351,6 @@ Los Angeles, California</string>
                                             <constraint firstAttribute="width" constant="40" id="U6S-5B-E1x"/>
                                             <constraint firstAttribute="height" constant="40" id="yT3-9j-Z6j"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="backTOMatches:" destination="Yas-wD-QvX" eventType="touchUpInside" id="rxk-9T-kgd"/>
-                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-back-white" translatesAutoresizingMaskIntoConstraints="NO" id="MAs-ti-c6z">
                                         <rect key="frame" x="10" y="35" width="20" height="20"/>
@@ -1511,7 +1508,7 @@ Los Angeles, California</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTw-Zz-YbS">
-                                                <rect key="frame" x="21" y="259" width="277" height="21"/>
+                                                <rect key="frame" x="21" y="259" width="329" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="Kfs-uJ-mnh"/>
                                                 </constraints>
@@ -1546,7 +1543,7 @@ Los Angeles, California</string>
                                             <constraint firstItem="pe5-iW-kXH" firstAttribute="centerX" secondItem="rjC-f8-sV6" secondAttribute="centerX" id="2Zg-qP-wQG"/>
                                             <constraint firstAttribute="trailing" secondItem="sfG-cv-0Am" secondAttribute="trailing" id="2oG-lw-cJt"/>
                                             <constraint firstItem="VIn-wV-uus" firstAttribute="leading" secondItem="rjC-f8-sV6" secondAttribute="leading" constant="21" id="4oQ-QS-3zY"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZTw-Zz-YbS" secondAttribute="trailing" constant="22" id="5VV-K1-LZc"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZTw-Zz-YbS" secondAttribute="trailing" constant="-30" id="5VV-K1-LZc"/>
                                             <constraint firstItem="zpf-vL-TfT" firstAttribute="leading" secondItem="2XH-NT-gNo" secondAttribute="leading" id="Chq-9i-vKC"/>
                                             <constraint firstItem="4qx-qZ-bBx" firstAttribute="trailing" secondItem="zpf-vL-TfT" secondAttribute="trailing" constant="15" id="GpO-vN-v0V"/>
                                             <constraint firstItem="xiy-5x-71G" firstAttribute="centerX" secondItem="rjC-f8-sV6" secondAttribute="centerX" id="Ic4-BM-gmG"/>
@@ -1600,6 +1597,8 @@ Los Angeles, California</string>
                     <connections>
                         <outlet property="InnerScrollViewProfileInfo" destination="rjC-f8-sV6" id="cfu-RZ-zNe"/>
                         <outlet property="ScrollViewProfileInfo" destination="a2g-zW-Pte" id="zA3-j1-q2P"/>
+                        <outlet property="btnBack" destination="1tG-ZN-hnp" id="ATx-BR-eGx"/>
+                        <outlet property="btnDone" destination="4qx-qZ-bBx" id="wUo-I8-are"/>
                         <outlet property="imgpic" destination="pe5-iW-kXH" id="uLD-9u-WyR"/>
                         <outlet property="labelName" destination="g4O-aJ-zBN" id="4WQ-jV-wOJ"/>
                         <outlet property="labelSummary" destination="ZTw-Zz-YbS" id="5Gr-ta-fGy"/>
