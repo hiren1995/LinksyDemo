@@ -35,8 +35,8 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
     
     @IBOutlet weak var btnBack: UIButton!
     
-    
-    @IBOutlet weak var btnDone: UIButton!
+  
+    @IBOutlet var btnDone: UIButton!
     
     
     var position = ["Chairman and CEO Netflix"]

@@ -1598,7 +1598,7 @@ Los Angeles, California</string>
                         <outlet property="InnerScrollViewProfileInfo" destination="rjC-f8-sV6" id="cfu-RZ-zNe"/>
                         <outlet property="ScrollViewProfileInfo" destination="a2g-zW-Pte" id="zA3-j1-q2P"/>
                         <outlet property="btnBack" destination="1tG-ZN-hnp" id="ATx-BR-eGx"/>
-                        <outlet property="btnDone" destination="4qx-qZ-bBx" id="wUo-I8-are"/>
+                        <outlet property="btnDone" destination="4qx-qZ-bBx" id="yeC-hN-5Gd"/>
                         <outlet property="imgpic" destination="pe5-iW-kXH" id="uLD-9u-WyR"/>
                         <outlet property="labelName" destination="g4O-aJ-zBN" id="4WQ-jV-wOJ"/>
                         <outlet property="labelSummary" destination="ZTw-Zz-YbS" id="5Gr-ta-fGy"/>
@@ -3829,9 +3829,9 @@ Los Angeles, California</string>
         <segue reference="9VY-S6-uUl"/>
         <segue reference="Eie-do-Wb0"/>
         <segue reference="gU3-9X-Lwg"/>
-        <segue reference="yDa-jM-7S2"/>
+        <segue reference="74N-xU-Kqv"/>
         <segue reference="BMC-41-IUT"/>
-        <segue reference="Muo-lh-m21"/>
+        <segue reference="juR-7s-VYl"/>
         <segue reference="dB6-Th-Mga"/>
     </inferredMetricsTieBreakers>
 </document>
