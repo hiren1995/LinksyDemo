@@ -79,6 +79,7 @@ class ChatOutViewViewController: UIViewController {
         
         else
         {
+            /*
             let tempmsglist = JSON((msgsenderinfo.object(forKey: "msgsenderinfo"))!)
             
             labelName.text = tempmsglist["body"]["name"].string!
@@ -86,6 +87,26 @@ class ChatOutViewViewController: UIViewController {
             
             
             if let imgURL = NSURL(string: tempmsglist["body"]["image"].string!)
+            {
+                if let imgdata = NSData(contentsOf: imgURL as URL)
+                {
+                    
+                    let img = UIImage(data: imgdata as Data)
+                    
+                    imgProfile.image = img
+                    
+                    
+                    
+                }
+            }
+ 
+             */
+            
+            let listinfo = JSON(MatchCellSelected.object(forKey: "MatchCellSelected")!)
+            
+            labelName.text = listinfo["Match_user_details"][0]["user_firstName"].string! + listinfo["Match_user_details"][0]["user_lastName"].string!
+            
+            if let imgURL = NSURL(string: listinfo["Match_user_details"][0]["user_profilepic"].string!)
             {
                 if let imgdata = NSData(contentsOf: imgURL as URL)
                 {

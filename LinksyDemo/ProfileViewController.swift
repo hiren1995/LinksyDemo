@@ -461,7 +461,11 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                         
                         //------------------------dynamic height of scroll view---------------
                         
-                        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+                        //self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+                        
+                        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.TopicsCollectionView.frame.origin.y + 950 + 68 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+                        
+                        self.InnerScrollView.translatesAutoresizingMaskIntoConstraints = true
                         
                         //self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height)
                         
@@ -1322,7 +1326,11 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
             
             //------------------------dynamic height of scroll view---------------
             
-            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            //self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            
+            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.TopicsCollectionView.frame.origin.y + 950 + 68 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            
+            self.InnerScrollView.translatesAutoresizingMaskIntoConstraints = true
             
             self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
             
@@ -1372,39 +1380,17 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
             
             //------------------------dynamic height of scroll view---------------
             
-            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            //self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.CompaniesCollectionView.frame.origin.y + 950 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            
+            self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.TopicsCollectionView.frame.origin.y + 950 + 68 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+            
+            self.InnerScrollView.translatesAutoresizingMaskIntoConstraints = true
             
             self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
             
 
             
             
-            
-            
-            
-            
-            
-//            CompaniesCollectionView.reloadData()
-//            
-//          
-//            
-//            self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
-//            
-//            self.CompaniesCollectionView.layoutIfNeeded()
-//            
-//                CompaniesCollectionView.frame = CGRect(x: CompaniesCollectionView.frame.origin.x, y: CompaniesCollectionView.frame.origin.y, width: CompaniesCollectionView.frame.size.width, height: CompaniesCollectionView.contentSize.height)
-//            
-//            
-//            
-//            self.CompaniesCollectionView.translatesAutoresizingMaskIntoConstraints = true
-//            
-//            CompaniesCollectionView.reloadData()
-//            
-//            //------------------------dynamic height of scroll view---------------
-//            
-//            InnerScrollView.frame = CGRect(x: 0, y: 0, width: InnerScrollView.frame.width, height: InnerScrollView.frame.height + CompaniesCollectionView.frame.height + CompaniesCollectionView.frame.origin.y)
-//            
-//            self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: InnerScrollView.frame.height)
         }
         
         txtCompany.text = nil
@@ -1479,7 +1465,11 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         //------------------------dynamic height of scroll view---------------
         
-        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height:  self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height + self.CompaniesCollectionView.frame.origin.y + 950)
+        //self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height:  self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height + self.CompaniesCollectionView.frame.origin.y + 950)
+        
+        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.TopicsCollectionView.frame.origin.y + 950 + 68 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+        
+        self.InnerScrollView.translatesAutoresizingMaskIntoConstraints = true
         
         self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
         
@@ -1542,7 +1532,14 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         //------------------------dynamic height of scroll view---------------
         
-        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height:  self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height + self.CompaniesCollectionView.frame.origin.y + 950)
+        
+        
+        //self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height:  self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height + self.CompaniesCollectionView.frame.origin.y + 950)
+        
+        
+        self.InnerScrollView.frame = CGRect(x: 0, y: 0, width: self.InnerScrollView.frame.width, height: self.TopicsCollectionView.frame.origin.y + 950 + 68 + self.CompaniesCollectionView.frame.height + self.TopicsCollectionView.frame.height)
+        
+        self.InnerScrollView.translatesAutoresizingMaskIntoConstraints = true
         
         self.ScrollView.contentSize = CGSize(width: self.ScrollView.contentSize.width, height: self.InnerScrollView.frame.height)
     }

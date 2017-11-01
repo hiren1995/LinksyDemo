@@ -11,6 +11,10 @@ import SwiftyJSON
 import Alamofire
 import MBProgressHUD
 
+
+
+
+
 class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
     let baseUrl = "https://bulale.in/linksy/api/index.php/"
@@ -31,6 +35,10 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
     
     
     @IBOutlet weak var ScrollViewProfileInfo: UIScrollView!
+    
+    
+    @IBOutlet var MainFrameViewProfileInfo: UIView!
+    
     
     
     @IBOutlet weak var btnBack: UIButton!
@@ -79,6 +87,7 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
             
             print(tempdata)
             
+            
             labelinfo.text = tempdata["Match_user_details"][0]["headline"].string!
             
             labelName.text = tempdata["Match_user_details"][0]["user_firstName"].string! + " " + tempdata["Match_user_details"][0]["user_lastName"].string!
@@ -107,11 +116,14 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
                 }
             }
             
+          
+            
             profileInfoCollectionView.reloadData()
             
         }
         
     }
+   
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -162,19 +174,26 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
         
         
         
-        
+       
         //------------------------dynamic height of scroll view---------------
         
-        self.InnerScrollViewProfileInfo.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewProfileInfo.frame.width, height: labelSummary.frame.origin.y + labelSummary.frame.height + profileInfoCollectionView.frame.height + 265 )
+        //self.InnerScrollViewProfileInfo.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewProfileInfo.frame.width, height: labelSummary.frame.origin.y + labelSummary.frame.height + profileInfoCollectionView.frame.height + 265 )
         
-        //self.InnerScrollViewUserProfile.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewUserProfile.frame.width, height:  2000)
+         self.InnerScrollViewProfileInfo.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewProfileInfo.frame.width, height: labelSummary.frame.origin.y + labelSummary.frame.height + profileInfoCollectionView.frame.height + 265)
         
+        InnerScrollViewProfileInfo.translatesAutoresizingMaskIntoConstraints = true
         
+       
         self.ScrollViewProfileInfo.contentSize = CGSize(width: self.ScrollViewProfileInfo.contentSize.width, height: self.InnerScrollViewProfileInfo.frame.height)
+        
+        //self.ScrollViewProfileInfo.frame = CGRect(x: 0, y: 0, width: self.ScrollViewProfileInfo.contentSize.width, height: self.ScrollViewProfileInfo.contentSize.height)
+        
+        //self.MainFrameViewProfileInfo.frame = CGRect(x: 0, y: 0, width: self.ScrollViewProfileInfo.contentSize.width, height: self.ScrollViewProfileInfo.contentSize.height + 68)
         
         
         return infocell
     }
+    
     
     @IBAction func DeleteMatch(_ sender: UIButton) {
         
@@ -392,6 +411,23 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
             }
             
         }
+        
+    }
+    
+    
+    
+    @IBAction func btnChat(_ sender: UIButton) {
+        
+        MsgList.removeObject(forKey: "MsgList")
+        
+        chatId.removeObject(forKey:"chatId")
+        
+        let listinfo = JSON(MatchCellSelected.object(forKey: "MatchCellSelected")!)
+
+        chatId.set(listinfo["Match_user_details"][0]["chat_id"].string!, forKey: "chatId")
+        
+        let obj : ChatOutViewViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatOutViewViewController") as! ChatOutViewViewController
+        self.navigationController?.pushViewController(obj, animated: true)
         
     }
     

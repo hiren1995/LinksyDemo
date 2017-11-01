@@ -32,7 +32,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     var x:JSON = JSON.null
     
-    let chat_id = JSON((chatId.object(forKey: "chatId"))!)
+    var chat_id = JSON(chatId.object(forKey: "chatId")!)
     
     let baseUrl = "https://bulale.in/linksy/api/index.php/"
     
@@ -106,6 +106,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         }
         
         
+       
+        
+        
         //let temp = JSON((chatMsgArray.object(forKey: "chatMsgArray"))!)
         let tempselfinfo = JSON(selfinfo!)
         
@@ -113,6 +116,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         print(chat_id)
         
+       
         let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chat_id.stringValue]
         
         print(getchatdata)

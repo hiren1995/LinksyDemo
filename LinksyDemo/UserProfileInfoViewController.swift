@@ -191,6 +191,7 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
         
         //self.InnerScrollViewUserProfile.frame = CGRect(x: 0, y: 0, width: self.InnerScrollViewUserProfile.frame.width, height:  2000)
         
+        self.InnerScrollViewUserProfile.translatesAutoresizingMaskIntoConstraints = true
         
         self.UserProfileScrollView.contentSize = CGSize(width: self.UserProfileScrollView.contentSize.width, height: self.InnerScrollViewUserProfile.frame.height)
       
