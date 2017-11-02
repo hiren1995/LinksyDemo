@@ -3609,25 +3609,38 @@ Los Angeles, California</string>
                                     <action selector="btnBack:" destination="lvx-xL-TBq" eventType="touchUpInside" id="DUx-fi-4NA"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0GI-jn-2sv">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUd-9t-Vog">
                                 <rect key="frame" x="0.0" y="124" width="320" height="320"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0GI-jn-2sv">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="0Bw-jU-gUs"/>
-                                    <constraint firstAttribute="width" constant="320" id="kNf-cU-oxz"/>
+                                    <constraint firstItem="0GI-jn-2sv" firstAttribute="height" secondItem="kUd-9t-Vog" secondAttribute="height" id="2oF-dd-fuo"/>
+                                    <constraint firstAttribute="width" constant="320" id="FLl-bD-5Gt"/>
+                                    <constraint firstAttribute="trailing" secondItem="0GI-jn-2sv" secondAttribute="trailing" id="GcR-dY-2ir"/>
+                                    <constraint firstAttribute="bottom" secondItem="0GI-jn-2sv" secondAttribute="bottom" id="KLv-10-x8d"/>
+                                    <constraint firstItem="0GI-jn-2sv" firstAttribute="top" secondItem="kUd-9t-Vog" secondAttribute="top" id="Lmk-bB-Z19"/>
+                                    <constraint firstItem="0GI-jn-2sv" firstAttribute="width" secondItem="kUd-9t-Vog" secondAttribute="width" id="MC7-TE-X4H"/>
+                                    <constraint firstAttribute="height" constant="320" id="cdZ-c8-QSD"/>
+                                    <constraint firstItem="0GI-jn-2sv" firstAttribute="leading" secondItem="kUd-9t-Vog" secondAttribute="leading" id="dv5-UX-BeI"/>
                                 </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kUd-9t-Vog" firstAttribute="centerY" secondItem="yPM-PR-Nkt" secondAttribute="centerY" id="2Fk-0C-tFy"/>
                             <constraint firstItem="u3S-tE-2DI" firstAttribute="top" secondItem="dZ3-37-W60" secondAttribute="bottom" id="6kI-n7-G58"/>
+                            <constraint firstItem="kUd-9t-Vog" firstAttribute="centerX" secondItem="yPM-PR-Nkt" secondAttribute="centerX" id="GrD-LF-z49"/>
                             <constraint firstItem="dZ3-37-W60" firstAttribute="leading" secondItem="yPM-PR-Nkt" secondAttribute="leading" id="S5t-rE-QqL"/>
                             <constraint firstAttribute="trailing" secondItem="dZ3-37-W60" secondAttribute="trailing" id="T4e-N5-sEd"/>
-                            <constraint firstItem="0GI-jn-2sv" firstAttribute="centerX" secondItem="yPM-PR-Nkt" secondAttribute="centerX" id="WuY-Dg-Bjd"/>
-                            <constraint firstItem="0GI-jn-2sv" firstAttribute="centerY" secondItem="yPM-PR-Nkt" secondAttribute="centerY" id="eih-ZE-xMP"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Image" destination="0GI-jn-2sv" id="Wn0-2b-VUH"/>
+                        <outlet property="Image" destination="0GI-jn-2sv" id="bKO-TB-GrW"/>
+                        <outlet property="ScrollView" destination="kUd-9t-Vog" id="5pz-mt-Fq5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZ0-jc-imW" userLabel="First Responder" sceneMemberID="firstResponder"/>

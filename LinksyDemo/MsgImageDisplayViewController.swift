@@ -8,27 +8,39 @@
 
 import UIKit
 
-class MsgImageDisplayViewController: UIViewController {
+class MsgImageDisplayViewController: UIViewController,UIScrollViewDelegate {
 
+    @IBOutlet var ScrollView: UIScrollView!
     
-    @IBOutlet weak var Image: UIImageView!
-    
-    
+    @IBOutlet var Image: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ScrollView.minimumZoomScale = 1.0
+        ScrollView.maximumZoomScale = 6.0
+        
+        ScrollView.bouncesZoom = false
+        ScrollView.bounces = false
+        
+        ScrollView.delegate = self
         
        let imgDataZoom = UserDefaults.standard.object(forKey: "imageZoom") as! NSData
         Image.image = UIImage(data: imgDataZoom as Data)
         
+     
         //Image.frame = CGRect(x: 0, y: 0, width: UserDefaults.standard.float(forKey: "ImageZoomWidth"), height: UserDefaults.standard.float(forKey: "ImageZoomHeight"))
         
         //Image.frame = CGRect(x: 0, y: 0, width: UserDefaults.standard.object(forKey: "ImageZoomWidth") as! CGFloat,height: UserDefaults.standard.object(forKey: "ImageZoomHeight") as! CGFloat)
         
         // Do any additional setup after loading the view.
+        
     }
 
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return Image
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,7 +53,7 @@ class MsgImageDisplayViewController: UIViewController {
         
     }
     
-    
+  
     /*
     // MARK: - Navigation
 
