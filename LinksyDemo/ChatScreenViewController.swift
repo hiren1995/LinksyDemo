@@ -55,6 +55,14 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     }
 
     
+    override func viewDidLayoutSubviews() {
+        
+       // automaticallyScrollsToMostRecentMessage = true
+        
+        self.scrollToBottom(animated: true)
+        
+    }
+    
     // View did load without local database connection....
     
     
@@ -194,7 +202,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                 }
                 
                 //-------------------- this is to move to present messages ----------------
-                self.automaticallyScrollsToMostRecentMessage = true
+                //self.automaticallyScrollsToMostRecentMessage = true
                 
                 
         }
@@ -994,7 +1002,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                 self.collectionView.reloadData()
                 
                 
-                self.automaticallyScrollsToMostRecentMessage = true
+               // self.automaticallyScrollsToMostRecentMessage = true
                 
                 
             }

@@ -1210,38 +1210,35 @@ Los Angeles, California</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-LX-Xnr" userLabel="Image new Matches">
-                                                    <rect key="frame" x="58" y="7" width="15" height="15"/>
-                                                    <color key="backgroundColor" red="0.85490196078431369" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="HFW-Zd-HeI"/>
-                                                        <constraint firstAttribute="height" constant="15" id="z2P-3X-0OT"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mko-62-QBs" userLabel="Image new Message">
-                                                    <rect key="frame" x="58" y="46" width="15" height="15"/>
+                                                    <rect key="frame" x="58" y="62" width="15" height="15"/>
                                                     <color key="backgroundColor" red="0.20392156859999999" green="0.69803921570000005" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="2GM-Ga-17P"/>
                                                         <constraint firstAttribute="width" constant="15" id="aUd-Nf-Vqp"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-LX-Xnr" userLabel="Image new Matches">
+                                                    <rect key="frame" x="58" y="22" width="15" height="15"/>
+                                                    <color key="backgroundColor" red="0.85490196078431369" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="HFW-Zd-HeI"/>
+                                                        <constraint firstAttribute="height" constant="15" id="z2P-3X-0OT"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="E6n-LX-Xnr" firstAttribute="leading" secondItem="oQI-Cz-Mkm" secondAttribute="trailing" constant="-12" id="5bd-rl-ZXX"/>
-                                            <constraint firstItem="E6n-LX-Xnr" firstAttribute="top" secondItem="aub-Cb-w4J" secondAttribute="topMargin" constant="7" id="6YR-TI-3om"/>
-                                            <constraint firstItem="Mko-62-QBs" firstAttribute="top" secondItem="E6n-LX-Xnr" secondAttribute="bottom" constant="24" id="AH9-Ud-FKE"/>
-                                            <constraint firstItem="oQI-Cz-Mkm" firstAttribute="top" secondItem="aub-Cb-w4J" secondAttribute="topMargin" constant="17" id="ATu-KK-77k"/>
-                                            <constraint firstItem="8vM-S5-oD4" firstAttribute="top" secondItem="aub-Cb-w4J" secondAttribute="top" constant="79" id="CSt-2h-g8d"/>
-                                            <constraint firstItem="Mko-62-QBs" firstAttribute="leading" secondItem="oQI-Cz-Mkm" secondAttribute="trailing" constant="-12" id="Qp2-hf-8Cx"/>
-                                            <constraint firstItem="oQI-Cz-Mkm" firstAttribute="centerX" secondItem="aub-Cb-w4J" secondAttribute="centerX" id="ZQY-ug-Df2"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="Mko-62-QBs" secondAttribute="bottom" constant="23" id="d0J-Sj-p8E"/>
-                                            <constraint firstAttribute="trailing" secondItem="8vM-S5-oD4" secondAttribute="trailing" id="mWq-lJ-UMK"/>
-                                            <constraint firstItem="8vM-S5-oD4" firstAttribute="leading" secondItem="aub-Cb-w4J" secondAttribute="leading" id="trc-A1-ZUY"/>
-                                            <constraint firstAttribute="bottom" secondItem="8vM-S5-oD4" secondAttribute="bottom" id="w04-Jd-Sh8"/>
-                                            <constraint firstItem="8vM-S5-oD4" firstAttribute="top" secondItem="oQI-Cz-Mkm" secondAttribute="bottom" constant="4" id="zGl-Vr-cPI"/>
+                                            <constraint firstItem="oQI-Cz-Mkm" firstAttribute="top" secondItem="E6n-LX-Xnr" secondAttribute="bottom" constant="-12" id="10u-Ba-hGk"/>
+                                            <constraint firstItem="oQI-Cz-Mkm" firstAttribute="centerY" secondItem="aub-Cb-w4J" secondAttribute="centerY" id="2Te-SG-SJR"/>
+                                            <constraint firstAttribute="trailing" secondItem="8vM-S5-oD4" secondAttribute="trailing" id="5lh-kg-BMp"/>
+                                            <constraint firstItem="oQI-Cz-Mkm" firstAttribute="centerX" secondItem="aub-Cb-w4J" secondAttribute="centerX" id="8VH-uR-uX8"/>
+                                            <constraint firstAttribute="bottom" secondItem="8vM-S5-oD4" secondAttribute="bottom" id="IAC-ht-NJJ"/>
+                                            <constraint firstItem="Mko-62-QBs" firstAttribute="top" secondItem="oQI-Cz-Mkm" secondAttribute="bottom" constant="-13" id="X4U-LX-YzR"/>
+                                            <constraint firstItem="Mko-62-QBs" firstAttribute="leading" secondItem="oQI-Cz-Mkm" secondAttribute="trailing" constant="-12" id="XDb-F7-eqm"/>
+                                            <constraint firstItem="8vM-S5-oD4" firstAttribute="leading" secondItem="aub-Cb-w4J" secondAttribute="leading" id="tac-NP-OMS"/>
+                                            <constraint firstItem="E6n-LX-Xnr" firstAttribute="leading" secondItem="oQI-Cz-Mkm" secondAttribute="trailing" constant="-12" id="z3k-IS-BVj"/>
                                         </constraints>
                                         <size key="customSize" width="90" height="100"/>
                                         <connections>
@@ -3688,25 +3685,28 @@ Los Angeles, California</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNi-nI-Ugk">
-                                        <rect key="frame" x="288" y="25" width="40" height="40"/>
+                                        <rect key="frame" x="283" y="25" width="40" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="W9W-iy-7VN"/>
                                             <constraint firstAttribute="height" constant="40" id="qmA-x6-OJ0"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="btnMatchinfo:" destination="95u-En-RVa" eventType="touchUpInside" id="cTO-jX-OP9"/>
+                                        </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-people" translatesAutoresizingMaskIntoConstraints="NO" id="ZbQ-8u-DJb">
-                                        <rect key="frame" x="297" y="34" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="22" id="gSU-82-7e8"/>
-                                            <constraint firstAttribute="height" constant="22" id="mKP-76-nEQ"/>
-                                        </constraints>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-back-white" translatesAutoresizingMaskIntoConstraints="NO" id="d50-je-fct">
                                         <rect key="frame" x="10" y="35" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="BY6-11-4s3"/>
                                             <constraint firstAttribute="height" constant="20" id="FKJ-GH-Go1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-people" translatesAutoresizingMaskIntoConstraints="NO" id="ZbQ-8u-DJb">
+                                        <rect key="frame" x="292" y="34" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="gSU-82-7e8"/>
+                                            <constraint firstAttribute="height" constant="22" id="mKP-76-nEQ"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -3717,13 +3717,14 @@ Los Angeles, California</string>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="68" id="BpC-4T-H3b"/>
                                     <constraint firstItem="tNx-i1-Ywc" firstAttribute="leading" secondItem="O83-gH-efY" secondAttribute="leading" id="C55-rG-GhS"/>
                                     <constraint firstItem="ZbQ-8u-DJb" firstAttribute="centerX" secondItem="LNi-nI-Ugk" secondAttribute="centerX" id="CAD-r5-OTz"/>
+                                    <constraint firstItem="ZbQ-8u-DJb" firstAttribute="centerY" secondItem="LNi-nI-Ugk" secondAttribute="centerY" id="DDc-VF-C0y"/>
                                     <constraint firstItem="upG-9z-BC2" firstAttribute="top" secondItem="O83-gH-efY" secondAttribute="top" constant="30" id="Hpf-6M-GW8"/>
                                     <constraint firstItem="tNx-i1-Ywc" firstAttribute="top" secondItem="O83-gH-efY" secondAttribute="top" constant="25" id="KqE-IM-JxP"/>
                                     <constraint firstAttribute="height" constant="68" id="Zt8-CP-zEM"/>
                                     <constraint firstItem="d50-je-fct" firstAttribute="top" secondItem="tNx-i1-Ywc" secondAttribute="bottom" constant="-30" id="bLa-Im-A8D"/>
                                     <constraint firstItem="d50-je-fct" firstAttribute="centerX" secondItem="tNx-i1-Ywc" secondAttribute="centerX" id="bqY-Mb-BzV"/>
                                     <constraint firstItem="ZbQ-8u-DJb" firstAttribute="top" secondItem="LNi-nI-Ugk" secondAttribute="bottom" constant="-31" id="bwc-4x-Gyo"/>
-                                    <constraint firstAttribute="trailing" secondItem="LNi-nI-Ugk" secondAttribute="trailing" id="cYz-gc-ypp"/>
+                                    <constraint firstAttribute="trailing" secondItem="LNi-nI-Ugk" secondAttribute="trailing" constant="5" id="cYz-gc-ypp"/>
                                     <constraint firstItem="LDD-oi-DBU" firstAttribute="leading" secondItem="upG-9z-BC2" secondAttribute="trailing" constant="8" id="jQJ-nc-EPG"/>
                                     <constraint firstItem="LDD-oi-DBU" firstAttribute="top" secondItem="O83-gH-efY" secondAttribute="top" constant="30" id="n6O-4y-BjL"/>
                                 </constraints>
@@ -3745,7 +3746,7 @@ Los Angeles, California</string>
                                     <constraint firstItem="ogc-Jy-Kx5" firstAttribute="top" secondItem="jjH-ga-4Cc" secondAttribute="top" id="COg-5R-DRo"/>
                                     <constraint firstItem="ogc-Jy-Kx5" firstAttribute="leading" secondItem="jjH-ga-4Cc" secondAttribute="leading" id="Lel-kk-c6d"/>
                                     <constraint firstAttribute="trailing" secondItem="ogc-Jy-Kx5" secondAttribute="trailing" id="Yft-bi-MG5"/>
-                                    <constraint firstAttribute="bottom" secondItem="ogc-Jy-Kx5" secondAttribute="bottom" id="qXC-Dk-LaX"/>
+                                    <constraint firstAttribute="bottom" secondItem="ogc-Jy-Kx5" secondAttribute="bottom" constant="-99" id="qXC-Dk-LaX"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -3841,7 +3842,7 @@ Los Angeles, California</string>
         <segue reference="gU3-9X-Lwg"/>
         <segue reference="74N-xU-Kqv"/>
         <segue reference="BMC-41-IUT"/>
-        <segue reference="Muo-lh-m21"/>
+        <segue reference="eUQ-0e-QCN"/>
         <segue reference="dB6-Th-Mga"/>
     </inferredMetricsTieBreakers>
 </document>

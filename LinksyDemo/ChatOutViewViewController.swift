@@ -266,8 +266,66 @@ class ChatOutViewViewController: UIViewController {
         
         
     }
-    
    
+   
+    @IBAction func btnMatchinfo(_ sender: Any) {
+        
+        MatchCellSelected.removeObject(forKey: "MatchCellSelected")
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinnerActivity.label.text = "Loading"
+        spinnerActivity.detailsLabel.text = "Please Wait!!"
+        spinnerActivity.isUserInteractionEnabled = false
+        spinnerActivity.bezelView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.25)
+        spinnerActivity.bezelView.color = UIColor.black
+        spinnerActivity.label.textColor = UIColor.white
+        spinnerActivity.detailsLabel.textColor = UIColor.white
+        spinnerActivity.activityIndicatorColor = UIColor.white
+        spinnerActivity.layer.zPosition = 1
+        
+        var match_id = JSON(chatId.object(forKey: "chatId")!)
+        
+        let userinfo = JSON(userpersonalinfo.object(forKey: "userpersonalinfo")!)
+        
+        var parametersdata = [String:String]()
+        
+        parametersdata = ["user_id":userinfo["linkedin_login"][0]["user_id"].string! ,"user_token": userinfo["linkedin_login"][0]["user_token"].string! , "user_match_id": match_id.string!]
+        
+        Alamofire.request(baseUrl+"user/user_matchs_details", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+            
+            
+            
+            if((apiresponse.response) != nil)
+            {
+                
+                
+                //print(apiresponse.result.value!)
+                
+                MatchCellSelected.set(apiresponse.result.value, forKey: "MatchCellSelected")
+                
+                
+                spinnerActivity.hide(animated: true)
+                
+                //self.performSegue(withIdentifier: "MatchesToInfo", sender: nil)
+                
+                let obj : ProfileInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileInfoViewController") as! ProfileInfoViewController
+                self.navigationController?.pushViewController(obj, animated: true)
+            }
+            else
+            {
+                print("Error")
+                
+                let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+        }
+
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
