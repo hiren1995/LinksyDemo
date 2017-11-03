@@ -224,6 +224,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         super.viewDidLoad()
         
         //self.senderId = "1"
+     
         //self.senderDisplayName = "Hiren Kadam"
         
         
@@ -386,12 +387,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
             
             
         }
-        
-        
-        
-      
-        
-        
+     
         
     }
     */

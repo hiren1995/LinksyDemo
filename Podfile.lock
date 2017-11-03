@@ -34,6 +34,14 @@ PODS:
     - IOSLinkedInAPIFix (>= 2.0.3)
   - MBProgressHUD (1.0.0)
   - Pulsator (0.3.0)
+  - Result (3.2.3)
+  - SugarRecord (3.1.2):
+    - SugarRecord/CoreData (= 3.1.2)
+    - SugarRecord/CoreData+iCloud (= 3.1.2)
+  - SugarRecord/CoreData (3.1.2):
+    - Result (~> 3.0)
+  - SugarRecord/CoreData+iCloud (3.1.2):
+    - Result (~> 3.0)
   - SwiftRangeSlider (1.0.2)
   - SwiftyJSON (3.1.4)
   - TOCropViewController (2.0.12)
@@ -48,6 +56,7 @@ DEPENDENCIES:
   - LinkedinSwift (~> 1.6.6)
   - MBProgressHUD (~> 1.0.0)
   - Pulsator
+  - SugarRecord
   - SwiftRangeSlider
   - SwiftyJSON
   - TOCropViewController
@@ -65,10 +74,12 @@ SPEC CHECKSUMS:
   LinkedinSwift: cda2916f08950f662fbec33176dc38aefc5b4c2c
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
+  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
+  SugarRecord: be6aa5c18b4a4dec0de4c1f49fc61c85eabb5328
   SwiftRangeSlider: 111f9a70b8502c6b0607bd3fcf5662f47009a90c
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
 
-PODFILE CHECKSUM: 68d512dc02f7fa8de65074cc20b8f2894a7def9a
+PODFILE CHECKSUM: d6ffb93fd9a82f4452d2413d8c1957d9b9993e1e
 
 COCOAPODS: 1.2.1

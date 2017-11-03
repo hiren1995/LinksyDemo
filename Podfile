@@ -18,6 +18,7 @@ target 'LinksyDemo' do
     pod 'GooglePlaces'
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'TOCropViewController'
+    pod 'SugarRecord'
 
   # Pods for LinksyDemo
 
