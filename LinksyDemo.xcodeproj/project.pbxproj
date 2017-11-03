@@ -69,7 +69,6 @@
 		2DDAE35F1F16204B00BD9013 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DDAE35D1F16204B00BD9013 /* LaunchScreen.storyboard */; };
 		2DDAE36A1F16204C00BD9013 /* LinksyDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDAE3691F16204C00BD9013 /* LinksyDemoTests.swift */; };
 		2DDAE3751F16204C00BD9013 /* LinksyDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDAE3741F16204C00BD9013 /* LinksyDemoUITests.swift */; };
-		2DE375781F72562200E8CFA8 /* JHProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE375771F72562200E8CFA8 /* JHProgressHUD.swift */; };
 		2DFC645E1F18F2D500937F0E /* CardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DFC645D1F18F2D500937F0E /* CardContentView.xib */; };
 		5B3809DA1DBFEF030464ABD9 /* Pods_LinksyDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E63DA1C8A90E0354AD23C2 /* Pods_LinksyDemoUITests.framework */; };
 		6C1DD0DC1F2F9FDA005BD6D8 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1DD0BA1F2F9FDA005BD6D8 /* IQNSArray+Sort.m */; };
@@ -187,7 +186,6 @@
 		2DDAE3701F16204C00BD9013 /* LinksyDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinksyDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DDAE3741F16204C00BD9013 /* LinksyDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksyDemoUITests.swift; sourceTree = "<group>"; };
 		2DDAE3761F16204C00BD9013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DE375771F72562200E8CFA8 /* JHProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHProgressHUD.swift; sourceTree = "<group>"; };
 		2DF008571F5D35830098440C /* LinksyDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinksyDemo.entitlements; sourceTree = "<group>"; };
 		2DFC645D1F18F2D500937F0E /* CardContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardContentView.xib; sourceTree = "<group>"; };
 		4F446DA56550A6A1FDFDB67B /* Pods-LinksyDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinksyDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LinksyDemo/Pods-LinksyDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -419,7 +417,6 @@
 				2D54C2BD1F30975E00EE76AA /* CompanyCollectionViewCell.swift */,
 				2DCA47FE1F4D648800FA88E9 /* ChatOutViewViewController.swift */,
 				2D702D9D1FA88B4300EEE44E /* MsgImageDisplayViewController.swift */,
-				2DE375771F72562200E8CFA8 /* JHProgressHUD.swift */,
 			);
 			path = LinksyDemo;
 			sourceTree = "<group>";
@@ -905,7 +902,6 @@
 				6C1DD0E31F2F9FDA005BD6D8 /* IQSegmentedNextPrevious.m in Sources */,
 				2D03BF391F18DBAC00D5E5AD /* Compound.swift in Sources */,
 				2D03BF3D1F18DBAC00D5E5AD /* Context.swift in Sources */,
-				2DE375781F72562200E8CFA8 /* JHProgressHUD.swift in Sources */,
 				2D03BF471F18DBAC00D5E5AD /* Priority.swift in Sources */,
 				2D03BF4F1F18DBAC00D5E5AD /* README.md in Sources */,
 				2D7932351F21CEA700E1E61B /* MessageViewController.swift in Sources */,
