@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Chats" representedClassName="Chats" syncable="YES" codeGenerationType="class">
         <attribute name="chat_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message_imagedata" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="message_img" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message_profilepic" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sender_img" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,6 +13,6 @@
         <attribute name="sent_to" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Chats" positionX="-54" positionY="-9" width="128" height="150"/>
+        <element name="Chats" positionX="-54" positionY="-9" width="128" height="195"/>
     </elements>
 </model>

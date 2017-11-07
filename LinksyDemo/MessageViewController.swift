@@ -11,6 +11,8 @@ import SwiftyJSON
 import Alamofire
 import MBProgressHUD
 import CoreData
+import SugarRecord
+import JSQMessagesViewController
 
 
 let sendmsgid = UserDefaults.standard
@@ -18,13 +20,15 @@ let sendmsgid = UserDefaults.standard
 @available(iOS 10.0, *)
 
 
-class MessageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class MessageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
 
     
     let baseUrl = "https://bulale.in/linksy/api/index.php/"
     
     
     @IBOutlet weak var btnBackToSwipe: UIButton!
+    
+    static var imgcount = 1
     
     
     var images = ["random-user1","random-user2","random-user3","random-user4","random-user5","random-user1","random-user2","random-user3","random-user4","random-user5"]
@@ -38,7 +42,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     @IBOutlet weak var labelNoChat: UILabel!
     
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -97,7 +101,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     
-    
+    /*
     
     //-----------------------cell values without connnecting the local database----------
     
@@ -180,11 +184,13 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
         
     }
- 
- 
- //-----------------------cell values connnecting the local database----------
+    */
     
-    /*
+  
+ 
+ //-----------------------cell values connnecting the local database for standard method without Sugar record library ----------
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -200,7 +206,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             let tempdata = JSON(userinfo)
             
            
-            //print(tempdata)
+            print(tempdata)
             
             //print(tempdata["User's Chat List"][0]["msg_name"])
             //print(tempdata["User's Chat List"][1]["msg_name"])
@@ -246,18 +252,18 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              
              
              
-             // Storing Core Data datas
+             // ----------------------------------Storing Core Data datas-----------------------------
              
              
              let appdelegate = UIApplication.shared.delegate as! AppDelegate
              
              let context = appdelegate.persistentContainer.viewContext
              
-             //------------------------
+             //---------------------------------------------------------------------------------------
              
              
              
-            
+            /*
              
              // Selecting data from data base.....
              
@@ -658,12 +664,12 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              
              }
              
-             
+             */
  
             
             
             
-            /*
+            
             
              let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!]
              
@@ -673,6 +679,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                 if((apiresponseMsgs.response) != nil)
                 {
                     let x = JSON(apiresponseMsgs.result.value!)
+                    
+                   // print(x)
              
                         if(x["chat_conversation_detail"].count > 0)
                         {
@@ -697,22 +705,75 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
              
                                 newUser.setValue(x["sender_img"].stringValue, forKey: "sender_img")
-             
+                                
                                 newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
-             
-             
-             
+                                
+                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_image"].string! , forKey: "message_img")
+                                
+                                //newUser.setValue(tempdata["User's Chat List"][i]["msg_profilepic"].string! , forKey: "message_img")
+                                
+                                /*
+                                if let imgURL = NSURL(string: x["chat_conversation_detail"][i]["chat_message_image"].string!)
+                                {
+                                    print(imgURL)
+                                    if let imgdata = NSData(contentsOf: imgURL as URL) {
+                                        
+                                        let pic = UIImage(data: imgdata as Data)!
+                                        
+                                        let picdata = UIImageJPEGRepresentation(pic, 1)
+                                    
+                                        newUser.setValue(picdata, forKey: "message_imagedata")
+                                        
+                                    }
+                                    else
+                                    {
+                                        newUser.setValue(nil , forKey: "message_imagedata")
+                                        
+                                    }
+                                }
+                                 */
+                                
+                                
                                 do
                                 {
                                     try context.save()
              
                                     print("Message Saved in internal database")
-             
-             
+                                    
+                                    /*
+                                    if let imgURL = NSURL(string: x["chat_conversation_detail"][i]["chat_message_image"].string!)
+                                    {
+                                        print(imgURL)
+                                        if let imgdata = NSData(contentsOf: imgURL as URL) {
+                                            
+                                            let pic = UIImage(data: imgdata as Data)!
+                                          
+                                            do {
+                                                
+                                               
+                                                
+                                                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                                                let fileURL = documentsURL.appendingPathComponent("Image-\(MessageViewController.imgcount).png")
+                                                if let pngImageData = UIImagePNGRepresentation(pic) {
+                                                    try pngImageData.write(to: fileURL, options: .atomic)
+                                                }
+                                                
+                                                MessageViewController.imgcount = MessageViewController.imgcount + 1
+                                                
+                                            } catch { }
+                                            
+                                            
+                                        }
+                                    }
+                                    */
+                                    
+                                   
+                                    
+                                   
                                 }
                                 catch
                                 {
-             //inserting process error...
+                                    //inserting process error...
              
                                 }
                             }
@@ -725,10 +786,10 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                 }
              
              }
-            */
+ 
         }
         
-        
+     
         
         
         //let msgcell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
@@ -744,7 +805,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
     }
     
-    */
+    
     
 
     
@@ -759,7 +820,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
  
-   
+    
+  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
@@ -832,12 +894,14 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
             self.navigationController?.pushViewController(obj, animated: true)
             
             
-            
         }
         
         
         
     }
+    
+ 
+    
   
     func backToSwipe()
     {

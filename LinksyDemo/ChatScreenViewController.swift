@@ -22,6 +22,10 @@ import MobileCoreServices
 
 import TOCropViewController
 
+import Kingfisher
+
+
+
 @available(iOS 10.0, *)
 
 class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,TOCropViewControllerDelegate{
@@ -66,7 +70,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     // View did load without local database connection....
     
     
-    
+    /*
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -210,16 +214,14 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         
     }
-    
+   */
     
  
     
     
     
     // View did load with local database connection...
-    
    
-   /*
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -240,22 +242,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         
         
-        
-        
-        
-      
-        
-        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
-        loadingIndicator.transform = transform
-        loadingIndicator.center = self.view.center
-        loadingIndicator.activityIndicatorViewStyle = .gray
-        self.view.addSubview(loadingIndicator)
-        
-        //loadingIndicator.startAnimating()
-        
-        
-        
+     
         
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinnerActivity.label.text = "Loading"
@@ -296,6 +283,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         print(getchatdata)
         
         
+        
+        
+        
         // Selecting data from data base...
         
         
@@ -305,6 +295,10 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         do
         {
+            
+            
+            
+            
             let results = try context.fetch(requests)
             
             if results.count > 0
@@ -318,7 +312,8 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                         if(chat_id_str == chat_id.stringValue)
                         {
                             print("chat_id = \(chat_id_str) ")
-                            print(result.value(forKey: "message_id") as? String)
+                            print(result.value(forKey: "message_img") as? String)
+                            print(result.value(forKey: "message_text") as? String)
                             
                             /*
                             if let message_id =  result.value(forKey: "message_id") as? String
@@ -341,11 +336,99 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
  
                              */
                             
-                            self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: result.value(forKey: "message_text") as! String))
+                            if(result.value(forKey: "message_img") as! String == "not found")
+                            {
+                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: result.value(forKey: "message_text") as! String))
+                                
+                                spinnerActivity.hide(animated: true)
+                                
+                                self.collectionView.reloadData()
+                                
+                                finishReceivingMessage(animated: true)
+                                
+                            }
+                            else
+                            {
+                                
+                                let img = JSQPhotoMediaItem(image: UIImage(named: "loading.gif"))
+                                
+                                img?.appliesMediaViewMaskAsOutgoing = true
+                                
+                                //self.collectionView.reloadData()
+                                
+                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, displayName: "sender", media : img))
+                                
+                                self.collectionView.reloadData()
+                                
+                                //finishReceivingMessage(animated: true)
+                                
+                                KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: result.value(forKey: "message_img") as! String)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
+                                    
+                                    
+                                    img?.image = image
+                                    
+                                    self.collectionView.reloadData()
+                                })
+                                
+                               
+                                
+                                /*
+                                if let imgURL = NSURL(string: result.value(forKey: "message_img") as! String)
+                                {
+                                    var pic:UIImage? = nil
+                                    
+                                    print(imgURL)
+                                    if let imgdata = NSData(contentsOf: imgURL as URL) {
+                                        
+                                        pic = UIImage(data: imgdata as Data)!
+                                        
+                                        
+                                        
+                                    }
+                                    else
+                                    {
+                                        pic = UIImage(named: "img_errorloading")
+                                        
+                                    }
+                                    
+                                    let img = JSQPhotoMediaItem(image: pic)
+                                    
+                                    
+                                    
+                                    self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, displayName: "sender", media : img))
+                                }
+                                */
+                                
+                                
+                                /*
+                                
+                                var pic:UIImage? = nil
+                                
+                                if(result.value(forKey: "message_imagedata") == nil)
+                                {
+                                    pic = UIImage(named: "img_errorloading")
+                                    
+                                }
+                                else
+                                {
+                                    
+                                    pic = UIImage(data: result.value(forKey: "message_imagedata") as! Data )
+                                }
+                                
+                                let img = JSQPhotoMediaItem(image: pic)
+                                
+                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, displayName: "sender", media : img))
+ 
+                                 */
+                                
+                                   //spinnerActivity.hide(animated: true)
+                                
+                                    //self.collectionView.reloadData()
+                                
+                                
+                            }
                             
-                            spinnerActivity.hide(animated: true)
                             
-                            self.collectionView.reloadData()
                             
                             
                         }
@@ -388,9 +471,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
             
         }
      
-        
+ 
     }
-    */
+ 
     
     
   
@@ -472,6 +555,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     // code for avatar image when not connected to local db
     
+    /*
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
@@ -517,6 +601,8 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
     }
+ 
+ */
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
         
@@ -555,7 +641,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     //code for avatar image when connected to local db
     
     
-    /*
+    
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
@@ -658,7 +744,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     }
     
     
-    */
+ 
     
     
     
@@ -794,80 +880,8 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
             
             
         }
-        
-        //self.dismiss(animated: true, completion: nil)
-        
-        
-        //collectionView.reloadData()
-        
-        
-        /*
-        
-        
-        //---------------------------------------------- used to send the messageto database---------------------
-        
-        let tempselfinfo = JSON(selfinfo!)
-        print(tempselfinfo)
-        
-        let tempsendid = JSON((sendmsgid.object(forKey: "sendmsgid"))!)
-        print(tempsendid)
-        
-        let chatids = JSON((chatId.object(forKey: "chatId"))!)
-        
-        print(chatids)
-        
-        //let image_data = UIImagePNGRepresentation(sendImg!)
-        
-        //let sendmsgdata:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2","chat_message_image": image_data!]
-        
-        //print(sendmsgdata)
        
-        if(tempsendid != JSON.null)
-        {
-            //let imgData = UIImagePNGRepresentation(sendImg!)
-            
-            let imgData = UIImageJPEGRepresentation(sendImg!, 80.0)
-           
-            print(imgData!.base64EncodedString())
-            
-            let parameters:[String : Any] = ["user_id":tempselfinfo["linkedin_login"][0]["user_id"].string!,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chatids.stringValue ,"chat_message_to": tempsendid.stringValue , "chat_message_type":"2"]
-            
-            Alamofire.upload(multipartFormData: { (multipartFormData) in
-                
-                for (key, value) in parameters {
-                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
-                }
-                
-                if let data = imgData{
-                    
-                    multipartFormData.append(data, withName: "chat_message_image", fileName: "image.jpg", mimeType: "image/jpg")
-                    
-                }
-                
-            },to: "https://bulale.in/linksy/api/index.php/user/send_chat_message", encodingCompletion: { (result) in
-                
-                switch result{
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                        print("Succesfully uploaded")
-                        
-                        print(response.result.value)
-                        
-                    }
-                case .failure(let error):
-                    print("Error in upload: \(error.localizedDescription)")
-                   
-                }
-                
-            })
-            
-          
-        }
- 
- 
- */
- 
-        //self.dismiss(animated: true, completion: nil)
+        
     }
     
     func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {

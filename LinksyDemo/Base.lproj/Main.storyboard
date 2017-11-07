@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="edn-Yg-XQH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="edn-Yg-XQH">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1703,7 +1703,7 @@ Los Angeles, California</string>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8DS-Pk-uE6">
-                                                    <rect key="frame" x="6" y="1" width="60" height="76"/>
+                                                    <rect key="frame" x="6" y="9" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="lN3-it-sK9"/>
                                                     </constraints>
@@ -2347,7 +2347,7 @@ Los Angeles, California</string>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXg-vX-7h6">
-                                                                    <rect key="frame" x="14" y="-8" width="85" height="24"/>
+                                                                    <rect key="frame" x="22" y="0.0" width="85" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="bNP-su-9P2"/>
                                                                         <constraint firstAttribute="width" constant="85" id="ofv-T7-gBK"/>
@@ -2357,7 +2357,7 @@ Los Angeles, California</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMC-93-uph" customClass="BEMCheckBox">
-                                                                    <rect key="frame" x="-5" y="6" width="13" height="13"/>
+                                                                    <rect key="frame" x="3" y="6" width="13" height="13"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="13" id="ISW-EO-RDl"/>
@@ -2428,7 +2428,7 @@ Los Angeles, California</string>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pp4-Zd-jwt">
-                                                                    <rect key="frame" x="12" y="-8" width="87" height="24"/>
+                                                                    <rect key="frame" x="20" y="0.0" width="87" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="bLo-EQ-MbS"/>
                                                                         <constraint firstAttribute="width" constant="87" id="wLF-BF-BcI"/>
@@ -2438,7 +2438,7 @@ Los Angeles, California</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxu-ie-2ix" customClass="BEMCheckBox">
-                                                                    <rect key="frame" x="-6" y="6" width="13" height="13"/>
+                                                                    <rect key="frame" x="2" y="6" width="13" height="13"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="13" id="Vog-ke-zma"/>
@@ -2509,7 +2509,7 @@ Los Angeles, California</string>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AI-No-PDm">
-                                                                    <rect key="frame" x="12" y="-8" width="87" height="24"/>
+                                                                    <rect key="frame" x="20" y="0.0" width="87" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="LXE-Rz-9rx"/>
                                                                         <constraint firstAttribute="width" constant="87" id="XXp-SF-nnR"/>
@@ -2519,7 +2519,7 @@ Los Angeles, California</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5K-u3-gwk" customClass="BEMCheckBox">
-                                                                    <rect key="frame" x="-5" y="6" width="13" height="13"/>
+                                                                    <rect key="frame" x="3" y="6" width="13" height="13"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="13" id="WBu-hv-Mc2"/>
@@ -2590,7 +2590,7 @@ Los Angeles, California</string>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnp-Ua-XZb">
-                                                                    <rect key="frame" x="12" y="-8" width="87" height="24"/>
+                                                                    <rect key="frame" x="20" y="0.0" width="87" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="24" id="GB9-Cg-gOC"/>
                                                                         <constraint firstAttribute="width" constant="87" id="WD7-7a-STt"/>
@@ -2600,7 +2600,7 @@ Los Angeles, California</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dok-Qs-Nq5" customClass="BEMCheckBox">
-                                                                    <rect key="frame" x="-5" y="6" width="13" height="13"/>
+                                                                    <rect key="frame" x="3" y="6" width="13" height="13"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="13" id="C9z-SR-aul"/>
@@ -2703,7 +2703,7 @@ Los Angeles, California</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOc-8p-220">
-                                                                    <rect key="frame" x="44" y="-7" width="20" height="20"/>
+                                                                    <rect key="frame" x="44" y="1" width="20" height="20"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="20" id="6J6-Hm-wJV"/>
@@ -2820,7 +2820,7 @@ Los Angeles, California</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2d-hW-JnS">
-                                                                    <rect key="frame" x="44" y="-7" width="20" height="20"/>
+                                                                    <rect key="frame" x="44" y="1" width="20" height="20"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="6Py-Ff-Fmu"/>
@@ -3858,6 +3858,6 @@ Los Angeles, California</string>
         <segue reference="74N-xU-Kqv"/>
         <segue reference="BMC-41-IUT"/>
         <segue reference="eUQ-0e-QCN"/>
-        <segue reference="dB6-Th-Mga"/>
+        <segue reference="60W-h7-V9R"/>
     </inferredMetricsTieBreakers>
 </document>

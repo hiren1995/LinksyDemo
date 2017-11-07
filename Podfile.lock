@@ -29,6 +29,7 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - Kingfisher (3.10.2)
   - LinkedinSwift (1.6.6):
     - AFNetworking (>= 2.6.3)
     - IOSLinkedInAPIFix (>= 2.0.3)
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - JSQMessagesViewController
+  - Kingfisher
   - LinkedinSwift (~> 1.6.6)
   - MBProgressHUD (~> 1.0.0)
   - Pulsator
@@ -71,6 +73,7 @@ SPEC CHECKSUMS:
   IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
   LinkedinSwift: cda2916f08950f662fbec33176dc38aefc5b4c2c
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Pulsator: 0191f14f7ab82d6dbde6fdbde42036f07a4450e3
@@ -80,6 +83,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
 
-PODFILE CHECKSUM: d6ffb93fd9a82f4452d2413d8c1957d9b9993e1e
+PODFILE CHECKSUM: 650b7131ecae0dd56bdf9ec3548d497e2c628a44
 
 COCOAPODS: 1.2.1

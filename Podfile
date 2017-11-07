@@ -19,6 +19,7 @@ target 'LinksyDemo' do
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'TOCropViewController'
     pod 'SugarRecord'
+    pod 'Kingfisher'
 
   # Pods for LinksyDemo
 
