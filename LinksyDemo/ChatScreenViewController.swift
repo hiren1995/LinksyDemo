@@ -70,7 +70,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     // View did load without local database connection....
     
     
-    /*
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -150,16 +150,38 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                     
                     if(self.x["chat_conversation_detail"].count > 0)
                     {
+                        spinnerActivity.hide(animated: true)
+                        
                         for i in 0...self.x["chat_conversation_detail"].count-1
                         {
                            if(self.x["chat_conversation_detail"][i]["chat_message_type"].string == "1")
                            {
-                                 self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
                                 self.collectionView.reloadData()
+                            
+                            
+                                self.finishReceivingMessage(animated: true)
                             }
                             
                             else
                            {
+                                let img = JSQPhotoMediaItem(image: UIImage(named: "loading.gif"))
+                            
+                                img?.appliesMediaViewMaskAsOutgoing = true
+                            
+                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string, displayName: "sender", media : img))
+                            
+                                self.collectionView.reloadData()
+                            
+                                KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: self.x["chat_conversation_detail"][i]["chat_message_image"].string!)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
+                                    
+                                    
+                                    img?.image = image
+                                    
+                                    self.collectionView.reloadData()
+                                })
+                            
+                                /*
                                 if let imgURL = NSURL(string: self.x["chat_conversation_detail"][i]["chat_message_image"].string!)
                                 {
                                     print(imgURL)
@@ -167,23 +189,24 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                                         
                                         let pic = UIImage(data: imgdata as Data)!
                                         
-                                        let img = JSQPhotoMediaItem(image: pic)
+                                        //let img = JSQPhotoMediaItem(image: pic)
                                         
                                         self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string, displayName: "sender", media : img))
                                     }
                                 }
                             
                                 self.collectionView.reloadData()
+ 
+                                */
                             
                             }
                            
-                            self.collectionView.reloadData()
+                            //self.collectionView.reloadData()
      
                         }
                         
-                        //loadingIndicator.stopAnimating()
+                        //spinnerActivity.hide(animated: true)
                         
-                        spinnerActivity.hide(animated: true)
                     }
                     else
                     {
@@ -214,13 +237,15 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         
     }
-   */
+ 
     
  
     
     
     
     // View did load with local database connection...
+    
+    /*
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -399,27 +424,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                                 }
                                 */
                                 
-                                
-                                /*
-                                
-                                var pic:UIImage? = nil
-                                
-                                if(result.value(forKey: "message_imagedata") == nil)
-                                {
-                                    pic = UIImage(named: "img_errorloading")
-                                    
-                                }
-                                else
-                                {
-                                    
-                                    pic = UIImage(data: result.value(forKey: "message_imagedata") as! Data )
-                                }
-                                
-                                let img = JSQPhotoMediaItem(image: pic)
-                                
-                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, displayName: "sender", media : img))
- 
-                                 */
+                               
                                 
                                    //spinnerActivity.hide(animated: true)
                                 
@@ -436,26 +441,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                         
                     }
                     
-                    
-                    /*
-                    if let message_id =  result.value(forKey: "message_id") as? String
-                    {
-                        
-                        print("message_id = \(message_id)")
-                    }
-                    
-                    if let sent_by =  result.value(forKey: "sent_by") as? String
-                    {
-                        
-                        print("sent_by = \(sent_by)")
-                    }
-                    
-                    if let message_text =  result.value(forKey: "message_text") as? String
-                    {
-                        
-                        print("message_text = \(message_text)")
-                    }
-                    */
+                  
                    
                 }
                 
@@ -473,7 +459,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
      
  
     }
- 
+ */
     
     
   
@@ -555,7 +541,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     // code for avatar image when not connected to local db
     
-    /*
+    
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
@@ -602,7 +588,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
     }
  
- */
+ 
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
         
@@ -640,7 +626,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     //code for avatar image when connected to local db
     
-    
+   /*
     
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
@@ -743,7 +729,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
     }
     
-    
+    */
  
     
     

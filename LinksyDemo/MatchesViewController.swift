@@ -43,6 +43,8 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     @IBOutlet weak var countInfoView: UIView!
     
+    var refreshControl: UIRefreshControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +79,13 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         labelmessage.text = tempdatas["chat_msgs"].stringValue
         
         labelNewMsgIcon.isHidden = true
+        
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        
+        MatchesCollectionView.refreshControl = refreshControl
        
     }
     
@@ -545,7 +554,52 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         
     }
     
-    
+    func refresh()
+    {
+        if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
+        {
+            let tempdata = JSON(userinfo)
+            
+            //print(tempdata)
+            
+            
+            
+            let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string!]
+            
+            //print(parametersdata)
+            
+            
+            Alamofire.request(self.baseUrl + "user/user_matchs", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+                
+                if((apiresponse.response) != nil )
+                {
+                    
+                    //print("gettig chat list successfully")
+                    print(apiresponse.result.value!)
+                    
+                    ConnList.set(apiresponse.result.value, forKey: "ConnList")
+                    
+                }
+                else
+                {
+                    print("Error")
+                    
+                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
+            }
+         
+        }
+       
+        MatchesCollectionView.reloadData()
+        
+        refreshControl.endRefreshing()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

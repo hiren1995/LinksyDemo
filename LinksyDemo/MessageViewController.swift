@@ -42,6 +42,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     
     @IBOutlet weak var labelNoChat: UILabel!
     
+    var refreshControl: UIRefreshControl!
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +69,14 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         loadingIndicator.activityIndicatorViewStyle = .gray
         self.view.addSubview(loadingIndicator)
         
+        
+        
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        
+        MessageCollectionView.refreshControl = refreshControl
         
         // Do any additional setup after loading the view.
     }
@@ -101,7 +111,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
     }
     
     
-    /*
+    
     
     //-----------------------cell values without connnecting the local database----------
     
@@ -184,13 +194,13 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
         
     }
-    */
+ 
     
   
  
  //-----------------------cell values connnecting the local database for standard method without Sugar record library ----------
     
-    
+    /*
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -263,7 +273,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              
              
              
-            /*
+            
              
              // Selecting data from data base.....
              
@@ -386,13 +396,14 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                                     
                                                     newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
                                                     
-                                                    
+                                                    newUser.setValue(x["chat_conversation_detail"][i]["chat_message_image"].string! , forKey: "message_img")
                                                     
                                                     do
                                                     {
                                                         try context.save()
                                                         
-                                                        print("User Saved in internal database")
+                                                        print("Message Saved in internal database")
+                                                        
                                                         
                                                         
                                                     }
@@ -604,6 +615,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                             {
                                 let x = JSON(apiresponseMsgs.result.value!)
                                 
+                                // print(x)
+                                
                                 if(x["chat_conversation_detail"].count > 0)
                                 {
                                     for i in 0...x["chat_conversation_detail"].count-1
@@ -630,7 +643,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                         
                                         newUser.setValue(self.decodeEmojiMsg(x["chat_conversation_detail"][i]["chat_message_text"].string!) , forKey: "message_text")
                                         
-                                        
+                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_image"].string! , forKey: "message_img")
                                         
                                         do
                                         {
@@ -638,6 +651,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                             
                                             print("Message Saved in internal database")
                                             
+                                           
                                             
                                         }
                                         catch
@@ -664,12 +678,12 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              
              }
              
-             */
+ 
  
             
             
             
-            
+            /*
             
              let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!]
              
@@ -787,6 +801,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              
              }
  
+            
+            */
         }
         
      
@@ -804,7 +820,10 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
         
     }
-    
+ 
+ 
+ 
+ */
     
     
 
@@ -933,15 +952,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                 
                 if((apiresponse.response) != nil)
                 {
-                    
-                    //print(JSON(apiresponse.result.value!))
-                    
+                   
                     tempProfiles.set(apiresponse.result.value, forKey: "otherUserProfiles")
-                    
-                    //print(JSON(tempProfiles))
-                    
-                    
-                    //loadingIndicator.stopAnimating()
                     
                     spinnerActivity.hide(animated: true)
                     
@@ -950,6 +962,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                     
                     //let obj : SwipingViewController = self.storyboard?.instantiateViewController(withIdentifier: "SwipingViewController") as! SwipingViewController
                     //self.navigationController?.pushViewController(obj, animated: true)
+                    
                     
                     self.navigationController?.popViewController(animated: true)
                     
@@ -1170,6 +1183,57 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
     }
     
+    func refresh()
+    {
+        
+        if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
+        {
+            let tempdata = JSON(userinfo)
+            
+            //print(tempdata)
+            
+            
+            
+            let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string!]
+            
+            //print(parametersdata)
+            
+            
+            Alamofire.request(self.baseUrl + "user/user_chat_list", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+                
+                if((apiresponse.response) != nil)
+                {
+                    
+                    //print("gettig chat list successfully")
+                    
+                    print(JSON(apiresponse.result.value!))
+                    
+                    MsgList.set(apiresponse.result.value, forKey: "MsgList")
+                   
+                }
+                else
+                {
+                    print("Error")
+                    
+                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
+            }
+            
+            
+            
+            
+        }
+        
+        MessageCollectionView.reloadData()
+        
+        refreshControl.endRefreshing()
+    }
     
     func decodeEmojiMsg(_ s: String) -> String? {
         let data = s.data(using: .utf8)!
