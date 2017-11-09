@@ -20,6 +20,8 @@ var tempProfiles = UserDefaults.standard
 var preferencesdefault = UserDefaults.standard
 
 
+
+
 @available(iOS 10.0, *)
 class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
    
@@ -78,9 +80,14 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
     @IBOutlet weak var imgProfilePic: UIImageView!
     
 
+    //buttons in profile page
+    
     @IBOutlet weak var btnSave: UIButton!
     
     @IBOutlet weak var btnBack: UIButton!
+    
+    
+    @IBOutlet var switchSound: UISwitch!
     
     
     
@@ -191,6 +198,8 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         btnDone.addTarget(self, action: #selector(loadingurl), for: .touchUpInside)
         
         btnLogout.addTarget(self, action: #selector(signout), for: .touchUpInside)
+        
+        switchSound.addTarget(self, action: #selector(soundSetting), for: .valueChanged)
         
         
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -1875,43 +1884,65 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    func customActivityIndicatory(_ viewContainer: UIView, startAnimate:Bool? = true) -> UIActivityIndicatorView {
-        let mainContainer: UIView = UIView(frame: viewContainer.frame)
-        mainContainer.center = viewContainer.center
-        mainContainer.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 255/255)
-        mainContainer.alpha = 0.5
-        mainContainer.tag = 789456123
-        mainContainer.isUserInteractionEnabled = false
-        
-        let viewBackgroundLoading: UIView = UIView(frame: CGRect(x:0,y: 0,width: 80,height: 80))
-        viewBackgroundLoading.center = viewContainer.center
-        viewBackgroundLoading.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0/255)
-        viewBackgroundLoading.alpha = 0.5
-        viewBackgroundLoading.clipsToBounds = true
-        viewBackgroundLoading.layer.cornerRadius = 15
-        
-        let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
-        activityIndicatorView.frame = CGRect(x:0.0,y: 0.0,width: 40.0, height: 40.0)
-        activityIndicatorView.activityIndicatorViewStyle =
-            UIActivityIndicatorViewStyle.whiteLarge
-        activityIndicatorView.center = CGPoint(x: viewBackgroundLoading.frame.size.width / 2, y: viewBackgroundLoading.frame.size.height / 2)
-        if startAnimate!{
-            viewBackgroundLoading.addSubview(activityIndicatorView)
-            mainContainer.addSubview(viewBackgroundLoading)
-            viewContainer.addSubview(mainContainer)
-            activityIndicatorView.startAnimating()
-        }else{
-            for subview in viewContainer.subviews{
-                if subview.tag == 789456123{
-                    subview.removeFromSuperview()
-                }
-            }
+    func soundSetting(switchstate: UISwitch)
+    {
+        if switchstate.isOn{
+            
+            UserDefaults.standard.set(true, forKey: "SoundFlag")
+            
         }
-        return activityIndicatorView
+        else
+        {
+            
+            UserDefaults.standard.set(false, forKey: "SoundFlag")
+        }
+        
     }
-    */
-
+    
+    
+    @IBAction func btnTerms(_ sender: UIButton) {
+        
+        if let url = NSURL(string: "http://www.linksy.co"){
+            UIApplication.shared.openURL(url as URL)
+        }
+        
+    }
+    
+    
+    @IBAction func btnPrivacy(_ sender: UIButton) {
+        
+        if let url = NSURL(string: "http://www.linksy.co"){
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
+    
+    @IBAction func btnContact(_ sender: UIButton) {
+        
+        if let url = NSURL(string: "http://www.linksy.co"){
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
+    @IBAction func btnLicence(_ sender: UIButton) {
+        
+        if let url = NSURL(string: "http://www.linksy.co"){
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
+    
+    
+    @IBAction func btnSecurity(_ sender: UIButton) {
+        
+        if let url = NSURL(string: "http://www.linksy.co"){
+            UIApplication.shared.openURL(url as URL)
+        }
+        
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 

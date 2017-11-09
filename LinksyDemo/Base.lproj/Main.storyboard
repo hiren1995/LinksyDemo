@@ -2980,6 +2980,9 @@ Los Angeles, California</string>
                                                 <state key="normal" title="Terms of Use">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnTerms:" destination="AdE-xj-BVr" eventType="touchUpInside" id="zB4-Qc-tEL"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon-next" translatesAutoresizingMaskIntoConstraints="NO" id="Iwo-CZ-9l9">
                                                 <rect key="frame" x="284" y="1705" width="20" height="20"/>
@@ -3006,6 +3009,9 @@ Los Angeles, California</string>
                                                 <state key="normal" title="Privacy Policy">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnPrivacy:" destination="AdE-xj-BVr" eventType="touchUpInside" id="ucx-5q-RHB"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon-next" translatesAutoresizingMaskIntoConstraints="NO" id="fbh-0q-mRJ">
                                                 <rect key="frame" x="284" y="1756" width="20" height="20"/>
@@ -3032,6 +3038,9 @@ Los Angeles, California</string>
                                                 <state key="normal" title="Contact &amp; Support">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnContact:" destination="AdE-xj-BVr" eventType="touchUpInside" id="wTa-U0-E6X"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon-next" translatesAutoresizingMaskIntoConstraints="NO" id="2Uz-QX-lGz">
                                                 <rect key="frame" x="284" y="1807" width="20" height="20"/>
@@ -3058,6 +3067,9 @@ Los Angeles, California</string>
                                                 <state key="normal" title="Licences">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnLicence:" destination="AdE-xj-BVr" eventType="touchUpInside" id="XGE-n8-4iP"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon-next" translatesAutoresizingMaskIntoConstraints="NO" id="uQ7-5i-9Qs">
                                                 <rect key="frame" x="284" y="1858" width="20" height="20"/>
@@ -3084,6 +3096,9 @@ Los Angeles, California</string>
                                                 <state key="normal" title="Security Advice">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="btnSecurity:" destination="AdE-xj-BVr" eventType="touchUpInside" id="DS6-U2-fTU"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon-next" translatesAutoresizingMaskIntoConstraints="NO" id="F0h-0G-9gn">
                                                 <rect key="frame" x="284" y="1909" width="20" height="20"/>
@@ -3433,6 +3448,7 @@ Los Angeles, California</string>
                         <outlet property="labelHeadLine" destination="wGX-eL-JTf" id="maV-Zw-lAy"/>
                         <outlet property="labelName" destination="Am3-gs-0lH" id="KPQ-0I-Z7Y"/>
                         <outlet property="sliderUI" destination="dzU-yz-Yno" id="0Vx-fM-8PG"/>
+                        <outlet property="switchSound" destination="uVX-lg-vbO" id="zwo-dT-kxK"/>
                         <outlet property="txtCompany" destination="BUA-52-qq9" id="3Uw-Rt-foy"/>
                         <outlet property="txtTopic" destination="ydT-rT-sIX" id="mVz-7a-y7Q"/>
                         <segue destination="arP-VQ-gEh" kind="show" identifier="SwipeView" id="60W-h7-V9R"/>
@@ -3858,6 +3874,6 @@ Los Angeles, California</string>
         <segue reference="M3O-2P-nZ0"/>
         <segue reference="BMC-41-IUT"/>
         <segue reference="CDE-eJ-yul"/>
-        <segue reference="rX5-3z-kCj"/>
+        <segue reference="60W-h7-V9R"/>
     </inferredMetricsTieBreakers>
 </document>

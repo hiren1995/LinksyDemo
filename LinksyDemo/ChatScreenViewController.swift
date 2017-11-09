@@ -975,7 +975,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         {
             if(tempnotify["body"]["text_msg"].stringValue == "Send You a Photo.")
             {
-                
+                /*
                 if let imgURL = NSURL(string: tempnotify["body"]["text_img"].stringValue)
                 {
                     print(imgURL)
@@ -988,8 +988,28 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                         self.messages.append(JSQMessage(senderId: tempsendid.string , displayName: "sender", media : img))
                     }
                 }
+ 
                 
                 self.collectionView.reloadData()
+ 
+                 */
+                
+                
+                let img = JSQPhotoMediaItem(image: UIImage(named: "loading.gif"))
+                
+                img?.appliesMediaViewMaskAsOutgoing = true
+                
+                self.messages.append(JSQMessage(senderId: tempsendid.string, displayName: "sender", media : img))
+                
+                self.collectionView.reloadData()
+                
+                KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: tempnotify["body"]["text_img"].stringValue)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
+                    
+                    
+                    img?.image = image
+                    
+                    self.collectionView.reloadData()
+                })
             }
             else
             {

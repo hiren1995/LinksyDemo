@@ -21,6 +21,8 @@ var device_token:String? = nil
 var latMagnitude:Double? = nil
 var longMagnitude:Double? = nil
 
+var badgeCount:Int = 0
+
 
 @available(iOS 10.0, *)
 @UIApplicationMain
@@ -55,9 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //setting the badge count to 0 again after launching the app..
         
-        
-        
+        badgeCount = 0
         
         GMSServices.provideAPIKey("AIzaSyBk58NzROjSlhlnb5mhZqK2eUwRXITJulw")
         
@@ -101,20 +103,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         
        
+        if(UserDefaults.standard.bool(forKey: "SoundFlag") == true)
+        {
+            let notificationType1: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
+            
+            let pushNotificationSettings = UIUserNotificationSettings(types: notificationType1, categories: nil)
+            
+            //UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+            
+            application.registerUserNotificationSettings(pushNotificationSettings)
+            
+        }
+        else
+        {
+            let notificationType1: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge]
+            
+            let pushNotificationSettings = UIUserNotificationSettings(types: notificationType1, categories: nil)
+            
+            //UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+            
+            application.registerUserNotificationSettings(pushNotificationSettings)
+            
+        }
         
-        
-        
-        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
-        
-        let pushNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
-        
-        //UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
-        
-        application.registerUserNotificationSettings(pushNotificationSettings)
         
         application.registerForRemoteNotifications()
  
+        application.applicationIconBadgeNumber = badgeCount
  
+        
+        
         /*
         let center  = UNUserNotificationCenter.current()
         center.delegate = self
@@ -410,6 +428,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any] ) {
+        
+        badgeCount = badgeCount + 1
                 
         let infouser = JSON(userInfo)
         
