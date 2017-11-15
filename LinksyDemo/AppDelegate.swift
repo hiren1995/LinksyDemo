@@ -21,6 +21,8 @@ var device_token:String? = nil
 var latMagnitude:Double? = nil
 var longMagnitude:Double? = nil
 
+var newMatchCount:String? = nil
+
 var badgeCount:Int = 0
 
 

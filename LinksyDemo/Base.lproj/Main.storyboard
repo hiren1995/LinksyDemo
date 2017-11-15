@@ -3448,6 +3448,8 @@ Los Angeles, California</string>
                         <outlet property="labelHeadLine" destination="wGX-eL-JTf" id="maV-Zw-lAy"/>
                         <outlet property="labelName" destination="Am3-gs-0lH" id="KPQ-0I-Z7Y"/>
                         <outlet property="sliderUI" destination="dzU-yz-Yno" id="0Vx-fM-8PG"/>
+                        <outlet property="switchMatches" destination="tcp-wj-XnV" id="qMC-4t-7yH"/>
+                        <outlet property="switchMessages" destination="YiN-Tc-gmz" id="8Lh-dk-SVm"/>
                         <outlet property="switchSound" destination="uVX-lg-vbO" id="zwo-dT-kxK"/>
                         <outlet property="txtCompany" destination="BUA-52-qq9" id="3Uw-Rt-foy"/>
                         <outlet property="txtTopic" destination="ydT-rT-sIX" id="mVz-7a-y7Q"/>
@@ -3871,7 +3873,7 @@ Los Angeles, California</string>
         <segue reference="9VY-S6-uUl"/>
         <segue reference="Eie-do-Wb0"/>
         <segue reference="gU3-9X-Lwg"/>
-        <segue reference="M3O-2P-nZ0"/>
+        <segue reference="yDa-jM-7S2"/>
         <segue reference="BMC-41-IUT"/>
         <segue reference="CDE-eJ-yul"/>
         <segue reference="60W-h7-V9R"/>

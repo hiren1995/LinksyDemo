@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Chats" representedClassName="Chats" syncable="YES" codeGenerationType="class">
         <attribute name="chat_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_id" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,7 +12,12 @@
         <attribute name="sent_by" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sent_to" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Match_List" representedClassName="Match_List" syncable="YES" codeGenerationType="class">
+        <attribute name="match_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="match_readFlag" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Chats" positionX="-54" positionY="-9" width="128" height="195"/>
+        <element name="Match_List" positionX="-54" positionY="63" width="128" height="75"/>
     </elements>
 </model>

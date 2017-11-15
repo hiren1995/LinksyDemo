@@ -11,6 +11,7 @@ import SwiftyJSON
 import Alamofire
 import Pulsator
 import MBProgressHUD
+import CoreData
 
 var MsgList = UserDefaults.standard
 var ConnList = UserDefaults.standard
@@ -776,15 +777,104 @@ class SwipingViewController: UIViewController {
 
         //---------------------------- code for loading msgs list in next view controller End ---------------------
     }
+    
+    
+    
+    //------------------------------------------ without local database ----------------------------------------
+    
+    
+    /*
+    
+    
+    func  loadConnectionList(){
         
+        
+        //---------------------------- code for loading connection list in next view controller ---------------------
+        
+        //loadingIndicator.startAnimating()
+        
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinnerActivity.label.text = "Loading"
+        spinnerActivity.detailsLabel.text = "Please Wait!!"
+        spinnerActivity.isUserInteractionEnabled = false
+        spinnerActivity.bezelView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.25)
+        spinnerActivity.bezelView.color = UIColor.black
+        spinnerActivity.label.textColor = UIColor.white
+        spinnerActivity.detailsLabel.textColor = UIColor.white
+        spinnerActivity.activityIndicatorColor = UIColor.white
+        spinnerActivity.layer.zPosition = 1
+        
+        
+        if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
+        {
+            let tempdata = JSON(userinfo)
+            
+            //print(tempdata)
+            
+            
+            
+            let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string!]
+            
+            //print(parametersdata)
+            
+            
+            Alamofire.request(self.baseUrl + "user/user_matchs", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+                
+                if((apiresponse.response) != nil )
+                {
+                    
+                    //print("gettig chat list successfully")
+                    print(apiresponse.result.value!)
+                    
+                    ConnList.set(apiresponse.result.value, forKey: "ConnList")
+                    
+     
+                    //loadingIndicator.stopAnimating()
+                    
+                    spinnerActivity.hide(animated: true)
+                    
+                    //self.performSegue(withIdentifier: "ConnectionListSegue", sender: nil)
+                    
+                    let obj : MatchesViewController = self.storyboard?.instantiateViewController(withIdentifier: "MatchesViewController") as! MatchesViewController
+                    self.navigationController?.pushViewController(obj, animated: true)
+                    
+                    
+                    
+                }
+                else
+                {
+                    print("Error")
+                    
+                    let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
+            }
+            
+            
+            
+            
+        }
+        
+        
+    }
+     //------------------------------------------ without local database End ----------------------------------------
+    */
+ 
+    
+    
+    
+    
+    //------------------------------------------ with local database ----------------------------------------
+    
         
         func  loadConnectionList(){
-            
-            
-            //---------------------------- code for loading connection list in next view controller ---------------------
-            
-            //loadingIndicator.startAnimating()
-            
+           
             
             let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
             spinnerActivity.label.text = "Loading"
@@ -824,6 +914,111 @@ class SwipingViewController: UIViewController {
                         
                         
                         
+                        
+                        // ----------------------------------Storing Core Data datas-----------------------------
+                        
+                        
+                        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                        
+                        let context = appdelegate.persistentContainer.viewContext
+                        
+                        //---------------------------------------------------------------------------------------
+                        
+                        
+                        // Selecting data from data base...
+                        
+                        
+                        let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Match_List")
+                        
+                        requests.returnsObjectsAsFaults = false
+                        
+                        do
+                        {
+                            
+                            
+                            let x = JSON(ConnList.object(forKey: "ConnList"))
+                            
+                            let results = try context.fetch(requests)
+                            
+                            if results.count > 0
+                            {
+                                let tempcount:Int = x["User's_match_List"].count - results.count
+                                
+                                let xNSNumber = tempcount as NSNumber
+                                
+                                newMatchCount = xNSNumber.stringValue
+                                
+                                var flag:Bool = false
+                                
+                     OuterLoop: for i in 0...x["User's_match_List"].count-1
+                                {
+                         InnerLoop: for result in results as! [NSManagedObject]
+                                    {
+                                        if (x["User's_match_List"][i]["match_id"].stringValue == result.value(forKey: "match_id") as? String)
+                                        {
+                                            print("Match id same")
+                                           
+                                            flag = true
+                                           
+                                            break InnerLoop
+                                            
+                                        }
+                                        
+                                    }
+                                    
+                                    if(flag == true)
+                                    {
+                                        flag = false
+                                        
+                                        continue OuterLoop
+                                    }
+                                    else
+                                    {
+                                        let Userchatid = NSEntityDescription.insertNewObject(forEntityName: "Match_List", into: context)
+                                        
+                                        Userchatid.setValue(x["User's_match_List"][i]["match_id"].stringValue, forKey: "match_id")
+                                        Userchatid.setValue("false", forKey: "match_readFlag")
+                                    }
+                                   
+                                }
+                            }
+                            else
+                            {
+                                
+                                
+                                for i in 0...x["User's_match_List"].count-1
+                                {
+                                    let Userchatid = NSEntityDescription.insertNewObject(forEntityName: "Match_List", into: context)
+                                    
+                                    
+                                    Userchatid.setValue(x["User's_match_List"][i]["match_id"].stringValue, forKey: "match_id")
+                                    Userchatid.setValue("false", forKey: "match_readFlag")
+                                    
+                                    
+                                    do
+                                    {
+                                        try context.save()
+                                        
+                                        print("Match id Saved in internal database")
+                                        
+                                    }
+                                    catch
+                                    {
+                                        print("error")
+                                    }
+                                }
+                                
+                                
+
+                                
+                            }
+                        }
+                        catch
+                        {
+                            
+                        }
+                        
+                        
                         //loadingIndicator.stopAnimating()
                         
                         spinnerActivity.hide(animated: true)
@@ -855,11 +1050,11 @@ class SwipingViewController: UIViewController {
                 
             }
 
-        //---------------------------- code for loading connection list in next view controller End ---------------------
         
     }
     
-    
+    //------------------------------------------ with local database End ----------------------------------------
+
     
     @IBAction func backtoProfile(_ sender: Any) {
         
@@ -943,6 +1138,7 @@ class SwipingViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Nice", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        
  
         
     }

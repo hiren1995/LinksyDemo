@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import MBProgressHUD
+import CoreData
 
 var MatchCellSelected = UserDefaults.standard
 
@@ -45,6 +46,75 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     var refreshControl: UIRefreshControl!
     
+   
+    
+    //-------------------------------------------- whithout local database -----------------------------------------
+    
+    
+    /*
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        labelNoMatches.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadMatches(_:)), name: NSNotification.Name(rawValue: "MatchNotification"), object: nil)
+        
+        
+        // Do any additional setup after loading the view.
+        
+        self.MatchesCollectionView.delegate = self
+        self.MatchesCollectionView.dataSource = self
+        
+        labelNewMsgIcon.layer.cornerRadius = 7.5
+        
+        btnBackToSwipe.addTarget(self, action: #selector(backToSwipe), for: .touchUpInside)
+        
+        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+        loadingIndicator.transform = transform
+        loadingIndicator.center = self.view.center
+        loadingIndicator.activityIndicatorViewStyle = .gray
+        self.view.addSubview(loadingIndicator)
+        
+        let tempdatas = JSON(ConnList.object(forKey: "ConnList")!)
+        
+        print(tempdatas["chat_msgs"])
+        
+        
+        
+        labelmessage.text = tempdatas["chat_msgs"].stringValue
+        
+        labelMatches.text = tempdatas["new_matches"].stringValue
+        
+        /*
+        if(newMatchCount == nil)
+        {
+            labelMatches.text = "0"
+        }
+        else
+        {
+            labelMatches.text = newMatchCount
+        }
+        */
+        
+        labelNewMsgIcon.isHidden = true
+        
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        
+        MatchesCollectionView.refreshControl = refreshControl
+        
+    }
+    
+    //-------------------------------------------- whithout local database End -----------------------------------------
+ 
+    */
+   
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +146,69 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         
         
-        labelmessage.text = tempdatas["chat_msgs"].stringValue
+        //labelmessage.text = tempdatas["chat_msgs"].stringValue
+        
+        if(newMatchCount == nil)
+        {
+            labelMatches.text = "0"
+        }
+        else
+        {
+            labelMatches.text = newMatchCount
+        }
+        
+        
+        
+        
+        // ----------------------------------Storing Core Data datas-----------------------------
+        
+        
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appdelegate.persistentContainer.viewContext
+        
+        //---------------------------------------------------------------------------------------
+        
+        
+        // Selecting data from data base...
+        
+        
+        let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Match_List")
+        
+        requests.returnsObjectsAsFaults = false
+        
+        requests.predicate = NSPredicate(format: "match_readFlag == %@" , "false")
+       
+        do{
+            let results = try context.fetch(requests)
+
+            
+            if(results.count > 0)
+            {
+               for result in results as! [NSManagedObject]
+                {
+                    print(result.value(forKey: "match_id") as! String)
+                    print(result.value(forKey: "match_readFlag") as! String)
+                
+                }
+                
+                let tempcount:Int = results.count
+                
+                let xNSNumber = tempcount as NSNumber
+                
+                labelMatches.text = xNSNumber.stringValue
+                
+            }
+            else
+            {
+                labelMatches.text = "0"
+            }
+        }
+        catch
+        {
+            
+        }
+        
         
         labelNewMsgIcon.isHidden = true
         
@@ -89,6 +221,11 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
        
     }
     
+ 
+ 
+    
+   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
         //return images.count
@@ -96,19 +233,15 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         let tempx = JSON(ConnList.object(forKey: "ConnList")!)
        
-        //use N?SNumber to convert that number to string value and setting the text...
+        //let x = tempx["new_matches"]
         
-        //let x = tempx["User's_match_List"].count as NSNumber
-       
-        let x = tempx["new_matches"]
+        //labelMatches.text = x.stringValue
         
-        labelMatches.text = x.stringValue
-        
-        if(tempx["User's_match_List"].count == 0)
-        {
-            labelNoMatches.isHidden = false
-            countInfoView.isHidden = true
-        }
+        //if(tempx["User's_match_List"].count == 0)
+        //{
+        //    labelNoMatches.isHidden = false
+        //    countInfoView.isHidden = true
+        //}
         
         
         return tempx["User's_match_List"].count
@@ -172,6 +305,120 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
     }
     
     
+    
+    
+    //-------------------------------------------- whithout local database -----------------------------------------
+    
+    /*
+     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinnerActivity.label.text = "Loading"
+        spinnerActivity.detailsLabel.text = "Please Wait!!"
+        spinnerActivity.isUserInteractionEnabled = false
+        spinnerActivity.bezelView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.25)
+        spinnerActivity.bezelView.color = UIColor.black
+        spinnerActivity.label.textColor = UIColor.white
+        spinnerActivity.detailsLabel.textColor = UIColor.white
+        spinnerActivity.activityIndicatorColor = UIColor.white
+        spinnerActivity.layer.zPosition = 1
+        
+        
+        
+        let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
+        
+        let tempdata = JSON(userinfo!)
+        
+        let conninfo = ConnList.object(forKey: "ConnList") as Any?
+        
+        let conndata = JSON(conninfo!)
+        
+        print(conndata)
+        
+        //let m = indexPath.row
+        
+        //print(m)
+        
+        MatchIdSelected.set(conndata["User's_match_List"][indexPath.row]["match_id"].string , forKey: "MatchIdSelected")
+        
+        var parametersdata = [String:String]()
+        
+        print(parametersdata)
+        
+        if(conndata["User's_match_List"][indexPath.row]["to_user"].string! == tempdata["linkedin_login"][0]["user_id"].string!)
+            
+        {
+            parametersdata = ["user_id":tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string! , "user_match_id": conndata["User's_match_List"][indexPath.row]["match_id"].string!]
+            
+            
+        }
+        else
+        {
+            parametersdata = ["user_id":tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string! , "user_match_id": conndata["User's_match_List"][indexPath.row]["match_id"].string!]
+            
+            
+        }
+        
+     
+        //print(parametersdata)
+        
+        Alamofire.request(baseUrl+"user/user_matchs_details", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+            
+            
+            
+            if((apiresponse.response) != nil)
+            {
+                
+                
+                //print(apiresponse.result.value!)
+                
+                MatchCellSelected.set(apiresponse.result.value, forKey: "MatchCellSelected")
+                
+                
+                spinnerActivity.hide(animated: true)
+                
+                //self.performSegue(withIdentifier: "MatchesToInfo", sender: nil)
+                
+                let obj : ProfileInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: "ProfileInfoViewController") as! ProfileInfoViewController
+                self.navigationController?.pushViewController(obj, animated: true)
+            }
+            else
+            {
+                print("Error")
+                
+                let alert = UIAlertController(title: "Error 404", message: "Please check your network Connection and try again", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+        }
+        
+        
+        
+        
+        //let indexValueOfCell = indexPath.row
+        
+        //MatchCellSelected.set(indexValueOfCell, forKey: "MatchCellSelected")
+        
+        //let xyz = MatchCellSelected.object(forKey: "MatchCellSelected")
+        
+        //print(xyz!)
+        
+        
+        
+        
+    }
+    
+     //-------------------------------------------- whithout local database End -----------------------------------------
+     
+    */
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
@@ -223,6 +470,88 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         
       
+        
+        
+        // ----------------------------------Storing Core Data datas-----------------------------
+        
+        
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appdelegate.persistentContainer.viewContext
+        
+        //---------------------------------------------------------------------------------------
+        
+        
+        // Selecting data from data base...
+        
+        
+        let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Match_List")
+        
+        requests.returnsObjectsAsFaults = false
+        
+       
+        
+        do
+        {
+          
+            let results = try context.fetch(requests)
+            
+            if results.count > 0
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    print(result.value(forKey: "match_id") as? String)
+                    print(conndata["User's_match_List"][indexPath.row]["match_id"].string)
+                    
+                    
+                    
+                    
+                    if (conndata["User's_match_List"][indexPath.row]["match_id"].string == result.value(forKey: "match_id") as? String)
+                    {
+                        let Userchatid = NSEntityDescription.insertNewObject(forEntityName: "Match_List", into: context)
+                        
+                        Userchatid.setValue("true", forKey: "match_readFlag")
+                       
+                        do
+                        {
+                            try context.save()
+                            print("saved!")
+                            
+                            
+                        }
+                        catch let error as NSError
+                        {
+                            print("Could not save \(error), \(error.userInfo)")
+                            
+                        }
+                        
+                        break
+                    }
+                    
+                    //print(result.value(forKey: "match_id") as! String)
+                    //print(result.value(forKey: "match_readFlag") as! Bool)
+                    
+                }
+                
+            }
+        
+            do{
+                try context.save()
+                
+                
+            }
+            catch
+            {
+                 print(error)
+                
+            }
+        }
+        catch
+        {
+            
+        }
+        
+        
         
         
         //print(parametersdata)

@@ -156,11 +156,35 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                         {
                            if(self.x["chat_conversation_detail"][i]["chat_message_type"].string == "1")
                            {
-                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+                               // self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+                               // self.collectionView.reloadData()
+                            
+                            
+                            
+                            
+                                let dateFormatter = DateFormatter()
+                                //Specify Format of String to Parse
+                                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" //or you can use "yyyy-MM-dd'T'HH:mm:ssX"
+                            
+                                dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC") as TimeZone!
+                            
+                                //print(self.x["chat_conversation_detail"][i]["chat_message_created_time"].string!)
+                            
+                                //Parse into NSDate
+                                let dateFromString  = dateFormatter.date(from: self.x["chat_conversation_detail"][i]["chat_message_created_time"].string!)
+
+                                //print(dateFromString)
+                            
+                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string, senderDisplayName: "sender", date:dateFromString as Date! , text: self.decodeEmojiMsg(self.x["chat_conversation_detail"][i]["chat_message_text"].string!)))
+ 
+                            
+                            
                                 self.collectionView.reloadData()
                             
                             
+                            
                                 self.finishReceivingMessage(animated: true)
+                            
                             }
                             
                             else
@@ -169,7 +193,29 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                             
                                 img?.appliesMediaViewMaskAsOutgoing = true
                             
-                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string, displayName: "sender", media : img))
+                                //self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string, displayName: "sender", media : img))
+
+                            
+                            
+                            
+                             
+                                let dateFormatter = DateFormatter()
+                             
+                                //Specify Format of String to Parse
+                             
+                                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" //or you can use "yyyy-MM-dd'T'HH:mm:ssX"
+                             
+                                //Parse into NSDate
+                             
+                                let dateFromString : NSDate = dateFormatter.date(from: self.x["chat_conversation_detail"][i]["chat_message_created_time"].stringValue)! as NSDate
+                             
+                            
+                            
+                                self.messages.append(JSQMessage(senderId: self.x["chat_conversation_detail"][i]["chat_message_from"].string, senderDisplayName: "sender", date: dateFromString as Date!, media: img))
+                             
+                            
+ 
+                            
                             
                                 self.collectionView.reloadData()
                             
@@ -201,11 +247,8 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                             
                             }
                            
-                            //self.collectionView.reloadData()
-     
                         }
                         
-                        //spinnerActivity.hide(animated: true)
                         
                     }
                     else
@@ -225,24 +268,20 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                     
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     
+                    spinnerActivity.hide(animated: true)
+                    
                     self.present(alert, animated: true, completion: nil)
                 }
-                
-                //-------------------- this is to move to present messages ----------------
-                //self.automaticallyScrollsToMostRecentMessage = true
-                
+               
                 
         }
      
         
         
     }
+    
+    
  
-    
- 
-    
-    
-    
     // View did load with local database connection...
     
     /*
@@ -483,47 +522,144 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cellchat = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
-        
-        //cellchat.frame = CGRect(x: 0, y: 68, width: self.view.frame.width, height: self.view.frame.height - cellchat.textView.frame.height)
-        
-        //cellchat.frame =
+       
+      
         
         return cellchat
+        
+        
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+    
+    //------------------------------------------------ code for showing date and sender name for each cell--------------------------------------------
+    
+    
+   
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        
+        
+        let message = messages[indexPath.row]
         
         /*
- 
-        let temp = JSON((chatMsgArray.object(forKey: "chatMsgArray"))!)
-        let tempselfinfo = JSON(selfinfo!)
         
-        
-        
-        for i in 0...temp["chat_conversation_detail"].count-1
+        if(message.senderId == self.senderId)
         {
-            if(temp["chat_conversation_detail"][i]["chat_message_from"].string == tempselfinfo["linkedin_login"][0]["user_id"].string!)
-            {
-                 messages.append(JSQMessage(senderId: temp["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-                
-                //messages.append(JSQMessage(senderId: "30" , displayName: "sender", text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-            }
-            else
-            {
-                 //messages.append(JSQMessage(senderId:temp["chat_conversation_detail"][i]["chat_message_to"].string , displayName: "Receiver" , text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-                
-                 messages.append(JSQMessage(senderId: temp["chat_conversation_detail"][i]["chat_message_from"].string , displayName: "sender", text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-                
-                //messages.append(JSQMessage(senderId: "25" , displayName: "Receiver" , text: temp["chat_conversation_detail"][i]["chat_message_text"].string))
-            }
-       
-            print(messages[i])
-        
+            //let m:String = "hiren"
+            
+            let myString = message.date
+            let myAttributes = [NSForegroundColorAttributeName: UIColor.gray, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+            let mutableAttributedString = NSMutableAttributedString(string: myString, attributes: myAttributes)
+            
+            
+            
         }
-         `
+            
+        else
+        {
+            let myString = let myString = message.date
+            let myAttributes = [NSForegroundColorAttributeName: UIColor.gray, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+            let mutableAttributedString = NSMutableAttributedString(string: myString, attributes: myAttributes)
+            
+            return mutableAttributedString
+            
+        }
         */
         
+        return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
+    }
+    
+   
+     /*
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.row]
+        
+        if(message.senderId == self.senderId)
+        {
+            //let m:String = "hiren"
+            
+            let myString = "abc"
+            let myAttributes = [NSForegroundColorAttributeName: UIColor.gray, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+            let mutableAttributedString = NSMutableAttributedString(string: myString, attributes: myAttributes)
+            
+            return mutableAttributedString
+            
+        }
+            
+        else
+        {
+            let myString = "pqr"
+            let myAttributes = [NSForegroundColorAttributeName: UIColor.gray, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+            let mutableAttributedString = NSMutableAttributedString(string: myString, attributes: myAttributes)
+            
+            return mutableAttributedString
+            
+        }
+        
+        return nil
+    }
+    
+    
+    
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        
+        let message = messages[indexPath.row]
+        
+        if(message.senderId == self.senderId)
+        {
+            //let m:String = "hiren"
+            
+            let myString = "hiren"
+            let myAttributes = [NSForegroundColorAttributeName: UIColor.gray, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+            let mutableAttributedString = NSMutableAttributedString(string: myString, attributes: myAttributes)
+            
+            return mutableAttributedString
+            
+        }
+        
+        else
+        {
+            let myString = "xyz"
+            let myAttributes = [NSForegroundColorAttributeName: UIColor.gray, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+            let mutableAttributedString = NSMutableAttributedString(string: myString, attributes: myAttributes)
+            
+            return mutableAttributedString
+            
+        }
+        
+        return nil
+    }
+  
+     */
+ 
+    
+    //------------------------------------------------ code for showing date and sender name for each cell End --------------------------------------------
+    
+    
+    
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+       
+        
         return messages[indexPath.item]
+        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {

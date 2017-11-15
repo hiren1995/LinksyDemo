@@ -195,10 +195,10 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
     }
  
-    
+ 
   
  
- //-----------------------cell values connnecting the local database for standard method without Sugar record library ----------
+ //----------------------- cell values connnecting the local database for standard method  ----------
     
     /*
     
@@ -272,7 +272,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              //---------------------------------------------------------------------------------------
              
              
-             
+             /*
             
              
              // Selecting data from data base.....
@@ -678,12 +678,12 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              
              }
              
+            */
  
- 
             
             
             
-            /*
+            
             
              let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id":tempdata["User's Chat List"][indexPath.row]["chat_id"].string!]
              
@@ -701,7 +701,9 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                             for i in 0...x["chat_conversation_detail"].count-1
                             {
              
-             
+                                let Userchatid = NSEntityDescription.insertNewObject(forEntityName: "Chat_List", into: context)
+                                
+                                Userchatid.setValue(x["chat_conversation_detail"][i]["chat_id"].stringValue, forKey: "chat_id")
              
                                 // Storing Core Data
              
@@ -802,7 +804,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
              }
  
             
-            */
+            
         }
         
      
@@ -821,9 +823,10 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
     }
  
- 
- 
  */
+ 
+ 
+ 
     
     
 
@@ -1224,9 +1227,6 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                 
                 
             }
-            
-            
-            
             
         }
         

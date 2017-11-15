@@ -19,7 +19,9 @@ var tempProfiles = UserDefaults.standard
 
 var preferencesdefault = UserDefaults.standard
 
+var matchNotificationFlag:Int = 1
 
+var messageNotificationFlag:Int = 1
 
 
 @available(iOS 10.0, *)
@@ -89,6 +91,9 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
     
     @IBOutlet var switchSound: UISwitch!
     
+    @IBOutlet var switchMatches: UISwitch!
+    
+    @IBOutlet var switchMessages: UISwitch!
     
     
     var btnindustriesflag=0;
@@ -201,6 +206,10 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         switchSound.addTarget(self, action: #selector(soundSetting), for: .valueChanged)
         
+        switchMatches.addTarget(self, action: #selector(matchesNotificationSetting), for: .valueChanged)
+        
+        switchMessages.addTarget(self, action: #selector(messagesNotificationSetting), for: .valueChanged)
+        
         
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         let transform: CGAffineTransform = CGAffineTransform(scaleX: 2.5, y: 2.5)
@@ -304,7 +313,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                 if((apiresponsePreference.response) != nil)
                 {
                     
-                   // print(JSON(apiresponse.result.value!))
+                    print(JSON(apiresponsePreference.result.value!))
                     
                     preferencesdefault.set(apiresponsePreference.result.value, forKey: "preferencesdefault")
                     
@@ -401,6 +410,40 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
                         self.btn20km.titleLabel?.textColor = UIColor(red: 169/255, green: 171/255, blue: 171/255, alpha: 1.0)
                         self.btn50km.titleLabel?.textColor = UIColor(red: 169/255, green: 171/255, blue: 171/255, alpha: 1.0)
                     }
+                    
+                    //---------code for matches and notification switch states-------------------
+                    
+                    if(tempPreferences["user radius"][0]["new_match"].string == "1")
+                    {
+                       
+                        matchNotificationFlag = 1
+                        
+                        self.switchMatches.isOn = true
+                    }
+                    else
+                    {
+                        matchNotificationFlag = 2
+                        
+                        self.switchMatches.isOn = false
+                        
+                    }
+                    
+                    if(tempPreferences["user radius"][0]["new_msg"].string == "1")
+                    {
+                        
+                       messageNotificationFlag = 1
+                        
+                        self.switchMessages.isOn = true
+                    }
+                    else
+                    {
+                        messageNotificationFlag = 2
+                        
+                         self.switchMessages.isOn = false
+                        
+                    }
+                    
+                    //---------------------------------------------------------------------------
                     
                     
                     if(tempPreferences["Topics fields"].count > 0)
@@ -1658,7 +1701,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
 
             
         
-            let parametersdataIndustry:[String : Any] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string!,"function_master_name": arrayFunctions,"industry_master_name":arrayIndustry,"intent_master_name":arrayIntents,"position_master_name":arrayPositions,"topics_name":topicarray,"company_name":companyarray,"user_radius":radius]
+            let parametersdataIndustry:[String : Any] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string!,"function_master_name": arrayFunctions,"industry_master_name":arrayIndustry,"intent_master_name":arrayIntents,"position_master_name":arrayPositions,"topics_name":topicarray,"company_name":companyarray,"user_radius":radius,"new_match":matchNotificationFlag,"new_msg":messageNotificationFlag]
         
             print(parametersdataIndustry)
             
@@ -1800,23 +1843,47 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
         
  
-        for cookie in HTTPCookieStorage.shared.cookies! {
-            HTTPCookieStorage.shared.deleteCookie(cookie)
+        
+        if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
+        {
+            
+            
+            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+            
+            let tempdata = JSON(userinfo)
+        
+            let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string! ]
+        
+            Alamofire.request(baseUrl + "user/linkdin_logout", method: HTTPMethod.post, parameters: parametersdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponse) in
+            
+                if((apiresponse.response) != nil)
+                {
+                    
+                    print(JSON(apiresponse.result))
+                    
+                    for cookie in HTTPCookieStorage.shared.cookies! {
+                        HTTPCookieStorage.shared.deleteCookie(cookie)
+                    }
+                    UserDefaults.standard.synchronize()
+                    
+                    
+                    
+                    // Removes cache for all responses
+                    URLCache.shared.removeAllCachedResponses()
+                    
+                    UserDefaults.standard.removeObject(forKey: "userpersonalinfo")
+                    
+                    
+                    spinnerActivity.hide(animated: true)
+                    
+                    self.performSegue(withIdentifier: "Signout", sender: nil)
+                }
+            
+            }
+            
         }
-        UserDefaults.standard.synchronize()
-    
- 
         
-        // Removes cache for all responses
-        URLCache.shared.removeAllCachedResponses()
-        
-        UserDefaults.standard.removeObject(forKey: "userpersonalinfo")
-        
-        
-        
-        spinnerActivity.hide(animated: true)
-        
-        self.performSegue(withIdentifier: "Signout", sender: nil)
+       
         
        
     }
@@ -1869,6 +1936,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         self.present(alert, animated: true, completion: nil)
         
         
+        
     }
     
     
@@ -1899,6 +1967,35 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         
     }
     
+    func matchesNotificationSetting(switchstate: UISwitch)
+    {
+        if switchstate.isOn{
+            
+          matchNotificationFlag = 1
+            
+        }
+        else
+        {
+            
+           matchNotificationFlag = 2
+        }
+        
+    }
+    
+    func messagesNotificationSetting(switchstate: UISwitch)
+    {
+        if switchstate.isOn{
+            
+            messageNotificationFlag = 1
+            
+        }
+        else
+        {
+            
+            messageNotificationFlag = 2
+        }
+        
+    }
     
     @IBAction func btnTerms(_ sender: UIButton) {
         
@@ -1940,6 +2037,8 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         }
         
     }
+    
+    
     
     
     

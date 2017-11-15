@@ -343,6 +343,7 @@ class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UIC
         alert.addAction(UIAlertAction(title: "Nice", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
+       
         
     }
     

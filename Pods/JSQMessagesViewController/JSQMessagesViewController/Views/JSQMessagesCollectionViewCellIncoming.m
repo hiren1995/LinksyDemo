@@ -27,6 +27,8 @@
     [super awakeFromNib];
     self.messageBubbleTopLabel.textAlignment = NSTextAlignmentLeft;
     self.cellBottomLabel.textAlignment = NSTextAlignmentLeft;
+    
+    //self.textView.layer.cornerRadius = 5;
 }
 
 @end
