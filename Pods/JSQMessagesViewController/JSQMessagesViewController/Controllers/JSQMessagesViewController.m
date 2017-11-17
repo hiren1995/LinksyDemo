@@ -391,6 +391,19 @@ JSQMessagesKeyboardControllerDelegate>
 
     UITextView *textView = self.inputToolbar.contentView.textView;
     textView.text = nil;
+    
+    //------------------------ edited by hiren ----------------------
+    
+    CGRect frame = textView.frame;
+    
+    frame.size.height = textView.contentSize.height;
+    
+    textView.frame = frame;
+    
+    self.toolbarHeightConstraint.constant = 50;
+    
+    //-------------------------- End -------------------------------
+    
     [textView.undoManager removeAllActions];
 
     [self.inputToolbar toggleSendButtonEnabled];
@@ -824,31 +837,51 @@ JSQMessagesKeyboardControllerDelegate>
     
     // nahi mene kitni new line h wo check kia or abhi max 15 line tak height badhegi wese kar diya....okk thanks sir.. chalo build de do jalse karo local db. .me lag jao...ha uska logic bhi bahut bada hai...ho jaega
     
-    if (length>15  )
+    
+    
+    if (length>10  )
     {
         
     }
     else if (length==1)
     {
+        /*
         if ( self.toolbarHeightConstraint.constant>40) {
             self.toolbarHeightConstraint.constant = 40;
         }
+        */
+       
+        
+        
+        
+        self.toolbarHeightConstraint.constant = 50;
         
     }
     else if (length==2)
     {
         
-        self.toolbarHeightConstraint.constant = 40+length;
+        //self.toolbarHeightConstraint.constant = 40+length;
+        
+        //self.toolbarHeightConstraint.constant = 80 ;
+        
+        
+        CGRect frame = textView.frame;
+        
+        frame.size.height = textView.contentSize.height;
+        
+        textView.frame = frame;
+        
+        self.toolbarHeightConstraint.constant = 60;
         
         
     }
+    
     else
     {
         self.toolbarHeightConstraint.constant = length*12+40;
     }
 
-     
-     
+    
     [self.inputToolbar toggleSendButtonEnabled];
 }
 

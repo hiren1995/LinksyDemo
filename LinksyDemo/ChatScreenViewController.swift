@@ -889,6 +889,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
+    
         
         //below code appends the message array with the message we type in text view... then all the above methods are called...
        

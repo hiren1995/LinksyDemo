@@ -88,7 +88,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         self.refresh()
         
         
-     
+     /*
          
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinnerActivity.label.text = "Loading"
@@ -477,7 +477,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         spinnerActivity.hide(animated: true)
         
  
-        
+        */
         
     }
  
