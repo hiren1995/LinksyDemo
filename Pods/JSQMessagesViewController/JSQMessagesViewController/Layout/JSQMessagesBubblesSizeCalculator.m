@@ -58,6 +58,8 @@
         _minimumBubbleWidth = minimumBubbleWidth;
         _usesFixedWidthBubbles = usesFixedWidthBubbles;
         _layoutWidthForFixedWidthBubbles = 0.0f;
+        
+    
 
         // this extra inset value is needed because `boundingRectWithSize:` is slightly off
         // see comment below

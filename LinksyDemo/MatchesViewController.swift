@@ -112,7 +112,104 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
  
     */
    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        
+        // ----------------------------------Storing Core Data datas-----------------------------
+        
+        
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let context = appdelegate.persistentContainer.viewContext
+        
+        //---------------------------------------------------------------------------------------
+        
+        
+        // ------------------- code for setting the new match count value from the database start ----------------
+        
+        // Selecting data from data base...
+        
+        
+        let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Match_List")
+        
+        requests.returnsObjectsAsFaults = false
+        
+        requests.predicate = NSPredicate(format: "match_readFlag == %@" , "false")
+        
+        do{
+            let results = try context.fetch(requests)
+            
+            
+            if(results.count > 0)
+            {
+                for result in results as! [NSManagedObject]
+                {
+                    print(result.value(forKey: "match_id") as! String)
+                    print(result.value(forKey: "match_readFlag") as! String)
+                    
+                }
+                
+                let tempcount:Int = results.count
+                
+                let xNSNumber = tempcount as NSNumber
+                
+                labelMatches.text = xNSNumber.stringValue
+                
+            }
+            else
+            {
+                labelMatches.text = "0"
+            }
+        }
+        catch
+        {
+            
+        }
+        
+        
+        // ------------------- code for setting the new match count value from the database end ----------------
+        
+        /*
+         // ------------------- code for setting the new message count value from the database start ----------------
+         
+         let requestsNewMsg = NSFetchRequest<NSFetchRequestResult>(entityName : "Chats")
+         
+         requestsNewMsg.returnsObjectsAsFaults = false
+         
+         requestsNewMsg.predicate = NSPredicate(format: "message_readFlag == %@" , "false")
+         
+         do{
+         let resultsNewMsg = try context.fetch(requestsNewMsg)
+         
+         
+         if(resultsNewMsg.count > 0)
+         {
+         
+         let tempcount:Int = resultsNewMsg.count
+         
+         let xNSNumber = tempcount as NSNumber
+         
+         labelmessage.text = xNSNumber.stringValue
+         
+         }
+         else
+         {
+         labelMatches.text = "0"
+         }
+         }
+         catch
+         {
+         
+         }
+         
+         */
+        
+        // ------------------- code for setting the new message count value from the database end ----------------
+        
+        
+        self.refresh()
+    }
     
     
     
@@ -145,7 +242,7 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
          print(tempdatas["chat_msgs"])
         
         
-        
+        /*
         //labelmessage.text = tempdatas["chat_msgs"].stringValue
         
         if(newMatchCount == nil)
@@ -156,58 +253,9 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         {
             labelMatches.text = newMatchCount
         }
+        */
         
-        
-        
-        
-        // ----------------------------------Storing Core Data datas-----------------------------
-        
-        
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let context = appdelegate.persistentContainer.viewContext
-        
-        //---------------------------------------------------------------------------------------
-        
-        
-        // Selecting data from data base...
-        
-        
-        let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Match_List")
-        
-        requests.returnsObjectsAsFaults = false
-        
-        requests.predicate = NSPredicate(format: "match_readFlag == %@" , "false")
        
-        do{
-            let results = try context.fetch(requests)
-
-            
-            if(results.count > 0)
-            {
-               for result in results as! [NSManagedObject]
-                {
-                    print(result.value(forKey: "match_id") as! String)
-                    print(result.value(forKey: "match_readFlag") as! String)
-                
-                }
-                
-                let tempcount:Int = results.count
-                
-                let xNSNumber = tempcount as NSNumber
-                
-                labelMatches.text = xNSNumber.stringValue
-                
-            }
-            else
-            {
-                labelMatches.text = "0"
-            }
-        }
-        catch
-        {
-            
-        }
         
         
         labelNewMsgIcon.isHidden = true
@@ -248,6 +296,12 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         
     }
     
+    
+    
+    //-------------------------------------------- whithout local database -----------------------------------------
+    
+    /*
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
@@ -283,6 +337,9 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
             matchingcell.labelMatchName.text = tempdata["User's_match_List"][indexPath.row]["user_name"].string!
             
             
+            matchingcell.imgNewMessage.isHidden = true
+            
+            
             if let imgURL = NSURL(string: tempdata["User's_match_List"][indexPath.row]["user_profilepic"].string!)
             {
                 if let imgdata = NSData(contentsOf: imgURL as URL)
@@ -307,9 +364,7 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     
-    //-------------------------------------------- whithout local database -----------------------------------------
     
-    /*
      
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -419,6 +474,114 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     
+    
+    
+    //------------------------------------------- collection view with local db start -----------------------------
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let matchingcell = collectionView.dequeueReusableCell(withReuseIdentifier: "matchCell", for: indexPath) as! MatchesCollectionViewCell
+        
+        
+        if let userinfo = ConnList.object(forKey: "ConnList") as Any?
+        {
+            let tempdata = JSON(userinfo)
+            
+            //print(tempdata)
+            
+            matchingcell.imgNewMatches.layer.cornerRadius = 7.5
+            matchingcell.imgNewMatches.layer.backgroundColor = UIColor(red: 218/255, green: 0/255, blue: 0/255, alpha: 1.0).cgColor
+            matchingcell.imgNewMatches.layer.borderColor = UIColor.white.cgColor
+            matchingcell.imgNewMatches.layer.borderWidth = 2
+            
+            
+            matchingcell.imgNewMessage.layer.cornerRadius = 7.5
+            matchingcell.imgNewMessage.layer.backgroundColor = UIColor(red: 52/255, green: 178/255, blue: 117/255, alpha: 1.0).cgColor
+            matchingcell.imgNewMessage.layer.borderColor = UIColor.white.cgColor
+            matchingcell.imgNewMessage.layer.borderWidth = 2
+            
+            
+            
+            matchingcell.imgMatchPic.layer.cornerRadius = 25
+            
+            
+            //matchingcell.imgMatchPic.image = UIImage(named: images[indexPath.row])
+            
+            //matchingcell.labelMatchName.text = names[indexPath.row]
+            
+            matchingcell.labelMatchName.text = tempdata["User's_match_List"][indexPath.row]["user_name"].string!
+            
+            
+            matchingcell.imgNewMessage.isHidden = true
+            
+            matchingcell.imgNewMatches.isHidden = true
+            
+            
+            if let imgURL = NSURL(string: tempdata["User's_match_List"][indexPath.row]["user_profilepic"].string!)
+            {
+                if let imgdata = NSData(contentsOf: imgURL as URL)
+                {
+                    
+                    let img = UIImage(data: imgdata as Data)
+                    
+                    matchingcell.imgMatchPic.image = img
+                    
+                    
+                    
+                }
+            }
+            
+            // ----------------------------------Storing Core Data datas-----------------------------
+            
+            
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let context = appdelegate.persistentContainer.viewContext
+            
+            //---------------------------------------------------------------------------------------
+            
+            
+            // Selecting data from data base...
+            
+            
+            let requests = NSFetchRequest<NSFetchRequestResult>(entityName : "Match_List")
+            
+            requests.returnsObjectsAsFaults = false
+            
+            requests.predicate = NSPredicate(format: "match_readFlag == %@" , "false")
+            
+            do{
+                let results = try context.fetch(requests)
+                
+                
+                if(results.count > 0)
+                {
+                    for result in results as! [NSManagedObject]
+                    {
+                        if(tempdata["User's_match_List"][indexPath.row]["match_id"].string! == result.value(forKey: "match_id") as! String)
+                        {
+                            matchingcell.imgNewMatches.isHidden = false
+                        }
+                       
+                    }
+                   
+                }
+                
+            }
+            catch
+            {
+                
+            }
+            
+            
+        }
+        
+        
+        return matchingcell
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
@@ -496,8 +659,13 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
           
             let results = try context.fetch(requests)
             
+            
+            
             if results.count > 0
             {
+                print(results.count)
+                
+                
                 for result in results as! [NSManagedObject]
                 {
                     print(result.value(forKey: "match_id") as? String)
@@ -508,10 +676,11 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
                     
                     if (conndata["User's_match_List"][indexPath.row]["match_id"].string == result.value(forKey: "match_id") as? String)
                     {
-                        let Userchatid = NSEntityDescription.insertNewObject(forEntityName: "Match_List", into: context)
-                        
-                        Userchatid.setValue("true", forKey: "match_readFlag")
+                        //let Userchatid = NSEntityDescription.insertNewObject(forEntityName: "Match_List", into: context)   //this is for inserting new row..
+                        //Userchatid.setValue("true", forKey: "match_readFlag")
                        
+                        result.setValue("true", forKey: "match_readFlag")
+                        
                         do
                         {
                             try context.save()
@@ -527,10 +696,7 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
                         
                         break
                     }
-                    
-                    //print(result.value(forKey: "match_id") as! String)
-                    //print(result.value(forKey: "match_readFlag") as! Bool)
-                    
+ 
                 }
                 
             }
@@ -589,21 +755,11 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
             
         }
         
-        
-        
-        
-        //let indexValueOfCell = indexPath.row
-        
-        //MatchCellSelected.set(indexValueOfCell, forKey: "MatchCellSelected")
-        
-        //let xyz = MatchCellSelected.object(forKey: "MatchCellSelected")
-        
-        //print(xyz!)
        
-       
-        
- 
     }
+    
+    
+    //------------------------------------------- collection view with local db end -----------------------------
 
     
     func backToSwipe()

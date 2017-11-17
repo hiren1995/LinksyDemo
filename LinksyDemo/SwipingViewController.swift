@@ -870,7 +870,7 @@ class SwipingViewController: UIViewController {
     
     
     
-    //------------------------------------------ with local database ----------------------------------------
+    //------------------------------------------ with local database Start ----------------------------------------
     
         
         func  loadConnectionList(){
@@ -910,9 +910,6 @@ class SwipingViewController: UIViewController {
                         print(apiresponse.result.value!)
                         
                         ConnList.set(apiresponse.result.value, forKey: "ConnList")
-                        
-                        
-                        
                         
                         
                         // ----------------------------------Storing Core Data datas-----------------------------
@@ -1044,9 +1041,6 @@ class SwipingViewController: UIViewController {
                     
                     
                 }
-                
-                
-                
                 
             }
 

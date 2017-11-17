@@ -1146,7 +1146,7 @@ Los Angeles, California</string>
                                         <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OO-Bp-nLv">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OO-Bp-nLv">
                                         <rect key="frame" x="172" y="8" width="25" height="25"/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.69803921570000005" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -3876,6 +3876,6 @@ Los Angeles, California</string>
         <segue reference="yDa-jM-7S2"/>
         <segue reference="BMC-41-IUT"/>
         <segue reference="CDE-eJ-yul"/>
-        <segue reference="60W-h7-V9R"/>
+        <segue reference="dB6-Th-Mga"/>
     </inferredMetricsTieBreakers>
 </document>

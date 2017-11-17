@@ -46,8 +46,13 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     let selfinfo = userpersonalinfo.object(forKey: "userpersonalinfo")
     
-    let incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: UIColor.lightGray)
-    let outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor(red: 24/255, green: 187/255, blue: 236/255, alpha: 1.0))
+    //let incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: UIColor.lightGray)
+    
+    //let outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor(red: 24/255, green: 187/255, blue: 236/255, alpha: 1.0))
+    
+    let incomingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).incomingMessagesBubbleImage(with: UIColor.clear)
+    
+    let outgoingBubble = JSQMessagesBubbleImageFactory(bubble: UIImage.jsq_bubbleCompactTailless(), capInsets: UIEdgeInsets.zero).outgoingMessagesBubbleImage(with: UIColor.clear)
     
 
     let picker = UIImagePickerController()
@@ -67,9 +72,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
     }
     
-    // View did load without local database connection....
     
     
+    // ------------------------------------- View did load without local database connection --------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -519,22 +524,29 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         return messages.count
     }
     
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cellchat = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
-       
-      
+        
+        cellchat.messageBubbleContainerView.layer.cornerRadius = 10.0
+        
+        let messagesitem = messages[indexPath.row]
+        
+        if messagesitem.isMediaMessage
+        {
+            cellchat.messageBubbleContainerView.backgroundColor = UIColor.clear
+        }
+        
         
         return cellchat
-        
-        
     }
     
     
+    
+    
     //------------------------------------------------ code for showing date and sender name for each cell--------------------------------------------
-    
-    
-   
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
         return kJSQMessagesCollectionViewCellLabelHeightDefault
@@ -671,6 +683,8 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         
         return messages[indexPath.item].senderId == self.senderId ? outgoingBubble : incomingBubble
+        
+        //return nil
     }
     
     
