@@ -21,7 +21,7 @@ var MatchIdSelected = UserDefaults.standard
 class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource{
   
     
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
     
     
     @IBOutlet weak var labelmessage: UILabel!
@@ -782,7 +782,7 @@ class MatchesViewController: UIViewController,UICollectionViewDelegate,UICollect
         {
             
             
-            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+            let baseUrl = "http://linksy.co/api/index.php/"
             
             let tempdata = JSON(userinfo)
             let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string! ]

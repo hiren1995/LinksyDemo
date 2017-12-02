@@ -17,7 +17,7 @@ import MBProgressHUD
 
 class ProfileInfoViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
     
     
     @IBOutlet weak var imgpic: UIImageView!

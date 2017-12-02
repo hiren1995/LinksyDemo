@@ -306,7 +306,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
             
             let preferencesdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string! ]
             
-            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+            let baseUrl = "http://linksy.co/api/index.php/"
             
             Alamofire.request(baseUrl + "user/get_user_prefrences", method: HTTPMethod.post, parameters: preferencesdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (apiresponsePreference) in
                 
@@ -1622,7 +1622,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         {
             
             
-             let baseUrl = "https://bulale.in/linksy/api/index.php/"
+             let baseUrl = "http://linksy.co/api/index.php/"
             
             let tempdata = JSON(userinfo)
             
@@ -1848,7 +1848,7 @@ class ProfileViewController: UIViewController,BEMCheckBoxDelegate,UICollectionVi
         {
             
             
-            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+            let baseUrl = "http://linksy.co/api/index.php/"
             
             let tempdata = JSON(userinfo)
         

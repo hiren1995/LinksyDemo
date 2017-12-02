@@ -181,7 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
             //print(ifuser["linkedin_login"])
             
-            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+            let baseUrl = "http://linksy.co/api/index.php/"
             
             //let x = JSON(linkedinparameters.object(forKey: "linkedinparameters")!)
             
@@ -218,7 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
                         
                         if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
                         {
-                            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+                            let baseUrl = "http://linksy.co/api/index.php/"
                             
                             let tempdata = JSON(userinfo)
                             
@@ -439,7 +439,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate,
         
         print(infouser["aps"]["type"])
         
-        let baseUrl = "https://bulale.in/linksy/api/index.php/"
+        let baseUrl = "http://linksy.co/api/index.php/"
         
         if(infouser["aps"]["type"] == "match")
         {

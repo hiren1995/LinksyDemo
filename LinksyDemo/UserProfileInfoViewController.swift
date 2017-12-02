@@ -38,7 +38,7 @@ class UserProfileInfoViewController: UIViewController,UICollectionViewDelegate,U
     
     @IBOutlet weak var labelCity: UILabel!
     
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
 
     
     var usercompanydescription = ["Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco "]

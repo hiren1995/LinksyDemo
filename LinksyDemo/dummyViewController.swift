@@ -39,7 +39,7 @@ var loadingIndicator = UIActivityIndicatorView()
 class dummyViewController: UIViewController{
 
     
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
     
     
     //let parametersdata:[String : String] = ["login_type":"linkedin","oauth2_access_token":"AQUOxSqFxmJJkeuGQ-ArmF4qDt6fhapGNlnBGjUyudQW5skxqTEWSgBs1yKopWb015Y737WF-E015-UdhC-ceAuZPzMJbYbNRuQN07Grxmh8--CNgesg4H5Iei985bv4hrcymiiwwZvom3Biu9iag6bbBEI3hMzWNIiuHup6D7EPJyPXelU","linkedin_id":"CphZ4m2hOL"]

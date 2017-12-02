@@ -23,7 +23,7 @@ let sendmsgid = UserDefaults.standard
 class MessageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
 
     
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
     
     
     @IBOutlet weak var btnBackToSwipe: UIButton!
@@ -88,7 +88,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         self.refresh()
         
         
-     /*
+        /*
          
         let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         spinnerActivity.label.text = "Loading"
@@ -228,11 +228,15 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                 
                 OuterLoop: for result in results as! [NSManagedObject]
                 {
+                    print(result.value(forKey: "chat_id"))
+                    
                     InnerLoop: for resultmsg in resultsforchats as! [NSManagedObject]
                     {
+                        print(resultmsg.value(forKey: "chat_id"))
+                        
                         if (result.value(forKey: "chat_id") as? String == resultmsg.value(forKey: "chat_id") as? String)
                         {
-                            print("Match id same")
+                            print("chat id same chat is already present..")
                            
                             flag = true
                             
@@ -254,13 +258,26 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                         
                         requestMaxMsgId.sortDescriptors = [sortDescriptor]
                         
+                        requestMaxMsgId.predicate = NSPredicate(format: "chat_id == %@" , result.value(forKey: "chat_id") as! String)
+                        
                         do
                         {
                             
                             let resultsMaxMsgId = try context.fetch(requestMaxMsgId) as? [NSManagedObject]
                             
+                            for i in resultsMaxMsgId as! [NSManagedObject]
+                            {
+                                print(i.value(forKey: "message_id"))
+                                
+                                
+                            }
+                            
                             let max = resultsMaxMsgId?.first
-                            let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": result.value(forKey: "chat_id") as! String , "chat_message_id": max?.value(forKey: "message_id") as! String]
+                            
+                            print(max?.value(forKey: "message_id") as! Int16)
+                            
+                            
+                            let getchatdata:[String : Any] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": result.value(forKey: "chat_id") as! String , "chat_message_id": max?.value(forKey: "message_id") as! Int16]
                             
                             Alamofire.request(baseUrl + "user/chat_conversation_msgs_new", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
                                 { (apiresponseMsgs) in
@@ -269,8 +286,11 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                     {
                                         let x = JSON(apiresponseMsgs.result.value!)
                                         
+                                        print(x)
+                                        
                                         if(x["chat_conversation_detail"].count > 0)
                                         {
+                                            
                                             for i in 0...x["chat_conversation_detail"].count-1
                                             {
                                                 
@@ -285,7 +305,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                                 
                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
                                                 
-                                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].int16Value, forKey: "message_id")
                                                 
                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
                                                 
@@ -305,7 +325,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                                 {
                                                     try context.save()
                                                     
-                                                    print("New Messages Saved in internal database")
+                                                    print("New Messages for present chat Saved in internal database")
                                                     
                                                     
                                                 }
@@ -320,7 +340,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                     }
                                     
                             }
-                            
+                           
                         }
                         catch
                         {
@@ -331,11 +351,11 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                         flag = false
                         
                         continue OuterLoop
+                        
                     }
                     else
                     {
-                        for result in results as! [NSManagedObject]
-                        {
+                        
                             let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": result.value(forKey: "chat_id") as! String]
                             
                             Alamofire.request(baseUrl + "user/chat_conversation_msgs", method: HTTPMethod.post, parameters: getchatdata as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON
@@ -352,6 +372,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                                 
                                                 // Storing Core Data
                                                 
+                                                print(x["chat_conversation_detail"][i]["chat_message_id"].int16Value)
+                                                
                                                 
                                                 let newUser = NSEntityDescription.insertNewObject(forEntityName: "Chats", into: context)
                                                 
@@ -361,7 +383,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                                 
                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
                                                 
-                                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                                newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].int16Value, forKey: "message_id")
                                                 
                                                 newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
                                                 
@@ -396,7 +418,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                     }
                                     
                             }
-                        }
+                        
                     }
                     
                 }
@@ -430,7 +452,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                         
                                         newUser.setValue(x["chat_conversation_detail"][i]["chat_message_to"].stringValue, forKey: "sent_to")
                                         
-                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].stringValue, forKey: "message_id")
+                                        newUser.setValue(x["chat_conversation_detail"][i]["chat_message_id"].int16Value, forKey: "message_id")
                                         
                                         newUser.setValue(x["chat_conversation_detail"][i]["chat_message_type"].stringValue, forKey: "message_type")
                                         
@@ -450,7 +472,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
                                         {
                                             try context.save()
                                             
-                                            print("Messages Saved in internal database")
+                                            print("All Messages Saved in internal database first time")
                                             
                                             
                                         }
@@ -476,8 +498,8 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         
         spinnerActivity.hide(animated: true)
         
- 
         */
+        
         
     }
  
@@ -680,7 +702,7 @@ class MessageViewController: UIViewController,UICollectionViewDataSource,UIColle
         {
             
             
-            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+            let baseUrl = "http://linksy.co/api/index.php/"
             
             let tempdata = JSON(userinfo)
             let parametersdata:[String : String] = ["user_id": tempdata["linkedin_login"][0]["user_id"].string! ,"user_token": tempdata["linkedin_login"][0]["user_token"].string! ]

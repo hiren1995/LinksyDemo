@@ -38,7 +38,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     var chat_id = JSON(chatId.object(forKey: "chatId")!)
     
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
     
     var parametersdata:[String : String] = [:]
     
@@ -75,6 +75,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     
     // ------------------------------------- View did load without local database connection --------------------
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -284,13 +285,15 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         
     }
-    
+ 
     
  
-    // View did load with local database connection...
+    
+    
+    //----------------------------- View did load with local database connection start ------------------------
     
     /*
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -340,18 +343,13 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         }
         
         
-        //let temp = JSON((chatMsgArray.object(forKey: "chatMsgArray"))!)
         let tempselfinfo = JSON(selfinfo!)
       
-        //let chat_id = JSON((chatId.object(forKey: "chatId"))!)
-        
         print(chat_id)
         
         let getchatdata:[String : String] = ["user_id": tempselfinfo["linkedin_login"][0]["user_id"].string! ,"user_token": tempselfinfo["linkedin_login"][0]["user_token"].string! , "chat_id": chat_id.stringValue]
         
         print(getchatdata)
-        
-        
         
         
         
@@ -365,16 +363,12 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         do
         {
             
-            
-            
-            
             let results = try context.fetch(requests)
             
             if results.count > 0
             {
                 for result in results as! [NSManagedObject]
                 {
-                    
                     
                     if let chat_id_str = result.value(forKey: "chat_id") as? String
                     {
@@ -405,9 +399,24 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
  
                              */
                             
+                            
+                            let dateFormatter = DateFormatter()
+                            //Specify Format of String to Parse
+                            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" //or you can use "yyyy-MM-dd'T'HH:mm:ssX"
+                            
+                            dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC") as TimeZone!
+                            
+                            //print(self.x["chat_conversation_detail"][i]["chat_message_created_time"].string!)
+                            
+                            //Parse into NSDate
+                            let dateFromString  = dateFormatter.date(from: result.value(forKey: "message_time") as! String)
+                            
+                            
                             if(result.value(forKey: "message_img") as! String == "not found")
                             {
-                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: result.value(forKey: "message_text") as! String))
+                               // self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: result.value(forKey: "message_text") as! String))
+                                
+                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, senderDisplayName: "sender", date:dateFromString as Date! , text: result.value(forKey: "message_text") as! String))
                                 
                                 spinnerActivity.hide(animated: true)
                                 
@@ -415,6 +424,18 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                                 
                                 finishReceivingMessage(animated: true)
                                 
+                            }
+                            else if(result.value(forKey: "message_img") as! String == "not found" && result.value(forKey: "message_text") as! String == "not message")
+                            {
+                                //self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String , displayName: "sender", text: result.value(forKey: "message_text") as! String))
+                                
+                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, senderDisplayName: "sender", date:dateFromString as Date! , text: result.value(forKey: "message_text") as! String))
+                                
+                                spinnerActivity.hide(animated: true)
+                                
+                                self.collectionView.reloadData()
+                                
+                                finishReceivingMessage(animated: true)
                             }
                             else
                             {
@@ -425,7 +446,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                                 
                                 //self.collectionView.reloadData()
                                 
-                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, displayName: "sender", media : img))
+                                //self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, displayName: "sender", media : img))
+                                
+                                self.messages.append(JSQMessage(senderId: result.value(forKey: "sent_by") as! String, senderDisplayName: "sender", date: dateFromString as Date!, media: img))
                                 
                                 self.collectionView.reloadData()
                                 
@@ -503,9 +526,10 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
      
  
     }
- */
+ 
+    */
     
-    
+    //----------------------------- View did load with local database connection End ------------------------
   
     
     
@@ -689,10 +713,12 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     
     
-    // code for avatar image when not connected to local db
     
     
+    // ------------------------ code for avatar image when not connected to local db Start -------------------------------
     
+    
+   
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         
         var img = UIImage()
@@ -740,6 +766,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
  
  
     
+    // ------------------------ code for avatar image when not connected to local db End -------------------------------
+ 
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
         
         let message =  self.messages[indexPath.row]
@@ -774,7 +803,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     
     
-    //code for avatar image when connected to local db
+    //--------------------------------- code for avatar image when connected to local db Start ------------------------------
     
    /*
     
@@ -812,7 +841,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
             {
                 for result in results as! [NSManagedObject]
                 {
-                    
+                    print(result.value(forKey: "sent_by"))
+                    print(self.senderId)
+                    print(result.value(forKey: "sender_img"))
                     
                     if let chat_id_str = result.value(forKey: "chat_id") as? String
                     {
@@ -878,9 +909,11 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
         
         return JSQMessagesAvatarImageFactory.avatarImage(with: img, diameter: 60)
     }
-    
+ 
     */
  
+    //--------------------------------- code for avatar image when connected to local db End ------------------------------
+    
     
     
     
@@ -888,9 +921,7 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
     
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        
-    
-        
+       
         //below code appends the message array with the message we type in text view... then all the above methods are called...
        
         self.messages.append(JSQMessage(senderId: self.senderId, displayName: senderDisplayName, text: text))
@@ -1072,7 +1103,9 @@ class ChatScreenViewController: JSQMessagesViewController,UIImagePickerControlle
                     
                 }
                 
-            },to: "https://bulale.in/linksy/api/index.php/user/send_chat_message", encodingCompletion: { (result) in
+            },to: "http://linksy.co/api/index.php/user/send_chat_message", encodingCompletion: { (result) in
+                
+                
                 
                 switch result{
                 case .success(let upload, _, _):

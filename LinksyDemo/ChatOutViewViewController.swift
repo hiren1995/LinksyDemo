@@ -19,7 +19,7 @@ let chatMsgArray = UserDefaults.standard
 
 class ChatOutViewViewController: UIViewController {
 
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
     
     @IBOutlet weak var imgProfile: UIImageView!
     
@@ -36,7 +36,7 @@ class ChatOutViewViewController: UIViewController {
         
          NotificationCenter.default.addObserver(self, selector: #selector(self.loadMatches(_:)), name: NSNotification.Name(rawValue: "MatchNotification"), object: nil)
         
-         
+            
         if let msglistinfo = MsgList.object(forKey: "MsgList") as Any?
         {
             

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Chat_List" representedClassName="Chat_List" syncable="YES" codeGenerationType="class">
         <attribute name="chat_id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Chats" representedClassName="Chats" syncable="YES" codeGenerationType="class">
         <attribute name="chat_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="message_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message_id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="message_img" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_readFlag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message_text" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,8 +20,8 @@
         <attribute name="match_readFlag" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Chat_List" positionX="52" positionY="203" width="128" height="58"/>
-        <element name="Chats" positionX="-207" positionY="90" width="128" height="193"/>
+        <element name="Chat_List" positionX="52" positionY="203" width="128" height="60"/>
+        <element name="Chats" positionX="-207" positionY="90" width="128" height="195"/>
         <element name="Match_List" positionX="-54" positionY="63" width="128" height="75"/>
     </elements>
 </model>

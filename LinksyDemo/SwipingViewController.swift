@@ -53,7 +53,7 @@ class SwipingViewController: UIViewController {
     var swipedCardIndex = 0
    
     
-    let baseUrl = "https://bulale.in/linksy/api/index.php/"
+    let baseUrl = "http://linksy.co/api/index.php/"
     
     
     @IBOutlet weak var btnChatList: UIButton!
@@ -536,7 +536,7 @@ class SwipingViewController: UIViewController {
         
         if let userinfo = userpersonalinfo.object(forKey: "userpersonalinfo") as Any?
         {
-            let baseUrl = "https://bulale.in/linksy/api/index.php/"
+            let baseUrl = "http://linksy.co/api/index.php/"
             
             let tempdata = JSON(userinfo)
             
